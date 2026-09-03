@@ -1,5 +1,4 @@
 # 💡 Ideation
-
 > Our project: continuing and expanding the **Poway Neighborhood Emergency Corps (PNEC)** platform, a preparedness site built for a real community organization in Poway.
 
 ---
