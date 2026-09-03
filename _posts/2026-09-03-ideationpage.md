@@ -1,11 +1,11 @@
-# 💡 Ideation
-> Our project: continuing and expanding the **Poway Neighborhood Emergency Corps (PNEC)** platform, a preparedness site built for a real community organization in Poway.
-
+---
+layout: post
+title: Ideation page
+description: Our project is continuing and expanding the Poway Neighborhood Emergency Corps (PNEC) platform, a preparedness site built for a real community organization in Poway.
+permalink: /ideation/page
 ---
 
 ## Poway Neighborhood Emergency Corps (PNEC)
-
-![Status](https://img.shields.io/badge/status-active-brightgreen) ![Type](https://img.shields.io/badge/type-community%20platform-blue) ![Stack](https://img.shields.io/badge/stack-Flask%20%7C%20Leaflet%20%7C%20Gemini-lightgrey)
 
 ### 📖 Background
 PNEC is a preparedness platform built for the Poway Neighborhood Emergency Corps, a real community organization — not a hypothetical client. The previous team rebuilt the group's site from a static page into an actual working platform. Here's what's live right now:
