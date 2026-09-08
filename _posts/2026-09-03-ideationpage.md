@@ -7,6 +7,12 @@ permalink: /ideation/page
 
 ## Poway Neighborhood Emergency Corps (PNEC)
 
+### 👥 Team Members
+
+- Samanvi Yachareni
+- Joan Kim
+- Ainsley Albert
+
 ### 📖 Background
 PNEC is a preparedness platform built for the Poway Neighborhood Emergency Corps, a real community organization — not a hypothetical client. The previous team rebuilt the group's site from a static page into an actual working platform. Here's what's live right now:
 
