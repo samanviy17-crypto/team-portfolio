@@ -13,6 +13,36 @@ permalink: /ideation/page
 - Joan Kim
 - Ainsley Albert
 
+### Capstone Project Information
+
+**Project Title:** Poway Neighborhood Emergency Corps
+
+**Course Code:** CSP
+
+**Subtitle:** Community Emergency Preparedness & Response Platform
+
+**Status:** In Progress
+
+**Description:**  
+We are continuing and expanding the Poway Neighborhood Emergency Corps (PNEC) platform to help Poway residents prepare for, respond to, and recover from emergencies. Building on existing tools such as Risk Watch, the Helper Bot, neighborhood resources, and member accounts, we plan to add personalized preparedness tracking, interactive preparedness assessments, volunteer coordination, and emergency resident check-ins.
+
+**Team Members:**
+- Samanvi Yachareni
+- Joan Kim
+- Ainsley Albert
+
+**Key Points:**
+- Live local emergency risk information through Risk Watch
+- Helper Bot chatbot for emergency preparedness questions
+- Interactive neighborhood and evacuation resources
+- Household preparedness checklist and progress tracking
+- Interactive preparedness quiz and recommendations
+- Volunteer shift and task coordination
+- Post-disaster "Safe" or "Need Help" resident check-ins
+
+**Impact:**  
+Helps Poway residents prepare for emergencies, coordinate with neighborhood volunteers, and communicate their status during an emergency.
+
 ### 📖 Background
 PNEC is a preparedness platform built for the Poway Neighborhood Emergency Corps, a real community organization — not a hypothetical client. The previous team rebuilt the group's site from a static page into an actual working platform. Here's what's live right now:
 
