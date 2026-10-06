@@ -1,0 +1,1238 @@
+---
+layout: pnec-base
+title: "Login or Create Account"
+description: "Sign in or create your PNEC member account."
+body_class: inner-page auth-page-body
+---
+
+<!--
+  Login + Register page (v2.62 — split-screen layout).
+
+  Two-column professional layout patterned after Stripe / Vercel / Notion
+  sign-in pages: brand panel on the left (wildfire photo + mission +
+  social proof + trust messaging), form panel on the right (compact,
+  focused, breathable). Below 1024px the columns stack with the brand
+  panel collapsing to a short hero strip.
+
+  Why split:
+    • Solves the "narrow form / long page" problem of v2.61 by giving
+      the form panel its own breathing room and moving trust messaging
+      OFF the bottom of the page (where it stretches scroll height) and
+      ALONGSIDE the form (where it reinforces security at the moment
+      of action).
+    • Modern, professional pattern users recognize from every SaaS auth
+      page they've used in the last five years.
+    • The wildfire photo finally has a clear job — set ambient context
+      for the brand side — without bleeding into the form fields and
+      hurting readability.
+
+  Form IDs / hash navigation / register-page.js wiring all preserved.
+-->
+
+<style>
+  /* v3.42: powaynec.com recompiled its external JupiterX CSS (404 now),
+     which used to hide this skip-link. Inline it here so the login page
+     never shows a stray "Skip to content" band / gap at the very top,
+     regardless of main.css load timing. Still keyboard-focusable. */
+  .jupiterx-a11y-skip-navigation-link {
+    position: absolute !important;
+    width: 1px !important; height: 1px !important;
+    padding: 0 !important; margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important; border: 0 !important;
+  }
+  .jupiterx-a11y-skip-navigation-link:focus {
+    position: fixed !important;
+    top: 10px !important; left: 10px !important;
+    width: auto !important; height: auto !important;
+    clip: auto !important; overflow: visible !important;
+    margin: 0 !important; padding: 10px 16px !important;
+    background: #0e3b21 !important; color: #fff !important;
+    z-index: 100001 !important; border-radius: 6px !important;
+  }
+
+  /* ─── Header treatment ─────────────────────────────────────────────
+     Hide the cloned-WP page-title overlay and the header carousel.
+     The brand panel below provides all the photographic ambience this
+     page needs — a duplicate carousel up top would compete. */
+  .auth-page-body .pnec-header-title,
+  .auth-page-body .pnec-header-track,
+  .auth-page-body .pnec-header-overlay {
+    display: none !important;
+  }
+  .auth-page-body .pnec-unified-header {
+    height: auto !important;
+    background: transparent !important;
+  }
+  .auth-page-body .pnec-header-ui { position: relative !important; padding-top: 0 !important; }
+  .auth-page-body .pnec-header-top { padding: 14px 36px 18px; }
+
+  /* Pin the navbar flush with the top edge, restyled green-translucent
+     to match the rest of the site. */
+  .auth-page-body .pnec-header-ui {
+    justify-content: flex-start !important;
+    padding-top: 0 !important;
+  }
+  .auth-page-body .pnec-header-nav  { order: -1; margin: 0 -36px !important; }
+  .auth-page-body .pnec-header-top  { order:  0; padding-top: 16px; }
+  .auth-page-body .pnec-header-title{ order:  1; }
+  .auth-page-body .pnec-header-nav {
+    background: rgba(39, 174, 96, 0.78) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .auth-page-body .pnec-header-nav li a {
+    color: #fff !important;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .auth-page-body .pnec-header-nav li a:hover,
+  .auth-page-body .pnec-header-nav li a.active {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.20);
+    border-bottom-color: #fff !important;
+  }
+
+  /* Reset layout's default page padding for this auth page only. */
+  .auth-page-body .pnec-page-shell,
+  .auth-page-body main#jupiterx-main {
+    padding: 0 !important;
+    background: transparent !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  /* ─── Body-level wildfire backdrop ──────────────────────────────────
+     v2.67 NUCLEAR PERF FIX: prior versions all kept the photo in a
+     `position: fixed` pseudo. On every scroll frame the compositor
+     had to recomposite that fixed layer. Even with translateZ(0)
+     promoting it to GPU, the cost was visible (especially when
+     stacked with the global film-grain overlay's mix-blend-mode).
+
+     Fix: photo + gradient now live ON the body itself, no fixed
+     pseudo. Browsers paint body bg ONCE and document content scrolls
+     within it — no per-frame recomposite of a viewport-anchored
+     layer. The photo scrolls with the page, but the page is short
+     (essentially one viewport tall), so it stays mostly visible. */
+  .auth-page-body {
+    background-color: #14201a;
+    background-image:
+      linear-gradient(135deg,
+        rgba(20, 90, 50, 0.62) 0%,
+        rgba(10, 22, 40, 0.58) 50%,
+        rgba(192, 57, 43, 0.42) 100%),
+      url('{{ "/assets/images/Poway_Fire.webp" | relative_url }}');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    min-height: 100vh;
+  }
+
+  /* v2.67: KILL the global film-grain overlay (_sass/_polish.scss
+     §13: body::after with mix-blend-mode:overlay) on the auth page.
+     mix-blend-mode on a fixed full-viewport element forces the GPU
+     to recomposite the ENTIRE viewport every scroll frame — that
+     was THE largest contributor to the perceived scroll lag. */
+  body.auth-page-body::after { display: none !important; }
+
+  /* Same for the corner vignette (_polish.scss §14). */
+  html:has(body.auth-page-body)::before { display: none !important; }
+
+  /* Pause the chatbot FAB's infinite pulse animation here — it's
+     subtle but a perpetual animation in the bottom-right keeps a
+     compositor layer alive and burns paint cycles continuously. */
+  body.auth-page-body .pnec-bot-fab-pulse { animation: none !important; }
+
+  /* DM Sans premium typography */
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap');
+
+  /* AOPS forest-green palette (scoped to this page only) */
+  .auth-page-body {
+    --pnec-green:        #1e8449;
+    --pnec-green-deep:   #145a32;
+    --pnec-green-soft:   #d4efdf;
+    --pnec-green-text:   #0e3b21;
+  }
+
+  /* ─── Split-screen layout grid ───────────────────────────────────────
+     v2.68: brand column shrinks (0.85fr) and form column grows (1.5fr)
+     so the form card has real room to breathe. Card itself bumps from
+     720→880px max — at 1440px viewport the form column is ~880px wide,
+     which finally lets the card render at its full max width instead
+     of being column-constrained. Visible step up on every laptop and
+     desktop. */
+  .auth-split {
+    display: grid;
+    grid-template-columns: 0.85fr 1.5fr;
+    min-height: calc(100vh - 88px);
+    width: 100%;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  @media (max-width: 1023px) {
+    .auth-split {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      min-height: 0;
+    }
+  }
+
+  /* ─── BRAND PANEL (left on desktop, top on mobile) ─────────────────
+     v2.63: the photo + gradient now live at the body level as a true
+     background element, so this panel is just a transparent content
+     container holding the mission text, customer quote, and stats —
+     overlaid directly on the page-wide photo backdrop. */
+  .auth-brand {
+    position: relative;
+    padding: clamp(64px, 6vw, 96px) clamp(40px, 5vw, 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(40px, 5vw, 60px);
+    color: #fff;
+    background: transparent;
+  }
+
+  @media (max-width: 1023px) {
+    .auth-brand {
+      padding: 36px clamp(24px, 5vw, 40px) 40px;
+      min-height: 0;
+      gap: 18px;
+    }
+  }
+
+  /* Logo lockup at the top of the brand panel */
+  .auth-brand-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 800;
+    font-size: 0.84rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.94);
+  }
+  .auth-brand-mark-icon {
+    width: 38px; height: 38px;
+    display: grid;
+    place-items: center;
+    /* v2.65 perf: dropped backdrop-filter blur — was causing repaints
+       on every scroll frame because this element moves while the
+       fixed background photo stays put. Solid rgba reads identically. */
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 10px;
+  }
+  .auth-brand-mark-icon svg { color: #fff; width: 20px; height: 20px; }
+
+  /* Hero — the mission statement that sets the emotional tone */
+  .auth-brand-hero {
+    max-width: 540px;
+  }
+  .auth-brand-hero-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #b9f6ca;
+    margin-bottom: 16px;
+  }
+  .auth-brand-hero h2 {
+    margin: 0 0 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2rem, 3.4vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.04;
+    letter-spacing: -0.028em;
+    color: #fff;
+    /* v2.66 PERF: dropped text-shadow. text-shadow with 14px blur
+       on a large heading repaints every scroll frame. Body backdrop
+       gradient now darkens the area enough that the white text reads
+       crisp without it. */
+  }
+  .auth-brand-hero p {
+    margin: 0;
+    font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 500;
+  }
+
+  /* Customer quote card — testimonial that humanizes the page.
+     v2.65 perf: dropped backdrop-filter blur — was the #1 scroll-lag
+     culprit. backdrop-filter on a moving element over a fixed
+     background photo forces the browser to re-blur every scroll
+     frame. Replaced with a darker semi-transparent panel that reads
+     just as well visually but composites cheaply. */
+  .auth-brand-quote {
+    margin: 4px 0 0;
+    padding: 18px 22px;
+    background: linear-gradient(180deg, rgba(10, 22, 40, 0.42), rgba(10, 22, 40, 0.32));
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 14px;
+    max-width: 540px;
+  }
+  .auth-brand-quote p {
+    margin: 0 0 10px;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.96);
+    font-style: italic;
+  }
+  .auth-brand-quote-attr {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-weight: 600;
+  }
+  .auth-brand-quote-avatar {
+    width: 28px; height: 28px;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, #d4efdf, #b9f6ca);
+    color: #0e3b21;
+    font-weight: 800;
+    font-size: 0.78rem;
+    border-radius: 50%;
+  }
+
+  /* Stat row */
+  .auth-brand-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2vw, 32px);
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.20);
+    max-width: 540px;
+  }
+  .auth-brand-stat-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .auth-brand-stat-label {
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.78);
+    margin-top: 5px;
+    line-height: 1.3;
+  }
+
+  /* On mobile, hide the stats and quote — they repeat info that's in
+     the form panel. The brand strip stays short. */
+  @media (max-width: 1023px) {
+    .auth-brand-quote,
+    .auth-brand-stats { display: none; }
+    .auth-brand-hero h2 { font-size: 1.55rem; line-height: 1.1; margin-bottom: 8px; }
+    .auth-brand-hero p { font-size: 0.92rem; }
+    .auth-brand-hero-eyebrow { font-size: 0.7rem; margin-bottom: 10px; }
+  }
+
+  /* ─── FORM PANEL (right on desktop, below brand on mobile) ─────────
+     v2.68: panel padding trimmed further so the wider 880px card has
+     headroom on common 1440px laptops. */
+  .auth-form-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(28px, 2vw, 48px) clamp(14px, 1.5vw, 32px);
+    background: transparent;
+    position: relative;
+  }
+
+  /* The form card — opaque cream surface with a green ribbon at the
+     top edge.
+
+     v2.67 PERF: stripped to bare essentials.
+       • Box shadow: 5 layers → 2 (hairline border + drop shadow only).
+         Multi-layer shadows with large blur radii are expensive on
+         every paint, including hover state changes.
+       • Removed `contain: layout paint` — was forcing the browser to
+         eagerly paint the card's whole subtree even when fully
+         off-screen.
+       • Removed entrance animation. 600ms of opacity+transform on
+         the largest element on the page was a startup hitch that
+         compounded with the page-level work.
+       • Removed paper-grain background-image stack — three nested
+         gradients on the card painted every visible-area refresh. */
+  .auth-form-stack {
+    width: 100%;
+    max-width: 880px;
+    background: #fbf8f1;
+    padding: clamp(52px, 5vw, 88px) clamp(48px, 5.5vw, 96px);
+    border-radius: 30px;
+    position: relative;
+    box-shadow:
+      0 0 0 1px rgba(20, 90, 50, 0.10),
+      0 24px 56px rgba(0, 0, 0, 0.22);
+  }
+  /* Forest-green ribbon at the top edge of the card */
+  .auth-form-stack::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--pnec-green-deep) 0%, var(--pnec-green) 50%, #27ae60 100%);
+    border-radius: 30px 30px 0 0;
+    box-shadow: 0 1px 6px rgba(20, 90, 50, 0.40);
+  }
+  /* Top-right forest-green corner accent */
+  .auth-form-stack::after {
+    content: '';
+    position: absolute;
+    top: -1px; right: -1px;
+    width: 180px; height: 180px;
+    background: radial-gradient(160px 160px at 100% 0%, rgba(30, 132, 73, 0.10), transparent 70%);
+    border-radius: 0 30px 0 0;
+    pointer-events: none;
+  }
+  /* (auth-card-in keyframe removed — entrance animation killed for perf) */
+  @media (max-width: 1023px) {
+    .auth-form-stack {
+      max-width: 560px;
+      padding: clamp(36px, 5vw, 52px) clamp(26px, 5vw, 44px);
+      border-radius: 24px;
+    }
+    .auth-form-stack::before { border-radius: 24px 24px 0 0; }
+    .auth-form-stack::after  { border-radius: 0 24px 0 0; }
+  }
+
+  /* Eyebrow with lock icon (v2.65 bumped) */
+  .auth-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pnec-green-deep);
+  }
+  .auth-eyebrow-icon {
+    width: 30px; height: 30px;
+    display: grid;
+    place-items: center;
+    background: var(--pnec-green-soft);
+    border-radius: 8px;
+  }
+  .auth-eyebrow-icon svg { color: var(--pnec-green-deep); width: 14px; height: 14px; }
+
+  /* Greeting heading — time-aware via JS. v2.68 scaled up for the
+     880px card. */
+  .auth-greeting {
+    margin: 24px 0 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.6rem, 4.2vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1.02;
+    color: #0a1628;
+    letter-spacing: -0.034em;
+  }
+  .auth-tagline {
+    margin: 0;
+    font-size: 1.18rem;
+    color: #5a5a5a;
+    line-height: 1.5;
+  }
+  .auth-tagline strong { color: var(--pnec-green-deep); font-weight: 700; }
+
+  /* Trust pills — single horizontal row above the tabs */
+  .auth-trust-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 22px 0 26px;
+  }
+  .auth-trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 11px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--pnec-green-deep);
+    background: rgba(212, 239, 223, 0.55);
+    border: 1px solid rgba(30, 132, 73, 0.22);
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .auth-trust-pill svg {
+    color: var(--pnec-green);
+    width: 11px; height: 11px;
+    flex-shrink: 0;
+  }
+
+  /* Returning-visitor bubble */
+  .auth-returning-bubble {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 20px;
+    padding: 13px 16px;
+    background: linear-gradient(135deg, #f0f9f4 0%, #e8f5ed 100%);
+    border: 1px solid rgba(30, 132, 73, 0.22);
+    border-radius: 12px;
+    animation: auth-fade-in 360ms cubic-bezier(.2,.85,.25,1);
+  }
+  .auth-returning-bubble.is-visible { display: flex; }
+  .auth-returning-avatar {
+    width: 40px; height: 40px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--pnec-green) 0%, var(--pnec-green-deep) 100%);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 0.96rem;
+    box-shadow: 0 2px 8px rgba(20, 90, 50, 0.28);
+  }
+  .auth-returning-text {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.86rem;
+    line-height: 1.4;
+    color: #0e3b21;
+  }
+  .auth-returning-text strong {
+    display: block;
+    font-weight: 800;
+    font-size: 0.98rem;
+    color: #0a1628;
+    margin-bottom: 2px;
+  }
+  @keyframes auth-fade-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* Tabs — forest-green active pill (v2.66 bumped) */
+  .auth-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    background: #f3f0ea;
+    padding: 7px;
+    margin: 0 0 28px;
+    border-radius: 16px;
+    border: 1px solid #e8e4dc;
+  }
+  .auth-tab {
+    position: relative;
+    z-index: 2;
+    padding: 15px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #5a5a5a;
+    background: transparent;
+    border: 0;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: color 240ms cubic-bezier(.4,0,.2,1);
+    letter-spacing: -0.005em;
+  }
+  .auth-tab.is-active { color: #fff; }
+  .auth-tab:not(.is-active):hover { color: var(--pnec-green-deep); }
+  .auth-tab-pill {
+    position: absolute;
+    top: 7px; bottom: 7px; left: 7px;
+    width: calc(50% - 7px);
+    background: linear-gradient(135deg, var(--pnec-green) 0%, var(--pnec-green-deep) 100%);
+    border-radius: 11px;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.20) inset,
+      0 4px 12px rgba(20, 90, 50, 0.28);
+    transition: transform 320ms cubic-bezier(.2,.85,.25,1);
+    z-index: 1;
+  }
+  .auth-tabs[data-active="register"] .auth-tab-pill { transform: translateX(100%); }
+
+  /* Panes — hide their built-in h2/p since the greeting at top handles
+     it. Keeps the form panel from feeling like it has 5 headings. */
+  .auth-pane { display: none; }
+  .auth-pane.is-active { display: block; animation: auth-pane-in 220ms ease; }
+  .auth-pane > h2,
+  .auth-pane > p:first-of-type { display: none; }
+  @keyframes auth-pane-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .auth-pane.is-active,
+    .auth-returning-bubble { animation: none; }
+  }
+
+  /* Floating-label fields (v2.66 bumped) */
+  .auth-field { position: relative; margin-bottom: 18px; }
+  .auth-field input,
+  .auth-field select {
+    width: 100%;
+    padding: 24px 20px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.06rem;
+    color: #0a1628;
+    background: #fff;
+    border: 1.5px solid #e4e0d6;
+    border-radius: 13px;
+    transition:
+      border-color 220ms cubic-bezier(.4,0,.2,1),
+      box-shadow 220ms cubic-bezier(.4,0,.2,1);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .auth-field input:hover,
+  .auth-field select:hover { border-color: #c5beac; }
+  .auth-field input:focus,
+  .auth-field select:focus {
+    outline: none;
+    border-color: var(--pnec-green);
+    box-shadow:
+      0 0 0 4px rgba(30, 132, 73, 0.14),
+      0 1px 0 rgba(30, 132, 73, 0.05) inset;
+  }
+  .auth-field label {
+    position: absolute;
+    top: 20px; left: 20px;
+    padding: 0 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.04rem;
+    color: #9e9e9e;
+    pointer-events: none;
+    transform-origin: left center;
+    transition: transform 220ms cubic-bezier(.4,0,.2,1), color 200ms ease, top 200ms cubic-bezier(.4,0,.2,1), background 200ms ease;
+    background: transparent;
+  }
+  .auth-field input:focus + label,
+  .auth-field input:not(:placeholder-shown) + label,
+  .auth-field select + label,
+  .auth-field select:focus + label {
+    top: -8px;
+    transform: scale(0.78);
+    color: var(--pnec-green);
+    background: #fff;
+    font-weight: 700;
+  }
+  .auth-field select { padding-top: 16px; padding-bottom: 16px; color: #5a5a5a; }
+  .auth-field-hint {
+    font-size: 0.76rem;
+    color: #9e9e9e;
+    margin: 6px 0 0 4px;
+    line-height: 1.5;
+  }
+
+  .auth-field-pass { position: relative; }
+  .auth-field-pass input { padding-right: 48px; }
+  .auth-eye-toggle {
+    position: absolute;
+    top: 13px; right: 8px;
+    width: 36px; height: 36px;
+    background: transparent;
+    border: 0; border-radius: 7px;
+    cursor: pointer;
+    color: #9e9e9e;
+    display: grid; place-items: center;
+    transition: background 120ms ease, color 120ms ease;
+  }
+  .auth-eye-toggle:hover { background: var(--pnec-green-soft); color: var(--pnec-green-deep); }
+  .auth-eye-toggle:focus-visible { outline: 2px solid var(--pnec-green); outline-offset: 2px; }
+
+  /* Encryption microcopy under password fields */
+  .auth-encryption-note {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 6px 4px 0;
+    font-size: 0.74rem;
+    color: #6e7c75;
+    line-height: 1.4;
+  }
+  .auth-encryption-note svg {
+    color: var(--pnec-green);
+    width: 11px; height: 11px;
+    flex-shrink: 0;
+  }
+
+  .auth-row-between {
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 4px 0 18px;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .auth-checkbox {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 0.85rem; color: #5a5a5a;
+    cursor: pointer; user-select: none;
+  }
+  .auth-checkbox input { width: 16px; height: 16px; accent-color: var(--pnec-green); cursor: pointer; }
+  .auth-link {
+    font-size: 0.86rem;
+    color: var(--pnec-green-deep);
+    font-weight: 700;
+    transition: color 160ms ease;
+  }
+  .auth-link:hover { color: var(--pnec-green); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* Submit button — forest-green AOPS, layered shadow, sheen (v2.66 bumped) */
+  .auth-submit {
+    width: 100%;
+    padding: 20px 28px;
+    margin-top: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.12rem; font-weight: 700;
+    letter-spacing: -0.005em;
+    color: #fff;
+    background: linear-gradient(180deg, var(--pnec-green) 0%, var(--pnec-green-deep) 100%);
+    border: 0; border-radius: 15px;
+    cursor: pointer;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.30) inset,
+      0 -1px 0 rgba(0, 0, 0, 0.20) inset,
+      0 1px 2px rgba(20, 90, 50, 0.30),
+      0 4px 12px rgba(20, 90, 50, 0.32),
+      0 12px 28px rgba(20, 90, 50, 0.28);
+    transition:
+      transform 220ms cubic-bezier(.2,.85,.25,1),
+      box-shadow 320ms cubic-bezier(.2,.85,.25,1),
+      filter 220ms ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .auth-submit::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -120%;
+    width: 60%; height: 100%;
+    background: linear-gradient(120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.18) 50%,
+      transparent 100%);
+    transform: skewX(-20deg);
+    transition: left 720ms cubic-bezier(.4,0,.2,1);
+    pointer-events: none;
+  }
+  .auth-submit:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.35) inset,
+      0 -1px 0 rgba(0, 0, 0, 0.25) inset,
+      0 2px 4px rgba(20, 90, 50, 0.32),
+      0 8px 18px rgba(20, 90, 50, 0.40),
+      0 22px 44px rgba(20, 90, 50, 0.36);
+  }
+  .auth-submit:hover::before { left: 220%; }
+  .auth-submit:active { transform: translateY(0); filter: brightness(0.98); }
+  .auth-submit:focus-visible { outline: 3px solid var(--pnec-green); outline-offset: 4px; }
+  .auth-submit[disabled],
+  .auth-submit.is-loading { cursor: progress; opacity: 0.85; transform: none; }
+  .auth-submit.is-loading::after {
+    content: '';
+    position: absolute; top: 50%; right: 18px; width: 16px; height: 16px;
+    margin-top: -8px;
+    border: 2px solid rgba(255,255,255,0.55);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: auth-spin 620ms linear infinite;
+  }
+  @keyframes auth-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .auth-submit.is-loading::after { animation: none; }
+    .auth-submit:hover { transform: none; filter: none; }
+    .auth-submit::before, .auth-submit:hover::before { display: none; }
+  }
+  .auth-submit-icon {
+    display: inline-block;
+    width: 14px; height: 14px;
+    vertical-align: -2px;
+    margin-right: 8px;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  /* Error box */
+  .auth-error-box {
+    margin: 0 0 14px;
+    padding: 10px 13px;
+    background: #fdf3f1;
+    border: 1px solid #f1c7c1;
+    color: #962d22;
+    border-radius: 8px;
+    font-size: 0.84rem; line-height: 1.45;
+    display: none;
+  }
+  .auth-error-box.is-visible { display: block; }
+
+  /* Address fallback row */
+  .auth-find-btn,
+  .auth-address-search-btn {
+    padding: 9px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.84rem; font-weight: 700;
+    color: var(--pnec-green-deep);
+    background: #fff;
+    border: 1.5px solid #e4e0d6;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 200ms cubic-bezier(.4,0,.2,1);
+    white-space: nowrap;
+  }
+  .auth-find-btn:hover,
+  .auth-address-search-btn:hover {
+    background: var(--pnec-green-soft);
+    border-color: var(--pnec-green);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(20, 90, 50, 0.12);
+  }
+  .auth-address-fallback { display: none; gap: 8px; margin-top: 8px; }
+  .auth-address-fallback.is-visible { display: grid; grid-template-columns: 1fr auto; }
+  .auth-address-fallback input {
+    padding: 11px 13px;
+    border: 1.5px solid #e8e6e1;
+    border-radius: 9px;
+    font: inherit;
+    background: #fff;
+  }
+
+  .auth-switch-row {
+    margin: 18px 0 0;
+    text-align: center;
+    font-size: 0.86rem;
+    color: #5a5a5a;
+  }
+
+  /* Footer help line at bottom of form panel */
+  .auth-help-foot {
+    margin: 32px 0 0;
+    text-align: center;
+    font-size: 0.82rem;
+    color: #6a6a6a;
+    line-height: 1.5;
+  }
+  .auth-help-foot a { color: var(--pnec-green-deep); font-weight: 700; }
+  .auth-help-foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  .auth-divider-dot {
+    display: inline-block;
+    margin: 0 7px;
+    color: #c8c2b3;
+  }
+</style>
+
+<div class="auth-split">
+
+  <!-- ── BRAND PANEL (left on desktop, top on mobile) ────────────── -->
+  <aside class="auth-brand">
+    <header class="auth-brand-mark">
+      <span class="auth-brand-mark-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/>
+        </svg>
+      </span>
+      Poway Neighborhood Emergency Corps
+    </header>
+
+    <div class="auth-brand-hero">
+      <span class="auth-brand-hero-eyebrow">Since 2011 · Volunteer-run</span>
+      <h2>Neighbors helping neighbors prepare for what's next.</h2>
+      <p>One in three Poway households loses power, water, or shelter during fire season. PNEC connects you to your block — so when the moment comes, you don't face it alone.</p>
+    </div>
+
+    <!-- Customer quote — humanizes the page beyond mission copy alone. -->
+    <blockquote class="auth-brand-quote">
+      <p>"When the grid went out last summer, my block coordinator had medication delivered within an hour. We'd never met before that. Now they feel like family."</p>
+      <div class="auth-brand-quote-attr">
+        <span class="auth-brand-quote-avatar" aria-hidden="true">M</span>
+        <span>Mary R. · Rancho Arbolitos resident</span>
+      </div>
+    </blockquote>
+
+    <div class="auth-brand-stats">
+      <div>
+        <div class="auth-brand-stat-num">3,200+</div>
+        <div class="auth-brand-stat-label">Households connected</div>
+      </div>
+      <div>
+        <div class="auth-brand-stat-num">15</div>
+        <div class="auth-brand-stat-label">Years of service</div>
+      </div>
+      <div>
+        <div class="auth-brand-stat-num">100%</div>
+        <div class="auth-brand-stat-label">Volunteer-run</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── FORM PANEL (right on desktop, below brand on mobile) ────── -->
+  <div class="auth-form-panel">
+    <div class="auth-form-stack">
+
+      <span class="auth-eyebrow">
+        <span class="auth-eyebrow-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </span>
+        Encrypted Member Portal
+      </span>
+
+      <h1 class="auth-greeting" id="auth-greeting">Welcome back, neighbor</h1>
+
+     
+
+      <!-- Tabs -->
+      <div class="auth-tabs" role="tablist" aria-label="Choose action" data-active="login">
+        <span class="auth-tab-pill" aria-hidden="true"></span>
+        <button id="auth-tab-login"    class="auth-tab is-active" role="tab" aria-selected="true"  aria-controls="pane-login"    data-pane="login">Login</button>
+        <button id="auth-tab-register" class="auth-tab"           role="tab" aria-selected="false" aria-controls="pane-register" data-pane="register">Create account</button>
+      </div>
+
+      <!-- ── Pane: Sign In ─────────────────────────────────────────── -->
+      <section id="pane-login" class="auth-pane is-active" role="tabpanel" aria-labelledby="auth-tab-login">
+        <div id="login-returning-bubble" class="auth-returning-bubble" aria-live="polite">
+          <div id="login-returning-avatar" class="auth-returning-avatar" aria-hidden="true">N</div>
+          <div class="auth-returning-text">
+            <strong id="login-returning-name">Welcome back</strong>
+            <span id="login-returning-detail">Login to pick up where you left off in your neighborhood.</span>
+          </div>
+        </div>
+
+        <h2>Your neighborhood is here</h2>
+        <p>Login to check in with your block, your kit, and your neighbors.</p>
+
+        <div id="login-error" class="auth-error-box" role="alert" aria-live="polite"></div>
+
+        <form id="login-form" novalidate>
+          <div class="auth-field">
+            <input id="login-email" name="email" type="email" placeholder=" " autocomplete="email" required>
+            <label for="login-email">Email address</label>
+          </div>
+
+          <div class="auth-field auth-field-pass">
+            <input id="login-password" name="password" type="password" placeholder=" " autocomplete="current-password" required>
+            <label for="login-password">Password</label>
+            <button type="button" class="auth-eye-toggle" aria-label="Show password" data-target="login-password">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+
+          <div class="auth-row-between">
+            <label class="auth-checkbox">
+              <input id="login-remember" type="checkbox">
+              Remember me
+            </label>
+            <a class="auth-link" href="{{ '/pages/forgot-password.html' | relative_url }}">Forgot password?</a>
+          </div>
+
+          <button id="login-submit-btn" type="submit" class="auth-submit">
+            <svg class="auth-submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Sign in securely
+          </button>
+        </form>
+
+        <p class="auth-switch-row">
+          First time here? <a class="auth-link" href="#register" data-switch-pane="register">Create your account →</a>
+        </p>
+      </section>
+
+      <!-- ── Pane: Create Account ────────────────────────────────── -->
+      <section id="pane-register" class="auth-pane" role="tabpanel" aria-labelledby="auth-tab-register" hidden>
+        <h2>Welcome to the neighborhood</h2>
+        <p>Takes about a minute. We'll connect you to your block's coordinator and your local member tools.</p>
+
+        <div id="register-error" class="auth-error-box" role="alert" aria-live="polite"></div>
+
+        <form id="register-form" novalidate>
+          <div class="auth-field">
+            <input id="register-name" name="display_name" type="text" placeholder=" " autocomplete="nickname" required>
+            <label for="register-name">Display name</label>
+          </div>
+
+          <div class="auth-field">
+            <input id="register-email" name="email" type="email" placeholder=" " autocomplete="email" required>
+            <label for="register-email">Email address</label>
+          </div>
+
+          <div class="auth-field auth-field-pass">
+            <input id="register-password" name="password" type="password" placeholder=" " autocomplete="new-password" required minlength="8">
+            <label for="register-password">Password</label>
+            <button type="button" class="auth-eye-toggle" aria-label="Show password" data-target="register-password">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+
+          <div class="auth-field auth-field-pass">
+            <input id="register-confirm-password" name="confirm_password" type="password" placeholder=" " autocomplete="new-password" required>
+            <label for="register-confirm-password">Confirm password</label>
+            <button type="button" class="auth-eye-toggle" aria-label="Show password" data-target="register-confirm-password">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+
+          <div class="auth-field">
+            <select id="register-neighborhood-select" autocomplete="address-level2">
+              <option value="" disabled selected></option>
+            </select>
+            <label for="register-neighborhood-select">Neighborhood</label>
+          </div>
+          <div style="display:flex; gap:8px; margin:-4px 0 8px;">
+            <button type="button" class="auth-find-btn" id="register-find-neighborhood">Use my location</button>
+          </div>
+
+          <div class="auth-address-fallback" id="register-address-fallback">
+            <input id="register-address-query" type="text" placeholder="Street address or neighborhood number" autocomplete="street-address">
+            <button type="button" class="auth-address-search-btn" id="register-address-search">Search</button>
+          </div>
+
+          <p class="auth-field-hint" id="register-neighborhood-help">
+            Connects you to your local coordinator. You can change it later.
+          </p>
+
+          <button type="submit" class="auth-submit" style="margin-top:10px;">
+            <svg class="auth-submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Create my account
+          </button>
+        </form>
+
+        <p class="auth-switch-row">
+          Already part of the neighborhood? <a class="auth-link" href="#login" data-switch-pane="login">Login</a>
+        </p>
+      </section>
+
+      <p class="auth-help-foot">
+        Need a hand? <a href="{{ '/pages/contact.html' | relative_url }}">Reach out to a PNEC volunteer</a>
+        <span class="auth-divider-dot">·</span>
+        <a href="{{ '/pages/about.html' | relative_url }}">About PNEC</a>
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  const tabsEl  = document.querySelector('.auth-tabs');
+  const tabBtns = document.querySelectorAll('.auth-tab');
+  const panes   = document.querySelectorAll('.auth-pane');
+
+  function switchPane(name) {
+    if (name !== 'login' && name !== 'register') name = 'login';
+    tabsEl.setAttribute('data-active', name);
+    tabBtns.forEach(b => {
+      const active = b.dataset.pane === name;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    panes.forEach(p => {
+      const active = p.id === ('pane-' + name);
+      p.classList.toggle('is-active', active);
+      if (active) p.removeAttribute('hidden');
+      else        p.setAttribute('hidden', '');
+    });
+    try { history.replaceState(null, '', '#' + name); } catch (_e) {}
+    const firstInput = document.querySelector('#pane-' + name + ' input:not([type="checkbox"])');
+    if (firstInput) setTimeout(() => firstInput.focus({ preventScroll: true }), 30);
+  }
+
+  tabBtns.forEach(b => b.addEventListener('click', () => switchPane(b.dataset.pane)));
+  document.querySelectorAll('[data-switch-pane]').forEach(a => {
+    a.addEventListener('click', (e) => { e.preventDefault(); switchPane(a.dataset.switchPane); });
+  });
+
+  function fromHash() {
+    const h = (window.location.hash || '').replace('#', '').toLowerCase();
+    if (h === 'register' || h === 'signup') switchPane('register');
+    else                                    switchPane('login');
+  }
+  fromHash();
+  window.addEventListener('hashchange', fromHash);
+
+  document.querySelectorAll('.auth-eye-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (!target) return;
+      const next = target.type === 'password' ? 'text' : 'password';
+      target.type = next;
+      btn.setAttribute('aria-label', next === 'text' ? 'Hide password' : 'Show password');
+    });
+  });
+
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', () => {
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.classList.add('is-loading');
+        let tries = 30;
+        const t = setInterval(() => {
+          if (!btn.disabled || tries-- <= 0) {
+            btn.classList.remove('is-loading');
+            clearInterval(t);
+          }
+        }, 150);
+      }
+    });
+  });
+
+  ['login-error', 'register-error'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const obs = new MutationObserver(() => {
+      const has = (el.textContent || '').trim().length > 0;
+      el.classList.toggle('is-visible', has);
+    });
+    obs.observe(el, { childList: true, characterData: true, subtree: true });
+  });
+
+  // ─── Time-aware greeting + returning-visitor recognition ──────────
+  // Pure-client personalization — no network call. Falls back gracefully
+  // if localStorage is empty or JSON.parse throws.
+
+  function timeOfDay() {
+    const h = new Date().getHours();
+    if (h >= 5  && h < 12) return 'Good morning';
+    if (h >= 12 && h < 17) return 'Good afternoon';
+    if (h >= 17 && h < 22) return 'Good evening';
+    return 'Hello';
+  }
+
+  function getCachedUser() {
+    try {
+      const raw = localStorage.getItem('pnec_user') || sessionStorage.getItem('pnec_user');
+      return raw ? JSON.parse(raw) : null;
+    } catch (_e) { return null; }
+  }
+
+  function firstName(name) {
+    if (!name) return '';
+    return name.toString().trim().split(/\s+/)[0] || '';
+  }
+
+  function initialsOf(name) {
+    if (!name) return 'N';
+    const parts = name.toString().trim().split(/\s+/).slice(0, 2);
+    const out = parts.map(p => p.charAt(0).toUpperCase()).join('');
+    return out || 'N';
+  }
+
+  function setGreeting() {
+    const greetEl = document.getElementById('auth-greeting');
+    if (!greetEl) return;
+    const cached = getCachedUser();
+    const audience = cached && cached.display_name
+      ? firstName(cached.display_name)
+      : 'neighbor';
+    greetEl.textContent = timeOfDay() + ', ' + audience;
+  }
+
+  function hydrateReturningBubble() {
+    const cached = getCachedUser();
+    if (!cached || !cached.email) return;
+
+    const bubble   = document.getElementById('login-returning-bubble');
+    const avatar   = document.getElementById('login-returning-avatar');
+    const nameEl   = document.getElementById('login-returning-name');
+    const detailEl = document.getElementById('login-returning-detail');
+    if (!bubble || !avatar || !nameEl || !detailEl) return;
+
+    const display = cached.display_name || cached.email.split('@')[0];
+    avatar.textContent = initialsOf(display);
+    nameEl.textContent = 'Welcome back, ' + firstName(display);
+    detailEl.textContent = cached.neighborhood
+      ? "Your block (" + cached.neighborhood + ") is keeping the porch light on."
+      : "Login to pick up where you left off in your neighborhood.";
+    bubble.classList.add('is-visible');
+
+    const emailField = document.getElementById('login-email');
+    if (emailField && !emailField.value) {
+      emailField.value = cached.email;
+      emailField.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    const rememberBox = document.getElementById('login-remember');
+    if (rememberBox && !rememberBox.checked) rememberBox.checked = true;
+  }
+
+  setGreeting();
+  hydrateReturningBubble();
+})();
+</script>
+
+<script>
+/* v3.39: count-up animation for the login-page brand stats
+   (.auth-brand-stat-num). Each number rolls 0 -> target shortly after
+   load, preserving the original prefix/suffix and comma grouping
+   (e.g. "3,200+", "22", "100%"). Respects prefers-reduced-motion
+   (shows the final value, no animation). Animates on load (not gated
+   on scroll) so it always runs regardless of viewport/panel layout. */
+(function () {
+  function init() {
+    var nums = document.querySelectorAll('.auth-brand-stat-num');
+    if (!nums.length) return;
+    var reduce = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function parse(el) {
+      var raw = (el.textContent || '').trim();
+      var m = raw.match(/^(\D*)([\d.,]+)(.*)$/);
+      if (!m) return null;
+      var target = parseInt(m[2].replace(/[.,]/g, ''), 10);
+      if (!isFinite(target)) return null;
+      return { el: el, raw: raw, prefix: m[1], suffix: m[3],
+               target: target, group: m[2].indexOf(',') !== -1 };
+    }
+    function fmt(d, n) {
+      var v = Math.round(n);
+      return d.prefix + (d.group ? v.toLocaleString('en-US') : String(v)) + d.suffix;
+    }
+    function animate(d, delay) {
+      var dur = 1500;
+      setTimeout(function () {
+        var start = (window.performance && performance.now)
+          ? performance.now() : Date.now();
+        var iv = setInterval(function () {
+          var now = (window.performance && performance.now)
+            ? performance.now() : Date.now();
+          var p = Math.min(1, (now - start) / dur);
+          if (p >= 1) {
+            clearInterval(iv);
+            d.el.textContent = d.raw; /* exact original text */
+          } else {
+            d.el.textContent = fmt(d, d.target * (1 - Math.pow(1 - p, 3)));
+          }
+        }, 1000 / 60);
+        /* hard safety: guarantee the final value even if the interval
+           is throttled (e.g. loaded in a background tab) */
+        setTimeout(function () {
+          clearInterval(iv);
+          d.el.textContent = d.raw;
+        }, dur + 400);
+      }, delay || 0);
+    }
+
+    var n = 0;
+    for (var i = 0; i < nums.length; i++) {
+      var d = parse(nums[i]);
+      if (!d) continue;
+      if (reduce) { continue; }       /* leave the final value as-is */
+      d.el.textContent = fmt(d, 0);   /* start at 0 */
+      animate(d, 120 + n * 140);      /* gentle stagger */
+      n++;
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
+</script>
+
+<script src="{{ '/assets/js/pages/register-page.js' | relative_url }}"></script>

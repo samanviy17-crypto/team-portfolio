@@ -1,0 +1,16 @@
+Flask==3.0.3
+Flask-SQLAlchemy==3.1.1
+Flask-Migrate==4.0.7
+Flask-Login==0.6.3
+Flask-CORS==4.0.1
+Flask-Mail==0.10.0
+Werkzeug==3.0.3
+SQLAlchemy==2.0.31
+python-dotenv==1.0.1
+requests==2.32.3
+pymysql==1.1.1
+redis==5.0.8
+pywebpush==2.0.0
+pytest==8.3.3
+anthropic==0.97.0
+python-liquid==1.13.0

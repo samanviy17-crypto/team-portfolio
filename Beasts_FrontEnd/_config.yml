@@ -1,0 +1,80 @@
+# _config.yml
+# Poway Neighborhood Emergency Corps (PNEC) — Jekyll Configuration
+# Site: powaynec.com replacement | GitHub Pages deployment
+
+title: "Poway Neighborhood Emergency Corps"
+description: "Serving Poway, CA since 1995 — neighbor-to-neighbor emergency preparedness, response, and recovery."
+owner_name: "Poway Neighborhood Emergency Corps"
+github_username: ""
+baseurl: ""
+url: "https://whitelunarium.github.io"
+future: false
+
+# Author defaults
+author:
+  name: "PNEC"
+  email: "info@powaynec.com"
+
+encoding: utf-8
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-include-cache
+  - jekyll-seo-tag
+
+# Exclude from build
+exclude:
+  - vendor
+  - Makefile
+  - node_modules
+  - scripts/
+  - "*.sh"
+  - README.md
+  - CONTRIBUTING.md
+  - .env
+  - .bundle
+
+# Sass settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Minima theme settings
+minima:
+  skin: classic
+  social_links:
+    - { platform: facebook, user_url: "https://www.facebook.com/powaynec" }
+  nav_pages:
+    - pages/prepare.html
+    - pages/community.html
+    - pages/resources.html
+    - pages/connect.html
+
+# API configuration (injected from Jekyll environment or overridden per-page)
+api_base_url: "http://localhost:8587"
+
+# Pagination
+paginate: 6
+paginate_path: "/news/page:num/"
+
+# Collections
+collections:
+  events:
+    output: false
+  neighborhoods:
+    output: false
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "pnec-base"
+      use_poway_live_styles: true
+  - scope:
+      path: "pages"
+    values:
+      layout: "pnec-base"
+      use_poway_live_styles: true
