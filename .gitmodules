@@ -1,0 +1,6 @@
+[submodule "Beasts_FrontEnd"]
+	path = Beasts_FrontEnd
+	url = https://github.com/whitelunarium/Beasts_FrontEnd.git
+[submodule "Beasts_Flask"]
+	path = Beasts_Flask
+	url = https://github.com/whitelunarium/Beasts_Flask.git
