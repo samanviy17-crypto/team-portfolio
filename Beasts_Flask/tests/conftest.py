@@ -7,7 +7,7 @@ from app.config import Config
 
 
 @pytest.fixture
-def app():
+def app(monkeypatch):
     """Create a Flask app with an in-memory SQLite DB.
 
     The Config class is patched BEFORE create_app() runs because create_app()
@@ -16,6 +16,7 @@ def app():
     to :memory: before any of that fires, so we never touch the real instance DB.
     """
     # Patch the URI on the Config class so create_app() picks it up.
+    monkeypatch.setattr(Config, 'ADMIN_PASSWORD', 'test-only-admin-password-2026')
     original_uri = Config.SQLALCHEMY_DATABASE_URI
     Config.SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
     try:

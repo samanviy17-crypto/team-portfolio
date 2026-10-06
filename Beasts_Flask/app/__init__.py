@@ -450,6 +450,8 @@ def _register_blueprints(app):
     1. Import each blueprint module
     2. Register with url_prefix
     """
+    from app.routes.preparedness import preparedness_bp
+    app.register_blueprint(preparedness_bp, url_prefix="/api")
     from app.routes.auth import auth_bp
     from app.routes.legacy_user import legacy_user_bp
     from app.routes.faq import faq_bp

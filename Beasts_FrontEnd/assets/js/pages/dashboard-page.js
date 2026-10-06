@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', initDashboard);
 function initDashboard() {
   fetchCurrentUser()
     .then(user => {
+      if (user && user.role === 'coordinator') {
+        const gate = document.getElementById('dashboard-access-gate');
+        if (gate) gate.textContent = 'Your neighborhood reports are shown above. The question queue is managed by PNEC staff.';
+        return;
+      }
       if (!user || !['staff', 'admin'].includes(user.role)) {
         showAccessDeniedGate();
         return;

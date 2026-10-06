@@ -347,10 +347,11 @@ export async function getRiskNow() {
 
 export async function submitToStaff({ name, email, question, context }) {
   try {
-    const res = await fetch(`${defaultApiBase()}/api/faq/ask`, {
+    const res = await fetch(`${defaultApiBase()}/api/questions/submit`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, question, context })
+      credentials: 'include',
+      body: JSON.stringify({ display_name: name, email, question_text: question })
     });
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));

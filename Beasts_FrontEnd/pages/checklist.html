@@ -5,6 +5,9 @@ description: "Track your personal emergency preparedness kit — check off what 
 body_class: inner-page
 ---
 
+{% include community-tools.html features="household quiz checkins hazards" %}
+
+
 <style>
 .checklist-page { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
 .checklist-hero {
@@ -129,10 +132,12 @@ body_class: inner-page
 
   <div class="kit-tip" id="kit-tip"></div>
 
-  <div id="checklist-categories"></div>
+  <p id="kit-sync-status" role="status">Loading checklist…</p>
+<div id="checklist-categories"></div>
 
   <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;flex-wrap:wrap;gap:12px;">
-    <button class="checklist-reset-btn" onclick="pnecResetKit()">↺ Reset all</button>
+    <button type="button" class="checklist-reset-btn" onclick="pnecResetKit()">↺ Reset all</button>
+    <button type="button" class="checklist-reset-btn" onclick="pnecRetryKit()">Retry account save</button>
     <a href="/" style="font-size:0.85rem;color:#9e9e9e;text-decoration:none;">← Back to Home</a>
   </div>
 </div>
@@ -182,6 +187,10 @@ body_class: inner-page
     },
   ];
 
+  ITEMS.push({cat: '📍 Household plan', items: [
+    {id: 'evacuation', label: 'Household evacuation plan', qty: '1', note: 'Save your plan above'},
+    {id: 'meeting', label: 'Household meeting point', qty: '1', note: 'Agree on a meeting point with your household'}
+  ]});
   var TOTAL = ITEMS.reduce(function(n, cat) { return n + cat.items.length; }, 0);
   var userId = null;
   try {
@@ -193,7 +202,23 @@ body_class: inner-page
   var state = {};
   try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) {}
 
-  function save() { localStorage.setItem(KEY, JSON.stringify(state)); }
+  var syncQueue = Promise.resolve();
+  var syncReady = false;
+  var householdSize = 1;
+  function syncMessage(message) {
+    var el = document.getElementById('kit-sync-status');
+    if (el) el.textContent = message;
+  }
+  function save() {
+    localStorage.setItem(KEY, JSON.stringify(state));
+    if (!syncReady || !userId) return;
+    var snapshot = JSON.parse(JSON.stringify(state));
+    syncQueue = syncQueue.catch(function() {}).then(function() {
+      syncMessage('Saving…');
+      return window.pnecCommunityRequest('/preparedness', 'PATCH', {items: snapshot});
+    }).then(function() { syncMessage('Saved to your account.'); })
+      .catch(function(error) { syncMessage('Account save failed: ' + error.message + ' Your browser copy is retained. Use Retry account save.'); });
+  }
 
   function checkedCount() {
     return Object.keys(state).filter(function(k) { return state[k]; }).length;
@@ -211,6 +236,10 @@ body_class: inner-page
   ];
 
   function updateUI() {
+    var water = document.getElementById('cb-water');
+    if (water) water.parentElement.querySelector('.checklist-item-qty').textContent = (householdSize * 3) + ' gallons / household';
+    var food = document.getElementById('cb-food');
+    if (food) food.parentElement.querySelector('.checklist-item-qty').textContent = '3-day supply for ' + householdSize;
     var n = checkedCount();
     document.getElementById('kit-count').textContent = n;
     document.getElementById('kit-denom').textContent = '/ ' + TOTAL;
@@ -289,10 +318,52 @@ body_class: inner-page
 
   buildDOM();
   updateUI();
+  document.addEventListener('DOMContentLoaded', async function() {
+    document.querySelectorAll('#checklist-categories input').forEach(function(cb) { cb.disabled = true; });
+    var reset = document.querySelector('.checklist-reset-btn');
+    if (reset) reset.disabled = true;
+    var account = await fetchCurrentUser();
+    if (!account) {
+      if (userId) {
+        syncMessage('Could not verify your account. Sign in or reload to retry.');
+        return;
+      }
+      buildDOM(); updateUI();
+      if (reset) reset.disabled = false;
+      syncMessage('Guest checklist is saved in this browser. Sign in to save to your account.');
+      return;
+    }
+    if (userId !== account.id) {
+      userId = account.id; KEY = 'pnec_kit_' + userId;
+      try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) { state = {}; }
+    }
+    try {
+      var record = await window.pnecCommunityRequest('/preparedness');
+      householdSize = record.household_size;
+      if (Object.keys(record.items).length) state = record.items;
+      else if (Object.keys(state).length) await window.pnecCommunityRequest('/preparedness', 'PATCH', {items: state});
+      syncReady = true;
+      localStorage.setItem(KEY, JSON.stringify(state));
+      buildDOM(); updateUI();
+      if (reset) reset.disabled = false;
+      syncMessage('Saved to your account.');
+    } catch(error) { syncMessage('Could not load your account checklist: ' + error.message + ' Reload to retry.'); }
+  });
+
+  window.addEventListener('pnec-household-saved', function(event) {
+    householdSize = event.detail.household_size; updateUI();
+  });
+
+  window.pnecRetryKit = function() {
+    if (userId && syncReady) save();
+    else location.reload();
+  };
 
   window.pnecResetKit = function() {
+    if (userId && !syncReady) return;
     if (!confirm('Reset all kit items? This cannot be undone.')) return;
     state = {};
+    ITEMS.forEach(function(cat) { cat.items.forEach(function(item) { state[item.id] = false; }); });
     save();
     buildDOM();
     updateUI();

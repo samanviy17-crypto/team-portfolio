@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     var kitData = null;
     try { kitData = JSON.parse(localStorage.getItem('pnec_kit_' + user.id) || 'null'); } catch(e) {}
-    var kitCount = kitData ? Object.keys(kitData).filter(function(k) { return kitData[k]; }).length : 0;
+    var kitCount = kitData ? Object.keys(kitData).filter(function(k) { return k !== 'evacuation' && k !== 'meeting' && kitData[k]; }).length : 0;
 
     var comp = calcCompletion(user);
     var badges = [

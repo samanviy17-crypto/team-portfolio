@@ -96,3 +96,12 @@ class UserQuestion(db.Model):
 
     def __repr__(self):
         return f'<UserQuestion {self.id} [{self.status}]>'
+
+
+class FaqFeedback(db.Model):
+    """One changeable vote per FAQ and account/browser session."""
+    __tablename__ = 'faq_feedback'
+    item_id = db.Column(db.Integer, db.ForeignKey('faq_items.id'), primary_key=True)
+    voter_key = db.Column(db.String(80), primary_key=True)
+    helpful = db.Column(db.Boolean, nullable=False)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)

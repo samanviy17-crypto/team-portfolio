@@ -1,3 +1,5 @@
+import { getPrefs, setPref } from './store.js';
+
 // assets/js/chatbot/i18n.js
 // PNEC Helper Bot v3 — Phase 4 multilingual support.
 //
@@ -91,9 +93,13 @@ const LANG_TAGS = {
 };
 
 let activeLang = 'en';
+try { const saved = getPrefs().lang; if (STRINGS[saved]) activeLang = saved; } catch (_) {}
 
 export function setLang(lang) {
-  if (STRINGS[lang]) activeLang = lang;
+  if (STRINGS[lang]) {
+    activeLang = lang;
+    try { setPref('lang', lang); } catch (_) {}
+  }
 }
 
 export function getLang() { return activeLang; }

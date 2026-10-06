@@ -62,11 +62,40 @@ def search_faq():
 
 @faq_bp.route('/faq/helpful/<int:item_id>', methods=['POST'])
 def mark_helpful(item_id):
-    """Increment the helpful count for a FAQ item."""
-    success = faq_service.increment_helpful(item_id)
-    if not success:
+    """Store yes/no feedback without treating a negative vote as helpful."""
+    import secrets
+    from flask import session
+    from app import db
+    from app.models.faq import FaqItem, FaqFeedback
+    from sqlalchemy.exc import IntegrityError
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict) or type(data.get('helpful')) is not bool:
+        return error_response('VALIDATION_FAILED', 400, {'detail': 'helpful must be a boolean'})
+    item = db.session.get(FaqItem, item_id)
+    if not item:
         return error_response('NOT_FOUND', 404)
-    return jsonify({'message': 'Thanks for your feedback!'}), 200
+    if current_user.is_authenticated:
+        key = 'user:' + str(current_user.id)
+    else:
+        if not session.get('faq_voter'):
+            session['faq_voter'] = secrets.token_hex(24)
+        key = 'guest:' + session['faq_voter']
+    vote = db.session.get(FaqFeedback, (item_id, key))
+    previous = vote.helpful if vote else False
+    if vote is None:
+        vote = FaqFeedback(item_id=item_id, voter_key=key)
+    vote.helpful = data['helpful']
+    db.session.add(vote)
+    delta = int(vote.helpful) - int(previous)
+    if delta:
+        FaqItem.query.filter_by(id=item_id).update({'helpful_count': FaqItem.helpful_count + delta})
+    try:
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
+        return error_response('CONFLICT', 409)
+    return jsonify({'message': 'Thanks for your feedback!', 'helpful_count': item.helpful_count}), 200
+
 
 
 @faq_bp.route('/questions/submit', methods=['POST'])
@@ -151,3 +180,15 @@ def answer_question(question_id):
         status = 404 if err == 'NOT_FOUND' else 400
         return error_response(err, status)
     return jsonify({'message': 'Answer submitted.', 'question': result}), 200
+
+
+@faq_bp.get('/faq/feedback')
+@requires_role('staff', 'admin')
+def feedback_summary():
+    from app import db
+    from app.models.faq import FaqItem, FaqFeedback
+    rows = db.session.query(FaqItem, db.func.count(FaqFeedback.item_id),
+        db.func.sum(db.case((FaqFeedback.helpful.is_(False), 1), else_=0))).join(
+        FaqFeedback, FaqFeedback.item_id == FaqItem.id).group_by(FaqItem.id).all()
+    return jsonify({'feedback': [{'id': item.id, 'question': item.question,
+        'votes': total, 'not_helpful': int(negative or 0)} for item, total, negative in rows]})

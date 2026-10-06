@@ -11,7 +11,7 @@
  * 3. Return categories array
  */
 function fetchFaqCategories() {
-  return fetch(`${API_BASE}/api/faq/categories`, { credentials: 'include' })
+  return fetch(`${API_BASE}/api/faq/categories`, { credentials: 'include', headers: _getAuthHeaders() })
     .then(validateResponse)
     .then(response => response.json())
     .then(data => data.categories || []);
@@ -27,7 +27,7 @@ function fetchFaqCategories() {
  * 3. Return items array
  */
 function fetchFaqItems(categoryId) {
-  return fetch(`${API_BASE}/api/faq/items?category_id=${categoryId}`, { credentials: 'include' })
+  return fetch(`${API_BASE}/api/faq/items?category_id=${categoryId}`, { credentials: 'include', headers: _getAuthHeaders() })
     .then(validateResponse)
     .then(response => response.json())
     .then(data => data.items || []);
@@ -45,7 +45,7 @@ function fetchFaqItems(categoryId) {
  */
 function searchFaqItems(query) {
   if (!query || !query.trim()) return Promise.resolve([]);
-  return fetch(`${API_BASE}/api/faq/search?q=${encodeURIComponent(query.trim())}`, { credentials: 'include' })
+  return fetch(`${API_BASE}/api/faq/search?q=${encodeURIComponent(query.trim())}`, { credentials: 'include', headers: _getAuthHeaders() })
     .then(validateResponse)
     .then(response => response.json())
     .then(data => data.results || []);
@@ -65,7 +65,7 @@ function submitFaqHelpfulVote(itemId, isHelpful) {
   return fetch(`${API_BASE}/api/faq/helpful/${itemId}`, {
     method: 'POST',
     credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
+    headers: _getAuthHeaders(),
     body: JSON.stringify({ helpful: isHelpful }),
   })
     .then(validateResponse)
@@ -85,7 +85,7 @@ function submitUserQuestion(questionData) {
   return fetch(`${API_BASE}/api/questions/submit`, {
     method: 'POST',
     credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
+    headers: _getAuthHeaders(),
     body: JSON.stringify(questionData),
   })
     .then(validateResponse)
@@ -103,7 +103,7 @@ function submitUserQuestion(questionData) {
  */
 function fetchUserQuestions(statusFilter) {
   const query = statusFilter && statusFilter !== 'all' ? `?status=${statusFilter}` : '';
-  return fetch(`${API_BASE}/api/questions${query}`, { credentials: 'include' })
+  return fetch(`${API_BASE}/api/questions${query}`, { credentials: 'include', headers: _getAuthHeaders() })
     .then(validateResponse)
     .then(response => response.json())
     .then(data => data.questions || []);
@@ -122,6 +122,7 @@ function claimUserQuestion(questionId) {
   return fetch(`${API_BASE}/api/questions/${questionId}/claim`, {
     method: 'PATCH',
     credentials: 'include',
+    headers: _getAuthHeaders(),
   })
     .then(validateResponse)
     .then(response => response.json());
@@ -141,7 +142,7 @@ function answerUserQuestion(questionId, answerText) {
   return fetch(`${API_BASE}/api/questions/${questionId}/answer`, {
     method: 'PATCH',
     credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
+    headers: _getAuthHeaders(),
     body: JSON.stringify({ answer_text: answerText }),
   })
     .then(validateResponse)
