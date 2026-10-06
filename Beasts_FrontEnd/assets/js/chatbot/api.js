@@ -349,7 +349,7 @@ export async function submitToStaff({ name, email, question, context }) {
   try {
     const res = await fetch(`${defaultApiBase()}/api/questions/submit`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: _getAuthHeaders(),
       credentials: 'include',
       body: JSON.stringify({ display_name: name, email, question_text: question })
     });

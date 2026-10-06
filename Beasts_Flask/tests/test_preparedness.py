@@ -172,3 +172,48 @@ def test_weekly_threat_content_events_and_offline(app,accounts,monkeypatch):
     ('POST','/supply-drives'),('POST','/preparedness/weekly')])
 def test_private_endpoints_require_auth(client,method,path):
     assert client.open('/api'+path,method=method,json={}).status_code == 401
+
+
+def test_staff_question_bearer_association(app, accounts):
+    from app.models.faq import UserQuestion
+    from app.routes.faq import _qbuckets
+    _qbuckets.clear()
+    response = call(app, accounts, 'POST', '/questions/submit', data={
+        'display_name': 'resident', 'email': 'resident@example.test',
+        'question_text': 'How can we review our household evacuation plan?'})
+    assert response.status_code == 201
+    question = db.session.get(UserQuestion, response.json['question']['id'])
+    assert question.user_id == accounts['resident'].id
+
+
+def test_concurrent_faq_vote_changes(monkeypatch, tmp_path):
+    """Separate connections race on one existing vote; retain legacy totals."""
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import Barrier
+    from app import create_app
+    from app.config import Config
+    from app.models.faq import FaqItem, FaqFeedback
+    monkeypatch.setattr(Config, 'SQLALCHEMY_DATABASE_URI', 'sqlite:///' + str(tmp_path / 'votes.db'))
+    monkeypatch.setattr(Config, 'ADMIN_PASSWORD', 'test-only-admin-password-2026')
+    concurrent_app = create_app()
+    concurrent_app.config.update(TESTING=True)
+    with concurrent_app.app_context():
+        user = User.query.filter_by(role='admin').first()
+        user.generate_token()
+        token, uid = user.auth_token, user.id
+        item = FaqItem.query.first()
+        item_id, baseline = item.id, item.helpful_count
+        db.session.add(FaqFeedback(item_id=item_id, voter_key='user:' + str(uid), helpful=False))
+        db.session.commit()
+    for helpful in (True, True, False, False, True):
+        barrier = Barrier(4)
+        def vote(_):
+            barrier.wait(timeout=10)
+            with concurrent_app.test_client() as client:
+                return client.post(f'/api/faq/helpful/{item_id}',
+                    headers={'Authorization': 'Bearer ' + token}, json={'helpful': helpful}).status_code
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            assert list(pool.map(vote, range(4))) == [200] * 4
+        with concurrent_app.app_context():
+            assert db.session.get(FaqItem, item_id).helpful_count == baseline + int(helpful)
+            assert FaqFeedback.query.filter_by(item_id=item_id).count() == 1

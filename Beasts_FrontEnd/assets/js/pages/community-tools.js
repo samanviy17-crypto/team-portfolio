@@ -218,16 +218,16 @@
     el('p', 'Search PNEC FAQs, rate an answer, or send a question to the existing staff queue.', node);
     const list = el('div', undefined, node);
     const f = form(node, 'Search FAQs', async data => {
-      const {results} = await api('/faq/search?q=' + encodeURIComponent(data.q)); list.replaceChildren();
+      const results = await searchFaqItems(data.q); list.replaceChildren();
       if (!results.length) el('p', 'No matching answers. Submit your question below.', list);
       results.forEach(item => {
         const card = el('article', undefined, list); el('h3', item.question, card); el('p', item.answer, card);
         const voted = status(card);
-        const vote = async helpful => {await api(`/faq/helpful/${item.id}`, 'POST', {helpful}); voted.textContent = 'Thank you for your feedback.';};
+        const vote = async helpful => {await submitFaqHelpfulVote(item.id, helpful); voted.textContent = 'Thank you for your feedback.';};
         button(card, 'Helpful', () => vote(true)); button(card, 'Not helpful', () => vote(false));
       });
     }); field(f, 'q', 'Search question', 'text', {max:255}); f.finish();
-    const question = form(node, 'Send question to staff', async data => {await api('/questions/submit', 'POST', data); question.reset();});
+    const question = form(node, 'Send question to staff', async data => {await submitUserQuestion(data); question.reset();});
     field(question, 'display_name', 'Name', 'text', {max:100, value:user?.display_name || ''});
     field(question, 'email', 'Email for a reply', 'email', {max:254, value:user?.email || ''});
     field(question, 'question_text', 'Your unanswered question (at least 10 characters)', 'textarea', {max:4000}); question.finish();

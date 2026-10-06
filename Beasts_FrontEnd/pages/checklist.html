@@ -202,6 +202,25 @@ body_class: inner-page
   var state = {};
   try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) {}
 
+  // Keep an item-level outbox separately from the legacy profile/badge cache.
+  // Only locally edited items override the server during reconciliation.
+  var pending = {};
+  var needsReview = false;
+  function loadPending() {
+    try {
+      var savedPending = localStorage.getItem(KEY + '_pending');
+      pending = JSON.parse(savedPending || '{}');
+      needsReview = localStorage.getItem(KEY + '_review') === 'true';
+      // Older browser copies have no dirty marker. Preserve them for explicit review.
+      if (savedPending === null && Object.keys(state).length) {
+        pending = Object.assign({}, state); needsReview = true;
+      }
+    } catch(e) { pending = {}; }
+  }
+  loadPending();
+  state = Object.assign({}, state, pending);
+  var pendingVersions = {};
+  var editVersion = 0;
   var syncQueue = Promise.resolve();
   var syncReady = false;
   var householdSize = 1;
@@ -209,15 +228,78 @@ body_class: inner-page
     var el = document.getElementById('kit-sync-status');
     if (el) el.textContent = message;
   }
+  function persist() {
+    try {
+      localStorage.setItem(KEY + '_pending', JSON.stringify(pending));
+      localStorage.setItem(KEY + '_review', JSON.stringify(needsReview));
+      localStorage.setItem(KEY, JSON.stringify(state));
+      return true;
+    } catch(error) {
+      syncMessage('Browser storage is unavailable. Keep this page open until account saving succeeds.');
+      return false;
+    }
+  }
   function save() {
-    localStorage.setItem(KEY, JSON.stringify(state));
-    if (!syncReady || !userId) return;
-    var snapshot = JSON.parse(JSON.stringify(state));
+    var storedLocally = persist();
+    if (needsReview && userId) {
+      if (storedLocally) syncMessage('Browser and account copies need reconciliation. Browser choices are retained. Use Retry account save to apply them to your account.');
+      return;
+    }
+    if (!syncReady || !userId) {
+      if (storedLocally) syncMessage('Saved in this browser. Account sync is pending; use Retry account save when connected.');
+      return;
+    }
+    var sent = Object.assign({}, pending);
+    var sentVersions = Object.assign({}, pendingVersions);
+    var accountKey = KEY;
     syncQueue = syncQueue.catch(function() {}).then(function() {
       syncMessage('Saving…');
-      return window.pnecCommunityRequest('/preparedness', 'PATCH', {items: snapshot});
-    }).then(function() { syncMessage('Saved to your account.'); })
-      .catch(function(error) { syncMessage('Account save failed: ' + error.message + ' Your browser copy is retained. Use Retry account save.'); });
+      return window.pnecCommunityRequest('/preparedness', 'PATCH', {items: sent});
+    }).then(function() {
+      if (KEY !== accountKey) return;
+      Object.keys(sent).forEach(function(id) {
+        if (pending[id] === sent[id] && pendingVersions[id] === sentVersions[id]) {
+          delete pending[id]; delete pendingVersions[id];
+        }
+      });
+      var retained = persist();
+      if (retained) syncMessage(Object.keys(pending).length ? 'Newer browser changes are waiting to save.' : 'Saved to your account.');
+    }).catch(function(error) {
+      syncMessage('Account save failed: ' + error.message + ' Browser changes are pending. Use Retry account save.');
+    });
+  }
+  async function loadAccountChecklist() {
+    syncReady = false;
+    try {
+      var account = await fetchCurrentUser();
+      if (!account) {
+        syncMessage(userId ? 'Account unavailable. You can keep editing locally; retry when connected.' : 'Guest checklist is saved in this browser. Sign in and reload to save to your account.');
+        return;
+      }
+      if (userId !== account.id) {
+        userId = account.id; KEY = 'pnec_kit_' + userId;
+        try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) { state = {}; }
+        loadPending();
+        state = Object.assign({}, state, pending);
+        pendingVersions = {};
+      }
+      var record = await window.pnecCommunityRequest('/preparedness');
+      householdSize = record.household_size;
+      // Import legacy browser-only data only when the account has no checklist.
+      if (!Object.keys(record.items).length) {
+        pending = Object.assign({}, state, pending); needsReview = false;
+      } else if (needsReview && Object.keys(pending).every(function(id) { return record.items[id] === pending[id]; })) {
+        pending = {}; needsReview = false;
+      }
+      state = Object.assign({}, record.items, pending);
+      persist();
+      syncReady = true;
+      buildDOM(); updateUI();
+      if (Object.keys(pending).length) save();
+      else syncMessage('Saved to your account.');
+    } catch(error) {
+      syncMessage('Account checklist unavailable: ' + error.message + ' Keep editing locally; use Retry account save when connected.');
+    }
   }
 
   function checkedCount() {
@@ -296,6 +378,8 @@ body_class: inner-page
         var cb = row.querySelector('input');
         cb.addEventListener('change', function() {
           state[item.id] = this.checked;
+          pending[item.id] = this.checked;
+          pendingVersions[item.id] = ++editVersion;
           save();
           var catCheckedNow = cat.items.filter(function(i) { return state[i.id]; }).length;
           var countEl = document.getElementById('cat-count-' + ci);
@@ -318,52 +402,22 @@ body_class: inner-page
 
   buildDOM();
   updateUI();
-  document.addEventListener('DOMContentLoaded', async function() {
-    document.querySelectorAll('#checklist-categories input').forEach(function(cb) { cb.disabled = true; });
-    var reset = document.querySelector('.checklist-reset-btn');
-    if (reset) reset.disabled = true;
-    var account = await fetchCurrentUser();
-    if (!account) {
-      if (userId) {
-        syncMessage('Could not verify your account. Sign in or reload to retry.');
-        return;
-      }
-      buildDOM(); updateUI();
-      if (reset) reset.disabled = false;
-      syncMessage('Guest checklist is saved in this browser. Sign in to save to your account.');
-      return;
-    }
-    if (userId !== account.id) {
-      userId = account.id; KEY = 'pnec_kit_' + userId;
-      try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) { state = {}; }
-    }
-    try {
-      var record = await window.pnecCommunityRequest('/preparedness');
-      householdSize = record.household_size;
-      if (Object.keys(record.items).length) state = record.items;
-      else if (Object.keys(state).length) await window.pnecCommunityRequest('/preparedness', 'PATCH', {items: state});
-      syncReady = true;
-      localStorage.setItem(KEY, JSON.stringify(state));
-      buildDOM(); updateUI();
-      if (reset) reset.disabled = false;
-      syncMessage('Saved to your account.');
-    } catch(error) { syncMessage('Could not load your account checklist: ' + error.message + ' Reload to retry.'); }
-  });
+  document.addEventListener('DOMContentLoaded', loadAccountChecklist);
 
   window.addEventListener('pnec-household-saved', function(event) {
     householdSize = event.detail.household_size; updateUI();
   });
 
   window.pnecRetryKit = function() {
+    needsReview = false; persist();
     if (userId && syncReady) save();
-    else location.reload();
+    else loadAccountChecklist();
   };
 
   window.pnecResetKit = function() {
-    if (userId && !syncReady) return;
     if (!confirm('Reset all kit items? This cannot be undone.')) return;
     state = {};
-    ITEMS.forEach(function(cat) { cat.items.forEach(function(item) { state[item.id] = false; }); });
+    ITEMS.forEach(function(cat) { cat.items.forEach(function(item) { state[item.id] = false; pending[item.id] = false; pendingVersions[item.id] = ++editVersion; }); });
     save();
     buildDOM();
     updateUI();

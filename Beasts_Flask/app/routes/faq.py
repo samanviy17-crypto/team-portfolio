@@ -71,26 +71,33 @@ def mark_helpful(item_id):
     data = request.get_json(silent=True)
     if not isinstance(data, dict) or type(data.get('helpful')) is not bool:
         return error_response('VALIDATION_FAILED', 400, {'detail': 'helpful must be a boolean'})
-    item = db.session.get(FaqItem, item_id)
-    if not item:
-        return error_response('NOT_FOUND', 404)
     if current_user.is_authenticated:
         key = 'user:' + str(current_user.id)
     else:
         if not session.get('faq_voter'):
             session['faq_voter'] = secrets.token_hex(24)
         key = 'guest:' + session['faq_voter']
-    vote = db.session.get(FaqFeedback, (item_id, key))
-    previous = vote.helpful if vote else False
-    if vote is None:
-        vote = FaqFeedback(item_id=item_id, voter_key=key)
-    vote.helpful = data['helpful']
-    db.session.add(vote)
-    delta = int(vote.helpful) - int(previous)
-    if delta:
-        FaqItem.query.filter_by(id=item_id).update({'helpful_count': FaqItem.helpful_count + delta})
     try:
+        # Acquire the parent row's write lock BEFORE reading the old vote.
+        # A no-op UPDATE serializes writers on PostgreSQL/MySQL and SQLite,
+        # where SELECT FOR UPDATE alone would not protect this calculation.
+        found = FaqItem.query.filter_by(id=item_id).update(
+            {'helpful_count': FaqItem.helpful_count}, synchronize_session=False)
+        if not found:
+            db.session.rollback()
+            return error_response('NOT_FOUND', 404)
+        vote = db.session.get(FaqFeedback, (item_id, key))
+        previous = vote.helpful if vote else False
+        if vote is None:
+            vote = FaqFeedback(item_id=item_id, voter_key=key)
+        vote.helpful = data['helpful']
+        db.session.add(vote)
+        delta = int(vote.helpful) - int(previous)
+        if delta:
+            FaqItem.query.filter_by(id=item_id).update(
+                {'helpful_count': FaqItem.helpful_count + delta}, synchronize_session=False)
         db.session.commit()
+        item = db.session.get(FaqItem, item_id)
     except IntegrityError:
         db.session.rollback()
         return error_response('CONFLICT', 409)
