@@ -5,11 +5,11 @@ hide: true
 show_reading_time: false
 ---
 
-<<<<<<< HEAD
-Hi! My name is Ainsley, joan, and Samanvi
-=======
+<<<<<<<<< Temporary merge branch 1
 Hi! My name is [Your Full Name]
->>>>>>> upstream/main
+=========
+Hi! My name is Ainsley, joan, and Samanvi
+>>>>>>>>> Temporary merge branch 2
 
 ### Development Environment
 
