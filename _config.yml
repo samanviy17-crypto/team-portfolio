@@ -52,6 +52,7 @@ incremental: true
 exclude:
   - Beasts_FrontEnd
   - Beasts_Flask
+  - vendor
 
 remote_theme: jekyll/minima
 plugins:
