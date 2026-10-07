@@ -1,0 +1,82 @@
+// Migrated from _includes/whiteboard.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 15px rgba(6, 214, 160, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(6, 214, 160, 0.8); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes slideInFromTop {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes expandToFullscreen {
+    from { max-width: 1200px; width: 100%; min-height: 600px; border-radius: 20px; }
+    to { max-width: 100%; width: 100vw; height: 100vh; border-radius: 0; }
+  }
+
+  .wb-input-field:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    outline: none !important;
+    background: rgba(255, 255, 255, 1) !important;
+    transform: translateY(-1px) !important;
+  }
+  .wb-input-field::placeholder { color: #64748b; opacity: 0.7; }
+  .wb-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); }
+  .wb-btn:active { transform: translateY(0); }
+  .wb-toggle-btn:hover {
+    background: rgba(30, 41, 59, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+  }
+  .wb-toggle-btn.collapsed i {
+    transform: rotate(180deg);
+  }
+  .wb-fullscreen-btn:hover { background: rgba(255, 255, 255, 0.3); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); transform: scale(1.1); }
+  .wb-fullscreen-btn:active { transform: scale(1); }
+  .wb-fullscreen-btn.visible { display: flex !important; animation: slideInFromTop 0.5s ease-out; }
+  .wb-restart-btn:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4); }
+  .wb-restart-btn:active { transform: translateY(0) scale(1); }
+  .wb-restart-btn.visible { display: flex !important; animation: slideInFromTop 0.5s ease-out; }
+  .wb-status-message.error { background: rgba(239, 68, 68, 0.15) !important; color: #7f1d1d !important; border-left-color: #ef4444 !important; }
+
+  .wb-container.fullscreen { max-width: 100% !important; width: 100vw !important; height: 100vh !important; border-radius: 0 !important; animation: expandToFullscreen 0.5s ease-out; }
+  .wb-iframe-container.fullscreen { border-radius: 0 !important; }
+
+  .wb-sidebar.hidden { flex: 0 0 70px !important; padding: 2.5rem 1rem !important; overflow: hidden !important; border-radius: 20px 0 0 20px !important; justify-content: flex-start !important; align-items: center !important; }
+  .wb-sidebar.hidden .wb-title-section, .wb-sidebar.hidden .wb-input-group, .wb-sidebar.hidden .wb-button-container, .wb-sidebar.hidden .wb-status-message { display: none !important; }
+
+  @include beasts-below(map-get($beasts-breakpoints, desktop)) {
+    .wb-sidebar { flex: 0 0 320px !important; padding-right: 3rem !important; }
+  }
+  @media (max-width: 900px) {
+    .wb-container { flex-direction: column !important; min-height: 100vh !important; border-radius: 12px !important; max-width: 100% !important; }
+    .wb-container.fullscreen { border-radius: 0 !important; padding: 0 !important; }
+    .wb-sidebar { flex: none !important; border-radius: 12px 12px 0 0 !important; padding: 1.5rem !important; min-height: auto !important; transition: all 0.5s ease !important; padding-right: 1.5rem !important; }
+    .wb-sidebar.hidden { transform: translateY(-100%) !important; flex: 0 0 0px !important; padding: 0 !important; overflow: hidden !important; opacity: 0 !important; }
+    .wb-sidebar.hidden .wb-toggle-btn { display: none !important; }
+    .wb-iframe-container { flex: 1 !important; min-height: 400px !important; border-radius: 0 0 12px 12px !important; }
+    .wb-iframe-container.fullscreen { border-radius: 0 !important; }
+    .wb-fullscreen-btn { top: 10px !important; left: 10px !important; width: 45px !important; height: 45px !important; font-size: 1.1rem !important; }
+    .wb-restart-btn { top: 10px !important; right: 10px !important; padding: 10px 16px !important; font-size: 0.85rem !important; }
+  }
+  @include beasts-below(map-get($beasts-breakpoints, phone)) {
+    .wb-sidebar { padding: 1rem !important; }
+    .wb-title-section { margin-bottom: 1.5rem !important; }
+    .wb-title { font-size: 1.3rem !important; }
+    .wb-input-field { padding: 0.875rem 1rem !important; }
+    .wb-btn { padding: 0.875rem 1.25rem !important; font-size: 0.9rem !important; }
+  }

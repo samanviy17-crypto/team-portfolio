@@ -1,0 +1,72 @@
+// Migrated from hacks/digital-famine/ai/submodule_3.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+body {
+            background: linear-gradient(to bottom right, #0f172a, #2563eb, #0f172a);
+            min-height: 100vh;
+        }
+
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .5;
+            }
+        }
+
+        .section-hidden {
+            display: none;
+        }
+
+        .code-example {
+            background: #1e293b;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            color: #e2e8f0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+        }
+
+        .code-example code {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .inline-input,
+        .inline-select {
+            background: #0f172a;
+            color: #10b981;
+            border: 2px solid #475569;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .inline-input:focus,
+        .inline-select:focus {
+            outline: none;
+            border-color: #10b981;
+            background: #1e293b;
+        }
+
+        .hidden {
+            display: none;
+        }

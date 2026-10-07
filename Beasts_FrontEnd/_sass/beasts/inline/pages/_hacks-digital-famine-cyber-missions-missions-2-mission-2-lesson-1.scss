@@ -1,0 +1,139 @@
+// Migrated from hacks/digital-famine/cyber/missions/missions_2/mission-2-lesson.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+body.mission2-body-bg {
+            background:
+                radial-gradient(140% 140% at 15% -10%, rgba(94, 234, 212, 0.2) 0%, transparent 65%),
+                radial-gradient(130% 150% at 80% 0%, rgba(126, 58, 242, 0.16) 0%, transparent 70%),
+                radial-gradient(120% 150% at 50% 100%, rgba(45, 212, 191, 0.14) 0%, transparent 60%),
+                linear-gradient(188deg, #030712 0%, #050b1c 45%, #0a132b 100%);
+            min-height: 100vh;
+            color: #f5f8ff;
+            background-attachment: fixed;
+        }
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .section-hidden { display: none; }
+        .mission2-container {
+            position: relative;
+            padding: 3.5rem 1.8rem 4rem;
+            background: radial-gradient(120% 160% at 50% 0%, rgba(13, 23, 43, 0.92) 0%, rgba(6, 10, 22, 0.98) 45%, rgba(2, 4, 12, 0.99) 100%);
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.55);
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        .mission2-container::before {
+            content: "";
+            position: absolute;
+            inset: -10% -20%;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(94, 234, 212, 0.24), transparent 60%),
+                radial-gradient(circle at 80% 15%, rgba(126, 58, 242, 0.22), transparent 65%),
+                radial-gradient(circle at 50% 80%, rgba(56, 189, 248, 0.18), transparent 55%);
+            opacity: 0.85;
+            pointer-events: none;
+        }
+        .mission2-container::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 85px 85px;
+            opacity: 0.22;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+        .mission2-container > * {
+            position: relative;
+            z-index: 1;
+        }
+        .mission2-card, .mission-section > div > div.bg-slate-800\/70, .mission-section > div > div.bg-slate-800\/50 {
+            background: rgba(7, 13, 27, 0.88) !important;
+            color: #e6edff !important;
+            border-radius: 1.25rem !important;
+            border: 1px solid rgba(94, 234, 212, 0.22) !important;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4) !important;
+        }
+        .mission2-card h2, .mission2-card h3, .mission2-card h4 {
+            color: #67e8f9 !important;
+        }
+        .mission-section button {
+            background: linear-gradient(98deg, #0ea5e9 0%, #14b8a6 55%, #7c3aed 100%) !important;
+            color: $beasts-white !important;
+            border: none !important;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
+        }
+        .mission-section button:hover {
+            background: linear-gradient(98deg, #0284c7 0%, #0d9488 55%, #6d28d9 100%) !important;
+        }
+        .mission-section .bg-blue-900\/20, .mission-section .bg-red-900\/20, .mission-section .bg-green-900\/20 {
+            background: rgba(33, 150, 243, 0.10) !important;
+            border: 1px solid rgba(120, 214, 255, 0.18) !important;
+        }
+        .mission-section .bg-slate-950 {
+            background: rgba(12, 18, 34, 0.9) !important;
+            color: #9bd9ff !important;
+        }
+        .mission-section table th, .mission-section table td {
+            color: #e6edff !important;
+        }
+        .mission-section .text-blue-300, .mission-section .text-red-300, .mission-section .text-green-300, .mission-section .text-purple-300 {
+            color: #78d6ff !important;
+        }
+        .mission-section .border-blue-500\/30, .mission-section .border-red-500\/30, .mission-section .border-green-500\/30, .mission-section .border-purple-500\/30 {
+            border-color: rgba(120, 214, 255, 0.25) !important;
+        }
+        .mission-section .text-red-400, .mission-section .text-green-400, .mission-section .text-yellow-400 {
+            color: #f9d949 !important;
+        }
+        .mission-section .bg-yellow-900\/30 {
+            background: rgba(249, 217, 73, 0.12) !important;
+            border-color: #ffe58a !important;
+        }
+        .mission-section .bg-slate-900\/50, .mission-section .bg-slate-900\/70 {
+            background: rgba(19, 28, 48, 0.95) !important;
+        }
+        .mission-section .border-purple-500\/30 {
+            border-color: rgba(120, 214, 255, 0.25) !important;
+        }
+        .mission-section .text-purple-400 {
+            color: #78d6ff !important;
+        }
+        .mission-section .text-blue-400 {
+            color: #78d6ff !important;
+        }
+        .mission-section .text-red-400 {
+            color: #f9d949 !important;
+        }
+        .mission-section .text-green-300 {
+            color: #82ffa4 !important;
+        }
+        .mission-section .text-yellow-400 {
+            color: #ffe58a !important;
+        }
+        .mission-section .text-gray-300 {
+            color: #c9d8ff !important;
+        }
+        .mission-section .font-semibold {
+            font-weight: 600 !important;
+        }
+        .mission-section .rounded-lg {
+            border-radius: 1.25rem !important;
+        }
+        .mission-section .font-mono {
+            font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace !important;
+        }
+        @media (max-width: 680px) {
+            .mission2-container {
+                padding: 1.6rem 0.5rem 2rem;
+            }
+        }

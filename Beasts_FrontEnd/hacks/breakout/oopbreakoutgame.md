@@ -6,29 +6,7 @@ permalink: oopbreakoutgame
 ---
 
 <style>
-  canvas {
-    background: #000;
-    display: block;
-    margin: 0 auto;
-    border: 1px solid #333;
-  }
-  
-  button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  button:hover:not(:disabled) {
-    background: #f0f0f0;
-  }
-
-  .title {
-    margin-top: 5px !important;
-  }
-
-  .back-button {
-    margin-bottom: 5px !important;
-  }
+{{ '@import "beasts/inline/pages/hacks-breakout-oopbreakoutgame-1";' | scssify }}
 </style>
 
 <canvas id="gameCanvas" width="600" height="400"></canvas>

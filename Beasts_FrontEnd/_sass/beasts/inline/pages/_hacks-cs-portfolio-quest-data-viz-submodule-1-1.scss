@@ -1,0 +1,149 @@
+// Migrated from hacks/cs-portfolio-quest/data-viz/submodule_1.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+html,body{height:100%}
+h1{margin:16px 0 8px;border-bottom:1px solid var(--b);padding-bottom:8px}
+.container{padding:18px}
+
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
+.nav button {
+  position: relative;
+  background: linear-gradient(180deg, #111, #0b0b0b);
+  color: #e0e0e0;
+  border: none; /* remove default border, we'll use pseudo-outline */
+  padding: 9px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  z-index: 0;
+}
+
+/* gradient border using ::before pseudo-element */
+.nav button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px; /* thickness of gradient outline */
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* hover bounce + vibrate animation */
+.nav button:hover {
+  color: $beasts-white;
+  animation: btn-bounce 180ms ease-out, btn-vibrate 120ms linear;
+}
+
+/* active tab: stronger gradient glow */
+.nav button.active::before {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa, #34d399);
+  box-shadow: 0 0 10px rgba(96,165,250,0.6);
+}
+
+
+/* keep your existing .nav button.active visual style; no transform here */
+@keyframes btn-bounce{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-3px); }
+}
+@keyframes btn-vibrate{
+  0%,100%{ transform: translateX(0); }
+  25%{ transform: translateX(-0.8px); }
+  75%{ transform: translateX(0.8px); }
+}
+.nav button.active{
+  background: linear-gradient(180deg, #2563eb, #1e40af); /* vibrant active */
+  color:$beasts-white;
+  border-color:#3b82f6;
+  box-shadow:0 0 8px rgba(59,130,246,0.5);
+}
+/* ---------------------------------- */
+
+.card{border:1px solid var(--b);border-radius:10px;padding:14px;margin:12px 0;background:transparent}
+label{color:var(--muted);display:block;margin:10px 0 4px}
+input,textarea,select{
+  width:100%; padding:10px; border:1px solid var(--b); border-radius:8px;
+  background:var(--p2); color:var(--fg); font-family:ui-monospace,SFMono-Regular,Consolas
+}
+/* ---- dark endpoint dropdown (select#ep) ---- */
+select#ep{
+  background-color:$beasts-black;
+  color:$beasts-white;
+  border:1px solid #333;
+}
+select#ep:focus{
+  outline:1px solid #3b82f6;
+  border-color:#3b82f6;
+}
+select#ep option{
+  background-color:#111;
+  color:$beasts-white;
+}
+/* ------------------------------------------- */
+
+textarea{min-height:110px}
+pre{
+  margin:10px 0; background:var(--p2); border:1px solid var(--b);
+  border-radius:8px; padding:12px; overflow:auto; color:#eee
+}
+.badge{display:inline-block;border:1px solid var(--b);border-radius:999px;padding:2px 8px;color:var(--hint);font-size:11px;margin-left:6px}
+.btn{background:#141414;color:var(--fg);border:1px solid var(--b);padding:9px 12px;border-radius:8px;cursor:pointer;font-weight:700}
+.btn:hover{border-color:#aaa}
+.out{white-space:pre-wrap}
+.hidden{display:none}
+
+.quiz .opt{border:1px solid var(--b);border-radius:8px;padding:8px;margin:6px 0;cursor:pointer;color:var(--muted)}
+.quiz .opt.sel{border-color:#aaa;color:$beasts-white}
+.quiz .opt.good{border-color:#3f3}
+.quiz .opt.bad{border-color:#f55}
+
+small.hint{color:var(--hint)}
+hr{border:none;border-top:1px solid var(--b);margin:18px 0}
+.kbd{font-family:ui-monospace,SFMono-Regular,Consolas;border:1px solid var(--b);border-radius:6px;padding:2px 6px;background:#111;color:#ddd}
+.grid{display:grid;gap:10px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+/* subtle description text blocks under each tab title */
+.tab-desc{
+  color:#f1f5f9;
+  background:rgba(37,99,235,0.07);
+  border-left:4px solid #3b82f6;
+  padding:10px 14px;
+  margin:8px 0 14px;
+  border-radius:6px;
+  font-size:15px;
+  line-height:1.6;
+}
+.tab-desc strong{
+  display:block;
+  font-size:16px;
+  font-weight:700;
+  color:#93c5fd;
+  margin-bottom:3px;
+}
+.quiz .opt.sel{
+  border-color:#aaa;
+  color:$beasts-white;
+  background:#1a1a1a;
+}
+
+/* After grading: correct = green, wrong = red */
+.quiz .opt.good{
+  border-color:#22c55e;
+  background:#12351f;  /* deep green */
+  color:#c8f3d2;
+}
+.quiz .opt.bad{
+  border-color:#ef4444;
+  background:#3a1313;  /* deep red */
+  color:#f6caca;
+}

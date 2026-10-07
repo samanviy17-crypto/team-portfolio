@@ -1,0 +1,27 @@
+// Migrated from hacks/breakout/oopbreakoutgame.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+canvas {
+    background: $beasts-black;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #333;
+  }
+
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  button:hover:not(:disabled) {
+    background: #f0f0f0;
+  }
+
+  .title {
+    margin-top: 5px !important;
+  }
+
+  .back-button {
+    margin-bottom: 5px !important;
+  }

@@ -1,0 +1,132 @@
+// Migrated from _layouts/fortunefindersCasino.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.dropdown-item.locked {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: #cccccc !important;
+  }
+  .dropdown-item.locked::before {
+    content: "\f023";
+    font-family: "bootstrap-icons";
+    margin-right: 6px;
+    color: #cccccc;
+  }
+
+  .custom-navbar {
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    margin-bottom: 20px;
+  }
+
+  .custom-navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .nav-link {
+    color: $beasts-white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .nav-link:hover {
+    color: #ff9800;
+    }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    color: $beasts-white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .dropdown-toggle:hover {
+    color: #ff9800;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #1c1c1c;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 9999;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-item {
+    display: block;
+    color: $beasts-white;
+    text-decoration: none;
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+
+  .dropdown-item:hover {
+    background-color: #ff9800;
+    color: #1c1c1c;
+  }
+
+
+  .ff-game-bar {
+    margin: 20px 0;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .ff-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 20px;
+  }
+
+  .ff-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ff-title {
+    color: $beasts-white;
+  }
+
+  .nav-balance {
+    display: flex;
+    align-items: center;
+    color: $beasts-white;
+    font-size: 16px;
+    gap: 6px;
+  }
+
+  .nav-balance i {
+    font-size: 20px;
+    color: #ff9800;
+  }

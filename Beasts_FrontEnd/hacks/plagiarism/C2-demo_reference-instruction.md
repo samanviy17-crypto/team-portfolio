@@ -17,36 +17,7 @@ Research this quote and use it to build an APA reference.
 ---
 
 <style>
-  /* File-specific styles only - iridescent styles moved to _sass/open-coding/elements/buttons/iridescent.scss */
-  .apa-tool-label {
-    display: block;
-    margin-top: 8px;
-    font-weight: bold;
-    color: #333;
-  }
-  .apa-tool-input {
-    width: 90%;
-    padding: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  .apa-tool-output {
-    margin-top: 16px;
-    border-left: 4px solid #007bff;
-    padding: 15px;
-    font-family: 'Times New Roman', serif;
-    line-height: 1.6;
-    border-radius: 4px;
-  }
-  .citation-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
+{{ '@import "beasts/inline/pages/hacks-plagiarism-c2-demo-reference-instruction-1";' | scssify }}
 </style>
 
 <details style="padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #007bff ">
@@ -425,66 +396,7 @@ Create a flawed article then correct article with citation and reference.
 ---
 
 <style>
-  .exercise-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .exercise-card {
-    border: 1px solid #6c757d;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .scenario-box {
-    border-left: 4px solid #6c757d;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 4px;
-  }
-  
-  .uncited-box {
-    border-left: 4px solid #dc3545;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 4px;
-  }
-  
-  .cited-box {
-    border-left: 4px solid #007bff;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 4px;
-  }
-  
-  .exercise-textarea {
-    width: 100%;
-    min-height: 100px;
-    padding: 12px;
-    border: 1px solid #6c757d;
-    border-radius: 4px;
-    font-family: 'Times New Roman', serif;
-    line-height: 1.6;
-    resize: vertical;
-  }
-  
-  .button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-    flex-wrap: wrap;
-  }
-  
-  .status-message {
-    margin: 10px 0;
-    padding: 8px;
-    border-radius: 4px;
-    display: none;
-  }
+{{ '@import "beasts/inline/pages/hacks-plagiarism-c2-demo-reference-instruction-2";' | scssify }}
 </style>
 
 <div class="exercise-container">

@@ -1,0 +1,13 @@
+// --- Status dot ---------------------------------------------------------------
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &.dot-green  { background: $color-green; }
+  &.dot-amber  { background: $color-amber; }
+  &.dot-red    { background: $color-red; }
+  &.dot-gray   { background: $color-gray-400; }
+}

@@ -108,33 +108,7 @@
 </div>
 
 <style>
-.popup-overlay {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-.popup-content {
-  animation: slideUp 0.4s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.progress-bar {
-  background: linear-gradient(90deg, #06b6d4, #8b5cf6, #ec4899);
-}
+{{ '@import "beasts/inline/includes/includes-tailwind-quests-west-coast-1";' | scssify }}
 </style>
 
 <script>

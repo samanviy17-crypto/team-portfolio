@@ -1,0 +1,29 @@
+// Migrated from hacks/digital-famine/media-lit/media/mediaTest.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+:root{--bg:#0f1720;--card:#0b1220;--accent:#4dc3ff;--muted:#9aa6b2}
+  html,body{height:100%;margin:0}
+  .wrap{max-width:980px;margin:32px auto;padding:20px}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  h1{font-size:1.25rem;margin:0}
+  .controls{display:flex;gap:8px}
+  button{background:var(--accent);border:none;padding:8px 12px;border-radius:8px;color:#05232d;font-weight:600;cursor:pointer}
+
+  .game{display:grid;grid-template-columns:1fr 320px;gap:18px}
+  .board{background:var(--card);padding:18px;border-radius:12px;min-height:360px}
+  .items{display:flex;flex-wrap:wrap;gap:10px}
+
+  .draggable{background:#071426;padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);cursor:grab;user-select:none}
+  .draggable[aria-pressed="true"]{outline:3px solid rgba(77,195,255,0.15)}
+
+  .side{background:transparent}
+  .zone{background:#071826;border:2px dashed rgba(255,255,255,0.03);min-height:80px;padding:12px;border-radius:10px;margin-bottom:12px}
+  .zone.good{border-color:rgba(77,195,255,0.25)}
+  .zone.bad{border-color:rgba(255,110,110,0.15)}
+  .zone.empty{opacity:.6}
+
+  .status{color:var(--muted);font-size:.95rem;margin-top:10px}
+  .footer{margin-top:14px;color:var(--muted);font-size:.9rem}
+
+  @media (max-width:880px){.game{grid-template-columns:1fr;margin:0}.side{order:2}}

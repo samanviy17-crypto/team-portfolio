@@ -41,7 +41,7 @@
         onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="{{ '/assets/css/chatbot.css' | relative_url }}" /></noscript>
   <link rel="icon" href="https://powaynec.com/wp-content/uploads/2020/05/cropped-PNEC-init-32x32.jpg" sizes="32x32" />
-  {% if page.head_extra %}{{ page.head_extra }}{% endif %}
+  {% include scss-head.html %}
 </head>
 <body class="wp-singular page-template-default page wp-theme-jupiterx no-js ctct-jupiterx elementor-default elementor-kit-771 jupiterx-header-overlapped jupiterx-header-overlapped-tablet jupiterx-header-overlapped-mobile {{ page.body_class }}" itemscope="itemscope" itemtype="http://schema.org/WebPage">
   {% include poway-auth-header.html %}

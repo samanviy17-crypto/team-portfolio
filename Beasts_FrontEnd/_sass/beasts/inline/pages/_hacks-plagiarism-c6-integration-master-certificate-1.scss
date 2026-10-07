@@ -1,0 +1,110 @@
+// Migrated from hacks/plagiarism/C6-integration_master_certificate.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.certificate-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .student-work-card {
+    border: 1px solid #6c757d;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .lesson-header {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  .work-section {
+    border-left: 4px solid #007bff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+  }
+
+  .missing-work {
+    border-left: 4px solid #dc3545;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+    color: #721c24;
+  }
+
+  .readonly-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #bbc2caff;
+    cursor: not-allowed;
+  }
+
+  .readonly-status {
+    padding: 8px 12px;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-left: 10px;
+    color: #495057;
+    cursor: not-allowed;
+  }
+
+  .certificate-notice {
+    border: 1px solid #28a745;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #155724;
+  }
+
+  .retry-notice {
+    border: 1px solid #dc3545;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #721c24;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+
+  .confirmation-section {
+    border: 2px solid #28a745;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+
+  .confirmation-checkbox {
+    margin-right: 10px;
+    transform: scale(1.2);
+  }
+
+  .confirmation-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #155724;
+    cursor: pointer;
+  }

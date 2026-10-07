@@ -5,49 +5,7 @@ permalink: /golf
 ---
 
 <style>
-    #game-container {
-        width: 800px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    #game-canvas {
-        border: 1px solid #00ff00;
-        background-color: #00ff00;
-    }
-
-    #game-controls button {
-        padding: 10px 20px;
-        margin: 10px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    #message {
-        color: black !important;
-        font-weight: bold;
-    }
-
-    #score {
-        font-size: 20px;
-        font-weight: bold;
-        color: #333;
-    }
-
-    #hole-info {
-        color: #000000ff !important;
-    }
-
-    .p {
-        color: #000000ff !important;
-    }
-
-    .h3 {
-        color: #000000ff !important;
-    }
+{{ '@import "beasts/inline/pages/hacks-golf-1";' | scssify }}
 </style>
 
 <h2>Mini Golf Game</h2>

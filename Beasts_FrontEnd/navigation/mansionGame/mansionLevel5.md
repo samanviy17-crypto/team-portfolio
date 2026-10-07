@@ -11,13 +11,7 @@ microblog: true
 </div>
 
 <style>
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
+{{ '@import "beasts/inline/navigation/navigation-mansiongame-mansionlevel5-1";' | scssify }}
 </style>
 
 <script type="module">

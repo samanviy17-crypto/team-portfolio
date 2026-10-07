@@ -1,0 +1,31 @@
+// Migrated from hacks/digital-famine/ai/submodule_3.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.module-footer {
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 2px solid rgba(16, 185, 129, 0.3);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-link {
+            display: inline-block;
+            color: #34d399;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid rgba(16, 185, 129, 0.4);
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .footer-link:hover {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }

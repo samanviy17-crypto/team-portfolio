@@ -1,0 +1,24 @@
+// Migrated from navigation/mansionGame/mainworld.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#gameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 20px;
+    position: relative;
+    background: $beasts-black;
+}
+
+#gameCanvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}

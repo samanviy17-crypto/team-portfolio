@@ -8,12 +8,7 @@ permalink: /binaryTechniques/
 menu: nav/bitshift-nav/doc.html
 ---
 <style>
-    figure {
-        align-content: center;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-    }
+{{ '@import "beasts/inline/navigation/navigation-bitshift-documentation-binarymethods-1";' | scssify }}
 </style>
 
 # What is Binary?

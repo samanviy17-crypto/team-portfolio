@@ -1,0 +1,36 @@
+// Migrated from _layouts/finance.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.dropdown-menu {
+    background-color: #1c1c1c !important;
+    border: none;
+    z-index: 1;
+  }
+
+  .dropdown-item {
+    color: $beasts-white !important;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown-item:hover {
+    background-color: #ff9800 !important;
+    color: #1c1c1c !important;
+    transform: translateX(5px);
+  }
+
+  /* Balance Styling */
+  #navbarBalance {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-family: Arial, sans-serif;
+  }
+
+  .nav-item:hover #navbarBalance {
+    color: #ff9800 !important;
+  }
+
+  .bi-coin {
+    font-size: 1.2rem;
+    vertical-align: middle;
+  }

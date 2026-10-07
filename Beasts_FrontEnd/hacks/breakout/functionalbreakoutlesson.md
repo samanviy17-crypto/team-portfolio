@@ -12,43 +12,7 @@ permalink: functionalbreakoutlesson
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-.cards-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.hub-title {
-  display: block !important;
-  text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-  margin-top: 1px !important;
-}
-
-.back-button {
-  margin-bottom: 5px !important;
-  text-align: center;
-}
-
-.card {
-  background-color: white !important;
-}
-
-.card-header {
-  color: black !important;
-}
-
-.text-content2 {
-  color: black !important;
-}
-
-@media (max-width: 768px) {
-  .cards-container {
-    grid-template-columns: 1fr;
-  }
-}
+{{ '@import "beasts/inline/pages/hacks-breakout-functionalbreakoutlesson-1";' | scssify }}
 </style>
 
 
@@ -138,31 +102,7 @@ flowchart TD
 <!-- ===================== Breakout Blocks: Checkpoint Quizzes ===================== -->
 <div id="breakout-blocks-quizzes">
 <style>
-  #breakout-blocks-quizzes { --ok:#118a00; --bad:#b00020; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-  #breakout-blocks-quizzes .quiz-card{
-    background:#fff;border:2px solid #ddd;border-radius:14px;
-    padding:1.2rem;margin:1.2rem 0;box-shadow:0 4px 12px rgba(0,0,0,.05);
-    color:#000;
-  }
-  #breakout-blocks-quizzes .quiz-title{font-size:1.2rem;font-weight:700;margin-bottom:.25rem}
-  #breakout-blocks-quizzes .quiz-sub{margin-bottom:.9rem;color:#222}
-  #breakout-blocks-quizzes .q{border-radius:10px;padding:.9rem;margin:.7rem 0;border:1px solid #eee}
-  #breakout-blocks-quizzes .q:nth-child(odd){background:#f7f3ff;}  /* lilac */
-  #breakout-blocks-quizzes .q:nth-child(even){background:#f3fff7;} /* mint  */
-  #breakout-blocks-quizzes .prompt{font-weight:700;margin-bottom:.4rem}
-  #breakout-blocks-quizzes .option{display:flex;gap:.45rem;align-items:flex-start;margin:.3rem 0}
-  #breakout-blocks-quizzes button{
-    background:#f7f7f7;color:#000;border:2px solid #000;
-    border-radius:999px;padding:.45rem 1rem;
-    font-weight:700;cursor:pointer;margin-top:.6rem;margin-right:.4rem
-  }
-  #breakout-blocks-quizzes button:hover{background:#000;color:#fff}
-  #breakout-blocks-quizzes .feedback{margin-top:.6rem;font-weight:800}
-  #breakout-blocks-quizzes .feedback.ok{color:var(--ok)}
-  #breakout-blocks-quizzes .feedback.bad{color:var(--bad)}
-  #breakout-blocks-quizzes code{
-    background:#f4f4f4;color:#000;padding:2px 5px;border-radius:4px
-  }
+{{ '@import "beasts/inline/pages/hacks-breakout-functionalbreakoutlesson-2";' | scssify }}
 </style>
 
   <!-- Quiz A: Lesson 1 — Paddle & Base Blocks -->

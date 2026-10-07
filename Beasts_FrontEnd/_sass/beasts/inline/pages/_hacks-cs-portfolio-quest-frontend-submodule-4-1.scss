@@ -1,0 +1,65 @@
+// Migrated from hacks/cs-portfolio-quest/frontend/submodule_4.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.demo-container {
+  max-width: 760px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  background: #1f2937;
+  color: white;
+}
+.frq-container {
+  max-width: 760px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #374151;
+  border-radius: 8px;
+  color: white;
+}
+.frq-container label {
+  color: white;
+  font-weight: bold;
+}
+.status-msg {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+.status-success { color: #10b981; }
+.status-error { color: #ef4444; }
+textarea, input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #4b5563;
+  border-radius: 4px;
+  font-family: inherit;
+  background: #1f2937;
+  color: white;
+}
+button {
+  margin: 0.25rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #374151;
+  color: white;
+  cursor: pointer;
+}
+button:hover { background: #1f2937; }
+.submit-btn {
+  background: #7c3aed;
+  width: 100%;
+  margin-top: 1rem;
+}
+.submit-btn:hover { background: #6d28d9; }
+select {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  margin: 0 0.5rem;
+}

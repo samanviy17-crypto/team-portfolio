@@ -8,27 +8,7 @@ search_exclude: true
 {% include nav/homejava.html %}
 
 <style>
-  .login-container {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap; /* allows the cards to wrap onto the next line if the screen is too small */
-  }
-
-  .signup-card {
-      margin: auto;
-      margin-top: 0; /* remove the top margin */
-      width: 45%;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 20px;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-      margin-bottom: 20px;
-      overflow-x: auto; /* Enable horizontal scrolling */
-  }
-
-  .signup-card h1 {
-      margin-bottom: 20px;
-  }
+{{ '@import "beasts/inline/navigation/navigation-signup-1";' | scssify }}
 </style>
 
 <div id="login-container">

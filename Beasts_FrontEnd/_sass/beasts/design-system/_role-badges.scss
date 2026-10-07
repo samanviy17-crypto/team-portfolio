@@ -1,0 +1,35 @@
+// --- Role Badges --------------------------------------------------------------
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: $border-radius-pill;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.badge-coordinator {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-staff {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.badge-admin {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.badge-resident {
+  display: none; // Residents have no visible badge
+}
+
+// Status badges
+.badge-open     { background-color: #fee2e2; color: #991b1b; }
+.badge-claimed  { background-color: #fef3c7; color: #92400e; }
+.badge-answered { background-color: #d1fae5; color: #065f46; }

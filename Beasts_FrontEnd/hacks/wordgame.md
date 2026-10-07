@@ -5,27 +5,7 @@ permalink: /wordgame
 ---
 
 <style>
-    #wordCanvas { 
-        border: 10px solid #000;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    h2 {
-        text-align: center;
-        margin-top: 20px;
-    }
-    #options {
-        margin-top: 20px;
-        margin-bottom: 10px;
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-        background-color: #007BFF;
-        color: white;
-        border-radius: 5px;
-    }
+{{ '@import "beasts/inline/pages/hacks-wordgame-1";' | scssify }}
 </style>
 
 <h2 style="display: inline-block; margin-right: auto;">Word Game</h2>

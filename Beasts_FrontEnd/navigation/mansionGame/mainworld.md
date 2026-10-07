@@ -6,26 +6,7 @@ microblog: true
 ---
 
 <style>
-body {
-    margin: 0;
-    padding: 0;
-}
-
-#gameContainer {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    padding-top: 20px;
-    position: relative;
-    background: #000;
-}
-
-#gameCanvas {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
+{{ '@import "beasts/inline/navigation/navigation-mansiongame-mainworld-1";' | scssify }}
 </style>
 
 <div id="gameContainer">

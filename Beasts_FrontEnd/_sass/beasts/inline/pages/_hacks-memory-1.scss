@@ -1,0 +1,15 @@
+// Migrated from hacks/memory.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.memoryCanvas {
+        border: 10px solid #000;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+    }

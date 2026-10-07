@@ -1,0 +1,306 @@
+// Migrated from _includes/grading-feedback.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.grading-feedback-container {
+  background: #1a1a1a;
+  border: 2px solid #0f0;
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 2rem 0;
+  max-width: 900px;
+}
+
+.grading-feedback-container h3 {
+  color: #0f0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #0f0;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 0.75rem;
+  color: $beasts-white;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #0f0;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-feedback-btn {
+  background: #0f0;
+  color: $beasts-black;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submit-feedback-btn:hover {
+  background: #0c0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
+}
+
+.submit-feedback-btn:disabled {
+  background: #555;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.feedback-message {
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  display: none;
+}
+
+.feedback-message.success {
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #0f0;
+  color: #0f0;
+}
+
+.feedback-message.error {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid #f00;
+  color: #f00;
+}
+
+.feedback-history {
+  margin-top: 2rem;
+  border-top: 1px solid #444;
+  padding-top: 2rem;
+}
+
+.feedback-history h4 {
+  color: #0f0;
+  margin-bottom: 1.5rem;
+}
+
+.feedback-thread {
+  background: #222;
+  border-left: 3px solid #0f0;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+}
+
+.thread-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.thread-info {
+  flex: 1;
+}
+
+.feedback-name {
+  color: #0f0;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.feedback-timestamp {
+  color: #888;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.feedback-grade {
+  background: #333;
+  color: #0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.feedback-submission {
+  color: #ccc;
+  margin: 1rem 0;
+  line-height: 1.6;
+  padding: 1rem;
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+.thread-replies {
+  margin-top: 1.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid #444;
+}
+
+.reply-item {
+  background: #1a1a1a;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border-left: 2px solid #666;
+}
+
+.reply-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+.reply-author {
+  color: #0f0;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.reply-timestamp {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.reply-content {
+  color: #aaa;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.reply-form {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+}
+
+.reply-form textarea {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 0.75rem;
+  color: $beasts-white;
+  font-family: inherit;
+  font-size: 0.95rem;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.reply-form textarea:focus {
+  outline: none;
+  border-color: #0f0;
+}
+
+.reply-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.reply-btn,
+.cancel-reply-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.reply-btn {
+  background: #0f0;
+  color: $beasts-black;
+  font-weight: bold;
+}
+
+.reply-btn:hover {
+  background: #0c0;
+}
+
+.cancel-reply-btn {
+  background: #333;
+  color: $beasts-white;
+}
+
+.cancel-reply-btn:hover {
+  background: #444;
+}
+
+.add-reply-btn {
+  background: #333;
+  color: #0f0;
+  border: 1px solid #0f0;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.add-reply-btn:hover {
+  background: #0f0;
+  color: $beasts-black;
+}
+
+.clear-history-btn {
+  background: #333;
+  color: #f00;
+  border: 1px solid #f00;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s;
+}
+
+.clear-history-btn:hover {
+  background: #f00;
+  color: $beasts-black;
+}
+
+.reply-count {
+  color: #888;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}

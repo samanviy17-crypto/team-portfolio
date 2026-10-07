@@ -1,0 +1,30 @@
+// Migrated from hacks/breakout/levels_points.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+/* Force readable black text inside all quiz cards, regardless of theme */
+  [id^="quiz-"] {
+    color:$beasts-black !important;
+    opacity:1 !important;
+    filter:none !important;
+    text-shadow:none !important;
+    -webkit-text-fill-color:$beasts-black;
+  }
+  [id^="quiz-"] * {
+    color:$beasts-black !important;
+    -webkit-text-fill-color:$beasts-black;
+  }
+  [id^="quiz-"] code {
+    color:$beasts-black !important;
+    background:#eee !important;
+    padding:0 6px;
+    border-radius:6px;
+  }
+  [id^="quiz-"] button {
+    color:$beasts-black !important;
+    background:$beasts-white !important;
+    border:1px solid currentColor !important;
+    border-radius:8px;
+    padding:6px 10px;
+    cursor:pointer;
+  }

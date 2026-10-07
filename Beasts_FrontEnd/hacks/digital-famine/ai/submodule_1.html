@@ -16,19 +16,8 @@ date: 2025-10-30
     <title>Module 1: Types of AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            background: linear-gradient(to bottom right, #0f172a, #2563eb, #0f172a);
-            min-height: 100vh;
-        }
-        .pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: .5; }
-        }
-        .section-hidden { display: none; }
-    </style>
+{{ '@import "beasts/inline/pages/hacks-digital-famine-ai-submodule-1-1";' | scssify }}
+</style>
 </head>
 <body class="text-white">
     <div class="border-b border-blue-500/30 bg-slate-900/50 backdrop-blur">
@@ -541,24 +530,8 @@ date: 2025-10-30
     </script>
 
     <style>
-        .ai-prompt-widget { border: 1px solid rgba(255,255,255,0.06); padding: 12px; margin: 12px 0; background: rgba(255,255,255,0.02); }
-        .ai-prompt-widget textarea { color: #e6eef8; width: 100%; box-sizing: border-box; font-family: inherit; }
-        .ai-output { margin-top: 8px; }
-        .ai-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03); padding: 8px; white-space: pre-wrap; color: #e6eef8; }
-        .ai-actions button, .ai-output button {
-            margin-right: 8px;
-            border-radius: 0.5rem; /* More squared but still rounded (like quiz buttons) */
-            transition: background 0.15s, box-shadow 0.15s;
-            box-shadow: 0 1px 2px 0 rgba(0,0,0,0.04);
-        }
-        .ai-actions button:active, .ai-output button:active {
-            filter: brightness(0.85);
-            background-color: #334155 !important; /* darker slate on click */
-        }
-        .ai-actions button:last-child, .ai-output button:last-child {
-            margin-right: 0;
-        }
-    </style>
+{{ '@import "beasts/inline/pages/hacks-digital-famine-ai-submodule-1-2";' | scssify }}
+</style>
     <footer class="module-footer">
         <a href="{{ '/digital-famine/ai/' | prepend: site.baseurl }}" class="footer-link">
             ← Back to AI Quest Home
@@ -566,31 +539,7 @@ date: 2025-10-30
     </footer>
 
         <style>
-        .module-footer {
-            background: rgba(15, 23, 42, 0.95);
-            border-top: 2px solid rgba(16, 185, 129, 0.3);
-            padding: 2rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        .footer-link {
-            display: inline-block;
-            color: #34d399;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border: 2px solid rgba(16, 185, 129, 0.4);
-            border-radius: 0.5rem;
-            transition: all 0.2s ease;
-            background: rgba(16, 185, 129, 0.1);
-        }
-        .footer-link:hover {
-            background: rgba(16, 185, 129, 0.2);
-            border-color: rgba(16, 185, 129, 0.6);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-    </style>
+{{ '@import "beasts/inline/pages/hacks-digital-famine-ai-submodule-1-3";' | scssify }}
+</style>
 </body>
 </html>

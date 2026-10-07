@@ -1,0 +1,27 @@
+// --- Cards --------------------------------------------------------------------
+.card {
+  background-color: $color-white-pure;
+  border: 1px solid $color-gray-200;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+  transition: box-shadow $transition-base, transform $transition-base;
+
+  &:hover { box-shadow: $shadow-md; }
+}
+
+.card-body {
+  padding: $spacing-lg;
+}
+
+.card-header {
+  padding: $spacing-md $spacing-lg;
+  background-color: $color-gray-100;
+  border-bottom: 1px solid $color-gray-200;
+}
+
+.card-footer {
+  padding: $spacing-md $spacing-lg;
+  background-color: $color-gray-100;
+  border-top: 1px solid $color-gray-200;
+}

@@ -1,0 +1,381 @@
+// Migrated from _includes/slim_sidebar.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+@keyframes slideIn {
+      from {
+          transform: translateX(100%);
+          opacity: 0;
+      }
+      to {
+          transform: translateX(0);
+          opacity: 1;
+      }
+  }
+  body {
+    background-image: none !important;
+  }
+  #sidebar:hover .sidebar-button {
+      width: 100% !important;
+      gap: 12px;
+  }
+
+  #sidebar:hover .icon {
+      width: 20px !important;
+      height: 20px !important;
+      margin-left: 16px !important;
+  }
+
+  #sidebar:hover .label {
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+  }
+
+  #sidebar:hover .sidebar-separator {
+      width: 80% !important;
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.6), transparent) !important;
+  }
+
+  .sidebar-button::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: calc(100% + 12px);
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  #sidebar:not(:hover) .sidebar-button:hover::after {
+      opacity: 1;
+      visibility: visible;
+  }
+
+  #sidebar:hover .sidebar-button::after {
+      opacity: 0 !important;
+      visibility: hidden !important;
+  }
+
+  #dict-result h4 {
+      color: #f8fafc !important;
+      font-size: 28px !important;
+      margin-bottom: 20px !important;
+      font-weight: 800 !important;
+      background: linear-gradient(135deg, #667eea, #a78bfa, #ec4899);
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      text-transform: capitalize !important;
+  }
+
+  #dict-result b {
+      color: #a78bfa !important;
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      display: inline-block !important;
+      margin: 16px 0 8px 0 !important;
+      padding: 6px 12px !important;
+      background: rgba(167, 139, 250, 0.1) !important;
+      border-radius: 8px !important;
+      border-left: 3px solid #a78bfa !important;
+  }
+
+  #dict-result i {
+      color: #374151 !important;
+      font-style: italic !important;
+      margin-left: 8px !important;
+      padding: 4px 8px !important;
+      background: rgba(55, 65, 81, 0.05) !important;
+      border-radius: 6px !important;
+      font-size: 14px !important;
+  }
+  /* --- Highlight Specific Styles --- */
+  .user-highlight {
+      position: relative;
+      display: inline; /* Keep inline to flow with text */
+      line-height: inherit;
+      background-color: var(--highlight-color, yellow);
+      padding: 0 2px;
+      border-radius: 3px;
+      transition: background-color 0.2s ease;
+      vertical-align: baseline;
+  }
+
+  .highlight-trash-icon {
+      position: absolute;
+      right: 0px; /* Positioned relative to the highlight span's right edge */
+      top: -8px; /* Move it slightly outside to the top */
+      transform: scale(0.9); /* Slightly smaller initial scale */
+      opacity: 0; /* Hidden by default */
+      font-size: 10px; /* Smaller icon size */
+      color: rgba(0, 0, 0, 0.7); /* Darker color for visibility */
+      background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+      border-radius: 50%;
+      padding: 2px 4px; /* Padding around the 'x' */
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none; /* Prevents icon from blocking text selection when hidden */
+      z-index: 10; /* Make sure it's on top of other content */
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Subtle shadow */
+      border: 1px solid rgba(0, 0, 0, 0.1); /* Add a subtle border */
+      display: flex; /* Use flex to center the 'x' inside the circle */
+      align-items: center;
+      justify-content: center;
+      width: 18px; /* Fixed width/height for circular icon */
+      height: 18px;
+  }
+
+  .highlight-note-icon { /* NEW: Note icon style */
+      position: absolute;
+      right: 22px; /* Positioned to the left of the trash icon (trash width + small gap) */
+      top: -8px;
+      transform: scale(0.9);
+      opacity: 0;
+      font-size: 10px;
+      color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      padding: 2px 4px;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+      z-index: 10;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+  }
+
+
+  .user-highlight:hover .highlight-trash-icon,
+  .user-highlight:hover .highlight-note-icon { /* Show both icons on hover */
+      opacity: 1; /* Show on hover */
+      pointer-events: auto; /* Allow clicking when visible */
+      transform: scale(1.1); /* Slight pop effect on hover */
+  }
+
+  .highlight-trash-icon:hover {
+      background-color: rgba(239, 68, 68, 0.9); /* Tomato color on hover */
+      color: white;
+      transform: scale(1.2); /* Even more pop on direct hover */
+  }
+
+  .highlight-note-icon:hover { /* NEW: Note icon hover style */
+      background-color: rgba(102, 126, 234, 0.9); /* Blue color on hover */
+      color: white;
+      transform: scale(1.2);
+  }
+
+  /* --- Highlighting Button Active Style --- */
+  .highlighting {
+      border-color: rgba(102, 126, 234, 0.6);
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+  }
+  #highlight-color::-webkit-color-swatch-wrapper {
+      padding: 0;
+  }
+  #highlight-color::-webkit-color-swatch {
+      border: none;
+      border-radius: 5px;
+  }
+
+
+  /* --- NEW: Notes Panel (Sidebar) Specific Styles --- */
+  .notes-panel {
+      /* Reuses .modal-overlay styles for basic positioning and animation */
+      /* Overrides specific for a panel vs a modal-like overlay */
+      display: none; /* Hidden by default, toggled by JS */
+  }
+
+  .notes-panel-header {
+      /* Reuses .modal-header styles */
+      padding: 28px 28px 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .notes-panel-body {
+      /* Reuses .modal-body styles */
+      flex: 1;
+      padding: 28px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .notes-list {
+      flex-grow: 1; /* Allows notes list to expand and take available space */
+      margin-bottom: 20px;
+      /* max-height: 50vh;  No longer needed as flex-grow handles sizing */
+      overflow-y: auto;
+      padding-right: 10px; /* For scrollbar spacing */
+  }
+
+  .notes-list::-webkit-scrollbar {
+      width: 8px;
+  }
+  .notes-list::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+  }
+  .notes-list::-webkit-scrollbar-thumb {
+      background: rgba(102, 126, 234, 0.4);
+      border-radius: 10px;
+  }
+  .notes-list::-webkit-scrollbar-thumb:hover {
+      background: rgba(102, 126, 234, 0.6);
+  }
+
+  .note-item {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+      color: #1e293b; /* Changed to black */
+      font-size: 14px;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .note-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .note-item p {
+      margin-bottom: 8px;
+      line-height: 1.5;
+      color: #1e293b; /* Changed to black */
+  }
+
+  .note-item .note-context {
+      font-size: 13px;
+      color: #1e293b; /* Changed to black */
+      font-style: italic;
+      margin-top: 5px;
+      padding: 5px 8px;
+      background: rgba(167, 139, 250, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid #a78bfa;
+      display: block; /* Ensures it takes its own line */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer; /* Indicate clickable */
+  }
+
+  .note-item .note-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 10px;
+  }
+
+  .note-item .delete-note-btn,
+  .note-item .edit-note-btn {
+      background: rgba(0, 0, 0, 0.05); /* Changed to black-ish for consistency */
+      border: 1px solid rgba(0, 0, 0, 0.1); /* Changed to black-ish for consistency */
+      color: #475569; /* Darker text color */
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+
+  .note-item .delete-note-btn:hover {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.3);
+      color: #f87171;
+  }
+
+  .note-item .edit-note-btn:hover {
+      background: rgba(102, 126, 234, 0.15);
+      border-color: rgba(102, 126, 234, 0.3);
+      color: #667eea;
+  }
+
+  .note-input-area {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08); /* Changed to black-ish for consistency */
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.95); /* Adjusted for lighter background */
+      padding-bottom: 0px;
+      margin-top: auto;
+  }
+
+  #new-note-text {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 15px;
+      background: rgba(0, 0, 0, 0.05);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      color: #1e293b; /* Changed to black */
+      resize: vertical;
+      min-height: 80px;
+      font-weight: 500;
+  }
+
+  #new-note-text:focus {
+      outline: none;
+      border-color: rgba(102, 126, 234, 0.6);
+      background: rgba(0, 0, 0, 0.08);
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+  }
+
+  #new-note-text::placeholder {
+      color: rgba(71, 85, 105, 0.7); /* Darker placeholder */
+  }
+
+  .note-input-area .search-btn,
+  .note-input-area .close-btn {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 15px;
+      border-radius: 12px;
+  }
+
+  /* NEW: Popover for notes on highlight hover */
+  .note-popover {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.95); /* Lighter background for popover */
+      color: #1e293b; /* Changed to black */
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 13px;
+      max-width: 250px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(0, 0, 0, 0.1); /* Changed to black-ish for consistency */
+      z-index: 1002; /* Above sidebar */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      transform: translateY(10px);
+      pointer-events: none; /* Do not block interaction with content below */
+      line-height: 1.4;
+  }
+
+  .note-popover.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+  }

@@ -1,0 +1,29 @@
+// Migrated from _includes/nav/p4prompt.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    justify-items: center;
+    align-items: center;
+}
+
+.grid-button {
+    padding: 15px 20px;
+    font-size: 16px;
+    background-color: #29AAFA;
+    color: white !important;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.grid-button:hover {
+    background-color: #1E90FF;
+    transform: translateY(-5px);
+}

@@ -1,0 +1,25 @@
+// Migrated from hacks/pong/2025-08-20-PongGame.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.game-canvas-container {
+    margin-top: 20px;
+  }
+  #pongCanvas {
+    border: 2px solid #fff;
+    background: $beasts-black;
+  }
+  #restartBtn {
+    display: none;
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    background: #4caf50;
+    color: white;
+    cursor: pointer;
+  }
+  #restartBtn:hover {
+    background: #45a049;
+  }

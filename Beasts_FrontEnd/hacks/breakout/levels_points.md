@@ -814,32 +814,7 @@ drawBreakout();
 
 <!-- ========================= QUIZ FIXES (place once at end) ========================= -->
 <style>
-  /* Force readable black text inside all quiz cards, regardless of theme */
-  [id^="quiz-"] {
-    color:#000 !important;
-    opacity:1 !important;
-    filter:none !important;
-    text-shadow:none !important;
-    -webkit-text-fill-color:#000;
-  }
-  [id^="quiz-"] * {
-    color:#000 !important;
-    -webkit-text-fill-color:#000;
-  }
-  [id^="quiz-"] code {
-    color:#000 !important;
-    background:#eee !important;
-    padding:0 6px;
-    border-radius:6px;
-  }
-  [id^="quiz-"] button {
-    color:#000 !important;
-    background:#fff !important;
-    border:1px solid currentColor !important;
-    border-radius:8px;
-    padding:6px 10px;
-    cursor:pointer;
-  }
+{{ '@import "beasts/inline/pages/hacks-breakout-levels-points-1";' | scssify }}
 </style>
 
 <script>

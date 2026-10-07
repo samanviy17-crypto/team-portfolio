@@ -1,0 +1,186 @@
+// Migrated from _includes/blockunlock-grid.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+/* Tutorial Overlay Styles */
+#tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+#tutorial-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#tutorial-content {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 3px solid #00ff88;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 50px rgba(0, 255, 136, 0.3);
+    color: $beasts-white;
+}
+
+#tutorial-content h1 {
+    color: #00ff88;
+    text-align: center;
+    margin-top: 0;
+    font-size: 2em;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+#tutorial-content h2 {
+    color: #ffdd57;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+
+#tutorial-content p, #tutorial-content ul {
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+#tutorial-content ul {
+    padding-left: 20px;
+}
+
+#tutorial-content li {
+    margin-bottom: 8px;
+}
+
+#tutorial-content strong {
+    color: #00ff88;
+}
+
+#close-tutorial {
+    display: block;
+    width: 200px;
+    margin: 30px auto 0;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #00ff88 0%, #00cc70 100%);
+    color: #1a1a2e;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+}
+
+#close-tutorial:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0, 255, 136, 0.6);
+}
+
+/* Scrollbar styling for tutorial */
+#tutorial-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+#tutorial-content::-webkit-scrollbar-track {
+    background: #16213e;
+    border-radius: 10px;
+}
+
+#tutorial-content::-webkit-scrollbar-thumb {
+    background: #00ff88;
+    border-radius: 10px;
+}
+
+/* Game Styles */
+#controls{ text-align:center; margin-bottom:10px; }
+#controls button{ margin:0 5px; padding:6px 10px; cursor:pointer; }
+
+#level-info {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: $beasts-white;
+}
+
+#grid-container{
+    display:grid;
+    gap:1px;
+    width:90vw;
+    max-width:900px;
+    margin:0 auto;
+    background:#222;
+    border:2px solid #555;
+}
+
+.grid-cell{
+    position:relative;
+    width: var(--cell-size);
+    height: var(--cell-size);
+}
+
+.cell-bg{
+    position:absolute;
+    top:0; left:0; right:0; bottom:0;
+    background:#333;
+    border:1px solid #888;
+    transition:box-shadow 0.12s, border 0.12s;
+}
+
+.cell-bg.selected{
+    border:3px solid #ff0 !important;
+    box-shadow:0 0 10px rgba(255,255,0,0.5) !important;
+}
+
+/* Placeable area styling */
+.cell-bg.placeable{
+    background:#2a4a2a; /* Slightly green tint for placeable areas */
+}
+
+/* Border directions - thicker and more visible */
+.cell-bg.border-n{
+    border-top: 4px solid #00ff88;
+}
+
+.cell-bg.border-s{
+    border-bottom: 4px solid #00ff88;
+}
+
+.cell-bg.border-e{
+    border-right: 4px solid #00ff88;
+}
+
+.cell-bg.border-w{
+    border-left: 4px solid #00ff88;
+}
+
+.cell-tile{
+    position:absolute;
+    top:0; left:0; right:0; bottom:0;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    transition:transform 0.18s;
+    transform: rotate(var(--rotation,0deg));
+}
+
+.grid-cell:hover .cell-tile{
+    transform: scale(1.05) rotate(var(--rotation,0deg));
+    cursor:pointer;
+}
+
+/* Hover effect for placeable areas */
+.grid-cell:hover .cell-bg.placeable{
+    background:#3a5a3a;
+}

@@ -1,0 +1,131 @@
+// Migrated from _includes/lesson-submit-button.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.lesson-submit-container {
+        margin: 40px 0;
+        padding: 20px;
+        background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(33, 150, 243, 0.1));
+        border: 2px solid rgba(76, 175, 80, 0.3);
+        border-radius: 12px;
+    }
+
+    .lesson-submit-header h3 {
+        margin: 0 0 8px 0;
+        color: var(--text-color, #333);
+        font-size: 1.3em;
+    }
+
+    .lesson-submit-header p {
+        margin: 0 0 16px 0;
+        color: var(--text-muted, #666);
+        font-size: 0.9em;
+    }
+
+    .lesson-submit-controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .lesson-submit-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #4CAF50, #2196F3);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    }
+
+    .lesson-submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+    }
+
+    .lesson-submit-btn:active {
+        transform: translateY(0);
+    }
+
+    .lesson-submit-btn:disabled {
+        background: #888;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .lesson-submit-btn .btn-icon {
+        font-size: 20px;
+    }
+
+    .lesson-submit-container .submit-status {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .lesson-submit-container .submit-status.success {
+        color: #4CAF50;
+        font-weight: 500;
+    }
+
+    .lesson-submit-container .submit-status.error {
+        color: #f44336;
+    }
+
+    .lesson-submit-container .submit-status.loading {
+        color: #2196F3;
+    }
+
+    .submission-preview {
+        margin-top: 12px;
+    }
+
+    .submission-preview summary {
+        cursor: pointer;
+        color: var(--text-muted, #666);
+        font-size: 0.9em;
+    }
+
+    .submission-preview .preview-content {
+        margin-top: 12px;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 6px;
+        font-family: monospace;
+        font-size: 12px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .preview-item {
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .preview-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .preview-item-header {
+        font-weight: bold;
+        color: #4CAF50;
+        margin-bottom: 4px;
+    }
+
+    .preview-item-code {
+        white-space: pre-wrap;
+        word-break: break-all;
+        color: #333;
+        max-height: 100px;
+        overflow-y: auto;
+    }

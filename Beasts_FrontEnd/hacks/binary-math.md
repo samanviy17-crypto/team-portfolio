@@ -23,10 +23,7 @@ Jekyll Table Reference: https://idratherbewriting.com/documentation-theme-jekyll
 {% assign BITS = 8 %}
 
 <style>
-    td {
-        text-align: center;
-        vertical-align: middle;
-    }
+{{ '@import "beasts/inline/pages/hacks-binary-math-1";' | scssify }}
 </style>
 
 <table>

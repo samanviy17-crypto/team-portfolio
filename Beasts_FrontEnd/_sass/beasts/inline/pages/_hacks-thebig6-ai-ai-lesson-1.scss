@@ -1,0 +1,213 @@
+// Migrated from hacks/TheBig6/ai/ai_lesson.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+:root {
+    --bg: #0a0e27;
+    --panel: #0f1729;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e6eef8;
+    --muted: #9aa6bf;
+    --accent: #7c3aed;
+    --accent-soft: rgba(124, 58, 237, 0.15);
+    --accent-border: rgba(124, 58, 237, 0.4);
+    --blue: #4a9eff;
+    --blue-bg: rgba(74, 158, 255, 0.08);
+    --blue-border: rgba(74, 158, 255, 0.25);
+    --good: rgba(46, 164, 79, 0.15);
+    --good-border: rgba(46, 164, 79, 0.5);
+    --bad: rgba(155, 52, 52, 0.2);
+    --bad-border: rgba(194, 68, 68, 0.5);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; line-height: 1.5; }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 24px 16px 40px; }
+  .header { margin-bottom: 32px; }
+  .header h1 { font-size: 28px; font-weight: 800; margin: 0 0 4px 0; }
+  .header p { color: var(--muted); font-size: 14px; margin: 0; }
+
+  /* Progress bar */
+  .progress-bar { display: flex; gap: 8px; margin: 20px 0; justify-content: space-between; align-items: center;
+    border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+  .progress-bar .step { flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; cursor: pointer; transition: 0.2s; }
+  .progress-bar .step.active { background: var(--accent); height: 6px; }
+
+  /* Step indicator */
+  #stepIndicator { color: var(--muted); font-size: 12px; align-self: center; }
+
+  /* Sections */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* Card */
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .card h2 { margin-top: 0; font-size: 20px; color: #a6c9ff; }
+  .card h3 { margin-top: 16px; font-size: 16px; color: #a6c9ff; }
+  .card p, .card li { color: var(--text); font-size: 14px; }
+  .card ul, .card ol { padding-left: 20px; }
+  .card li { margin-bottom: 6px; }
+  .card strong { color: #a6c9ff; }
+
+  /* Nav buttons */
+  .nav-buttons { display: flex; gap: 12px; margin-top: 24px; justify-content: space-between; }
+
+  /* Unified button */
+  button {
+    appearance: none;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text);
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: Inter, system-ui, sans-serif;
+    font-weight: 500;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  }
+  button:hover { background: #1a2340; border-color: var(--accent-border); }
+  button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  button.primary { background: var(--accent); border-color: var(--accent-border); color: $beasts-white; }
+  button.primary:hover { background: #6d28d9; }
+  button.secondary { background: #1a2340; border-color: var(--border); }
+
+  /* Unified dark inputs */
+  input, textarea, select {
+    background: #051226;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    color: #dce9ff;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  input:focus, textarea:focus, select:focus { outline: none; box-shadow: 0 0 8px rgba(124,58,237,0.3); }
+  select option { background: #0f1729; color: #dce9ff; }
+
+  /* Back button */
+  .back-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    text-decoration: none;
+  }
+  .back-btn:hover { border-color: var(--accent-border); color: var(--text); }
+
+  /* ── Interactive tool panels ── */
+  .tool-panel {
+    background: var(--blue-bg);
+    border: 1px solid var(--blue-border);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+  .tool-panel h3 { color: var(--blue); font-size: 18px; margin-top: 0; margin-bottom: 8px; }
+  .tool-panel p { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+  .tool-panel label { display: block; font-size: 13px; font-weight: 600; color: #a6c9ff; margin-top: 14px; margin-bottom: 4px; }
+
+  /* Version cards (resume transformer output) */
+  .version-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin: 10px 0;
+  }
+  .version-card h4 { color: var(--blue); font-size: 14px; margin: 0 0 8px 0; }
+  .version-card p { color: var(--text); font-size: 13px; margin: 0; line-height: 1.6; }
+
+  /* Analysis result */
+  .analysis-result {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin: 14px 0;
+    display: none;
+  }
+  .analysis-result h4 { color: #4ecdc4; font-size: 14px; margin: 0 0 12px 0; }
+
+  /* Score badges */
+  .score-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 4px 0;
+  }
+  .score-badge.good { background: var(--good); border: 1px solid var(--good-border); color: #4ade80; }
+  .score-badge.bad  { background: var(--bad);  border: 1px solid var(--bad-border);  color: #f87171; }
+
+  /* Scenario cards (use-case sorter) */
+  .scenario-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 8px 0;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text);
+    user-select: none;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  }
+  .scenario-card:hover { background: #1a2340; border-color: var(--accent-border); transform: translateY(-2px); }
+  .scenario-card.correct  { background: var(--good); border-color: var(--good-border); color: #4ade80; }
+  .scenario-card.incorrect { background: var(--bad);  border-color: var(--bad-border);  color: #f87171; }
+
+  /* Action button (main CTA in tool panels) */
+  .action-button {
+    background: var(--accent);
+    border: 1px solid var(--accent-border);
+    border-radius: 8px;
+    color: $beasts-white;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: Inter, system-ui, sans-serif;
+    transition: background 0.15s, transform 0.1s;
+    margin: 8px 4px 4px 0;
+  }
+  .action-button:hover { background: #6d28d9; transform: translateY(-1px); }
+
+  /* Game score display */
+  #game-score { color: var(--blue); font-weight: 700; }
+
+  /* Flex row helper */
+  .flex-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+  /* AI loading state */
+  .ai-loading {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--muted); font-size: 13px; padding: 12px 0;
+  }
+  .ai-spinner {
+    width: 16px; height: 16px; border-radius: 50%;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* AI error state */
+  .ai-error {
+    background: var(--bad); border: 1px solid var(--bad-border);
+    border-radius: 8px; padding: 10px 14px;
+    color: #f87171; font-size: 13px; margin-top: 8px;
+  }
+
+  /* Streamed text fade-in */
+  .version-card p { white-space: pre-wrap; line-height: 1.7; }
+  .analysis-result { white-space: pre-wrap; }

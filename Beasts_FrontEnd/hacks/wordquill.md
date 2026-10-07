@@ -10,59 +10,7 @@ permalink: /word
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <style>
-/* Target the output container */
-#output {
-    /* Ensure long content and formatting is handled correctly */
-    padding: 10px;
-    /* Allows text to wrap naturally inside the div */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-.controls {
-    margin: 10px 0;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.control-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-label {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-select {
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    color: white;
-    background-color: #333;
-}
-
-button {
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.sample-text {
-    display: none;
-}
+{{ '@import "beasts/inline/pages/hacks-wordquill-1";' | scssify }}
 </style>
 
 <details style="padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #007bff;">

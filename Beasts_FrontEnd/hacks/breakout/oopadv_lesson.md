@@ -509,31 +509,7 @@ Press `r` for red, `b` for blue, `g` for green, `y` for yellow, `p` for purple, 
 
 <div id="oop-advanced-quizzes">
 <style>
-  #oop-advanced-quizzes { --ok:#118a00; --bad:#b00020; }
-  #oop-advanced-quizzes .quiz-card{
-    background:#fff;border:2px solid #ddd;border-radius:14px;
-    padding:1.2rem;margin:1.2rem 0;box-shadow:0 4px 12px rgba(0,0,0,.05);
-    color:#000;
-  }
-  #oop-advanced-quizzes .quiz-title{font-size:1.2rem;font-weight:700;margin-bottom:.25rem}
-  #oop-advanced-quizzes .quiz-sub{margin-bottom:.9rem;color:#333}
-  #oop-advanced-quizzes .q{border-radius:10px;padding:.9rem;margin:.7rem 0;border:1px solid #eee}
-  #oop-advanced-quizzes .q:nth-child(odd){background:#f7f3ff;}
-  #oop-advanced-quizzes .q:nth-child(even){background:#f3fff7;}
-  #oop-advanced-quizzes .prompt{font-weight:700;margin-bottom:.4rem}
-  #oop-advanced-quizzes .option{display:flex;gap:.45rem;align-items:flex-start;margin:.3rem 0}
-  #oop-advanced-quizzes button{
-    background:#f7f7f7;color:#000;border:2px solid #000;
-    border-radius:999px;padding:.45rem 1rem;
-    font-weight:700;cursor:pointer;margin-top:.6rem
-  }
-  #oop-advanced-quizzes button:hover{background:#000;color:#fff}
-  #oop-advanced-quizzes .feedback{margin-top:.5rem;font-weight:700}
-  #oop-advanced-quizzes .feedback.ok{color:var(--ok)}
-  #oop-advanced-quizzes .feedback.bad{color:var(--bad)}
-  #oop-advanced-quizzes code{
-    background:#f4f4f4;color:#000;padding:2px 5px;border-radius:4px
-  }
+{{ '@import "beasts/inline/pages/hacks-breakout-oopadv-lesson-1";' | scssify }}
 </style>
 
   <!-- Quiz 1 -->

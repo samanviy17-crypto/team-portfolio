@@ -1,0 +1,14 @@
+// Migrated from navigation/predictors/grade-predictor.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+/* Make select boxes readable on dark backgrounds */
+.form-select {
+  background-color: $beasts-white !important;
+  color: #212529 !important;
+  border-color: #ced4da;
+}
+.form-select:disabled {
+  background-color: #e9ecef !important;
+  color: #6c757d !important;
+}

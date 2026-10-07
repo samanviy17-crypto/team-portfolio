@@ -1,0 +1,25 @@
+// --- Loading spinner ----------------------------------------------------------
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba($color-navy, 0.2);
+  border-top-color: $color-navy;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.spinner-white {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+}
+
+.spinner-lg {
+  width: 36px;
+  height: 36px;
+  border-width: 3px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

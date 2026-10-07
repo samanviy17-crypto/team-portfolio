@@ -1,0 +1,10 @@
+// Migrated from exercisegraphs.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+/* Style the chart container */
+    #exerciseChartContainer {
+        width: 3000px;
+        height: 3000px;
+        margin: 20px auto;
+    }

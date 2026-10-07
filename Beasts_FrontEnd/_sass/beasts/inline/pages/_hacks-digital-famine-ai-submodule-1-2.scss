@@ -1,0 +1,21 @@
+// Migrated from hacks/digital-famine/ai/submodule_1.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.ai-prompt-widget { border: 1px solid rgba(255,255,255,0.06); padding: 12px; margin: 12px 0; background: rgba(255,255,255,0.02); }
+        .ai-prompt-widget textarea { color: #e6eef8; width: 100%; box-sizing: border-box; font-family: inherit; }
+        .ai-output { margin-top: 8px; }
+        .ai-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03); padding: 8px; white-space: pre-wrap; color: #e6eef8; }
+        .ai-actions button, .ai-output button {
+            margin-right: 8px;
+            border-radius: 0.5rem; /* More squared but still rounded (like quiz buttons) */
+            transition: background 0.15s, box-shadow 0.15s;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,0.04);
+        }
+        .ai-actions button:active, .ai-output button:active {
+            filter: brightness(0.85);
+            background-color: #334155 !important; /* darker slate on click */
+        }
+        .ai-actions button:last-child, .ai-output button:last-child {
+            margin-right: 0;
+        }

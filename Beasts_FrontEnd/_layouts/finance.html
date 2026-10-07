@@ -137,36 +137,5 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <style>
-  .dropdown-menu {
-    background-color: #1c1c1c !important;
-    border: none;
-    z-index: 1;
-  }
-
-  .dropdown-item {
-    color: #ffffff !important;
-    transition: all 0.3s ease;
-  }
-
-  .dropdown-item:hover {
-    background-color: #ff9800 !important;
-    color: #1c1c1c !important;
-    transform: translateX(5px);
-  }
-
-  /* Balance Styling */
-  #navbarBalance {
-    font-weight: 500;
-    transition: color 0.3s ease;
-    font-family: Arial, sans-serif;
-  }
-
-  .nav-item:hover #navbarBalance {
-    color: #ff9800 !important;
-  }
-
-  .bi-coin {
-    font-size: 1.2rem;
-    vertical-align: middle;
-  }
+{{ '@import "beasts/inline/layouts/layouts-finance-1";' | scssify }}
 </style>

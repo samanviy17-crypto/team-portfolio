@@ -10,43 +10,7 @@ permalink: oopbreakoutlesson
 />
 
 <style>
-.cards-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.hub-title {
-  display: block !important;
-  text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-  margin-top: 1px !important;
-}
-
-.back-button {
-  margin-bottom: 5px !important;
-  text-align: center;
-}
-
-.card {
-  background-color: white !important;
-}
-
-.card-header {
-  color: black !important;
-}
-
-.text-content2 {
-  color: black !important;
-}
-
-@media (max-width: 768px) {
-  .cards-container {
-    grid-template-columns: 1fr;
-  }
-}
+{{ '@import "beasts/inline/pages/hacks-breakout-functionalbreakoutlesson-1";' | scssify }}
 </style>
 
 <h1 class="hub-title">OOPs Breakout (3-Part Mini Lesson)</h1>
@@ -195,32 +159,7 @@ Press `c` to clear blackboard.
 
 <div id="oop-breakout-quizzes">
 <style>
-  #oop-breakout-quizzes { --ok:#118a00; --bad:#b00020; }
-  #oop-breakout-quizzes .quiz-card{
-    background:#fff;border:2px solid #ddd;border-radius:14px;
-    padding:1.2rem;margin:1.2rem 0;box-shadow:0 4px 12px rgba(0,0,0,.05);
-    color:#000;
-  }
-  #oop-breakout-quizzes .quiz-title{font-size:1.2rem;font-weight:700;margin-bottom:.25rem}
-  #oop-breakout-quizzes .quiz-sub{margin-bottom:.9rem;color:#333}
-  #oop-breakout-quizzes .q{border-radius:10px;padding:.9rem;margin:.7rem 0;border:1px solid #eee}
-  #oop-breakout-quizzes .q:nth-child(odd){background:#f7f3ff;}
-  #oop-breakout-quizzes .q:nth-child(even){background:#f3fff7;}
-  #oop-breakout-quizzes .prompt{font-weight:700;margin-bottom:.4rem}
-  #oop-breakout-quizzes .option{display:flex;gap:.45rem;align-items:flex-start;margin:.3rem 0}
-  #oop-breakout-quizzes button{
-    background:#f7f7f7;color:#000;border:2px solid #000;
-    border-radius:999px;padding:.45rem 1rem;
-    font-weight:700;cursor:pointer;margin-top:.6rem
-  }
-  #oop-breakout-quizzes button:hover{background:#000;color:#fff}
-  #oop-breakout-quizzes .feedback{margin-top:.5rem;font-weight:700}
-  #oop-breakout-quizzes .feedback.ok{color:var(--ok)}
-  #oop-breakout-quizzes .feedback.bad{color:var(--bad)}
-  #oop-breakout-quizzes .score{margin-top:1rem;font-weight:800}
-  #oop-breakout-quizzes code{
-    background:#f4f4f4;color:#000;padding:2px 5px;border-radius:4px
-  }
+{{ '@import "beasts/inline/pages/hacks-breakout-oop-lesson-1";' | scssify }}
 </style>
 
 

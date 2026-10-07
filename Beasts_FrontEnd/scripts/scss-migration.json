@@ -1,0 +1,2366 @@
+{
+  "standalone": [
+    {
+      "old": "login.css",
+      "entry": "login.scss",
+      "partial": "_sass/beasts/forms/_login.scss"
+    },
+    {
+      "old": "assets/css/certificate_overview.css",
+      "entry": "assets/css/certificate_overview.scss",
+      "partial": "_sass/beasts/pages/_certificate-overview.scss"
+    },
+    {
+      "old": "assets/css/poway-neighborhood-map.css",
+      "entry": "assets/css/poway-neighborhood-map.scss",
+      "partial": "_sass/beasts/pnec/_poway-neighborhood-map.scss"
+    },
+    {
+      "old": "assets/css/community-tools.css",
+      "entry": "assets/css/community-tools.scss",
+      "partial": "_sass/beasts/pnec/_community-tools.scss"
+    },
+    {
+      "old": "assets/css/crypto.css",
+      "entry": "assets/css/crypto.scss",
+      "partial": "_sass/beasts/pages/_crypto.scss"
+    },
+    {
+      "old": "assets/css/leaderboard.css",
+      "entry": "assets/css/leaderboard.scss",
+      "partial": "_sass/beasts/components/_leaderboard.scss"
+    },
+    {
+      "old": "assets/css/csp_home.css",
+      "entry": "assets/css/csp_home.scss",
+      "partial": "_sass/beasts/pages/_csp-home.scss"
+    },
+    {
+      "old": "assets/css/poway-unified-ui.css",
+      "entry": "assets/css/poway-unified-ui.scss",
+      "partial": "_sass/beasts/pnec/_poway-unified-ui.scss"
+    },
+    {
+      "old": "assets/css/footer-polish.css",
+      "entry": "assets/css/footer-polish.scss",
+      "partial": "_sass/beasts/layout/_footer-polish.scss"
+    },
+    {
+      "old": "assets/css/chatbot.css",
+      "entry": "assets/css/chatbot.scss",
+      "partial": "_sass/beasts/pnec/_chatbot.scss"
+    },
+    {
+      "old": "assets/css/cms-sections.css",
+      "entry": "assets/css/cms-sections.scss",
+      "partial": "_sass/beasts/pnec/_cms-sections.scss"
+    },
+    {
+      "old": "assets/css/custom-styles.css",
+      "entry": "assets/css/custom-styles.scss",
+      "partial": "_sass/beasts/global/_custom-styles.scss"
+    },
+    {
+      "old": "assets/css/marketEvents.css",
+      "entry": "assets/css/marketEvents.scss",
+      "partial": "_sass/beasts/components/_marketevents.scss"
+    },
+    {
+      "old": "assets/css/pause-menu.css",
+      "entry": "assets/css/pause-menu.scss",
+      "partial": "_sass/beasts/components/_pause-menu.scss"
+    },
+    {
+      "old": "assets/Bathroom/bathroom.css",
+      "entry": "assets/Bathroom/bathroom.scss",
+      "partial": "_sass/beasts/legacy/bathroom/_bathroom.scss"
+    },
+    {
+      "old": "assets/Bathroom/queue.css",
+      "entry": "assets/Bathroom/queue.scss",
+      "partial": "_sass/beasts/legacy/bathroom/_queue.scss"
+    },
+    {
+      "old": "assets/Bathroom/report-issues.css",
+      "entry": "assets/Bathroom/report-issues.scss",
+      "partial": "_sass/beasts/legacy/bathroom/_report-issues.scss"
+    },
+    {
+      "old": "assets/Bathroom/profile.css",
+      "entry": "assets/Bathroom/profile.scss",
+      "partial": "_sass/beasts/legacy/bathroom/_profile.scss"
+    },
+    {
+      "old": "assets/screenQueue/style/queue.css",
+      "entry": "assets/screenQueue/style/queue.scss",
+      "partial": "_sass/beasts/legacy/screen-queue/_queue.scss"
+    },
+    {
+      "old": "assets/screenQueue/style/init.css",
+      "entry": "assets/screenQueue/style/init.scss",
+      "partial": "_sass/beasts/legacy/screen-queue/_init.scss"
+    },
+    {
+      "old": "assets/screenQueue/style/navbar.css",
+      "entry": "assets/screenQueue/style/navbar.scss",
+      "partial": "_sass/beasts/legacy/screen-queue/_navbar.scss"
+    },
+    {
+      "old": "assets/screenQueue/style/groups.css",
+      "entry": "assets/screenQueue/style/groups.scss",
+      "partial": "_sass/beasts/legacy/screen-queue/_groups.scss"
+    },
+    {
+      "old": "assets/screenQueue/style/call.css",
+      "entry": "assets/screenQueue/style/call.scss",
+      "partial": "_sass/beasts/legacy/screen-queue/_call.scss"
+    },
+    {
+      "old": "assets/css/aesthetihawk/charts.css",
+      "entry": "assets/css/aesthetihawk/charts.scss",
+      "partial": "_sass/beasts/components/_charts.scss"
+    },
+    {
+      "old": "assets/css/aesthetihawk/tabs.css",
+      "entry": "assets/css/aesthetihawk/tabs.scss",
+      "partial": "_sass/beasts/components/_tabs.scss"
+    },
+    {
+      "old": "assets/css/aesthetihawk/shake.css",
+      "entry": "assets/css/aesthetihawk/shake.scss",
+      "partial": "_sass/beasts/components/_shake.scss"
+    }
+  ],
+  "inline": [
+    {
+      "file": "_includes/admin_foundation.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-admin-foundation-1.scss"
+    },
+    {
+      "file": "_includes/aesthetihawk/header.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-aesthetihawk-header-1.scss"
+    },
+    {
+      "file": "_includes/bathroom_pass.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-bathroom-pass-1.scss"
+    },
+    {
+      "file": "_includes/blockunlock-grid.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-blockunlock-grid-1.scss"
+    },
+    {
+      "file": "_includes/carelink-infograph.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-carelink-infograph-1.scss"
+    },
+    {
+      "file": "_includes/challenge-submit-button.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-challenge-submit-button-1.scss"
+    },
+    {
+      "file": "_includes/csp/p4-progress-widget.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-csp-p4-progress-widget-1.scss"
+    },
+    {
+      "file": "_includes/feedback_foundation.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-feedback-foundation-1.scss"
+    },
+    {
+      "file": "_includes/gist-export-button.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-gist-export-button-1.scss"
+    },
+    {
+      "file": "_includes/grading-feedback.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-grading-feedback-1.scss"
+    },
+    {
+      "file": "_includes/group_dashboard.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-group-dashboard-1.scss"
+    },
+    {
+      "file": "_includes/kora-capstone-infograph.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-kora-capstone-infograph-1.scss"
+    },
+    {
+      "file": "_includes/lesson-submit-button.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-lesson-submit-button-1.scss"
+    },
+    {
+      "file": "_includes/nav/csp_units/csp_unit3_p2_fundamentals.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-nav-csp-units-csp-unit3-p2-fundamentals-1.scss"
+    },
+    {
+      "file": "_includes/nav/kasm_cloud.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-nav-kasm-cloud-1.scss"
+    },
+    {
+      "file": "_includes/nav/p4prompt.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-nav-p4prompt-1.scss"
+    },
+    {
+      "file": "_includes/poway-alert-banner.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-alert-banner-1.scss"
+    },
+    {
+      "file": "_includes/poway-auth-header.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-auth-header-1.scss"
+    },
+    {
+      "file": "_includes/poway-header.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-header-1.scss"
+    },
+    {
+      "file": "_includes/poway-live-body.html",
+      "block": 2,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-live-body-2.scss"
+    },
+    {
+      "file": "_includes/poway-live-body.html",
+      "block": 3,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-live-body-3.scss"
+    },
+    {
+      "file": "_includes/poway-live-body.html",
+      "block": 4,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-live-body-4.scss"
+    },
+    {
+      "file": "_includes/poway-live-body.html",
+      "block": 5,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-live-body-4.scss"
+    },
+    {
+      "file": "_includes/poway-live-body.html",
+      "block": 6,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-live-body-4.scss"
+    },
+    {
+      "file": "_includes/poway-live-head.html",
+      "block": 6,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-live-head-6.scss"
+    },
+    {
+      "file": "_includes/poway-live-head.html",
+      "block": 7,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-live-head-7.scss"
+    },
+    {
+      "file": "_includes/sentri-infographic.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-sentri-infographic-1.scss"
+    },
+    {
+      "file": "_includes/slim_sidebar.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-slim-sidebar-1.scss"
+    },
+    {
+      "file": "_includes/tailwind/cs-portfolio-big6_info.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-tailwind-cs-portfolio-big6-info-1.scss"
+    },
+    {
+      "file": "_includes/tailwind/cs-portfolio-mini_quest_info.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-tailwind-cs-portfolio-mini-quest-info-1.scss"
+    },
+    {
+      "file": "_includes/tailwind/cs-portfolio-quest_info.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-tailwind-cs-portfolio-big6-info-1.scss"
+    },
+    {
+      "file": "_includes/tailwind/plagiarism_cases.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-tailwind-plagiarism-cases-1.scss"
+    },
+    {
+      "file": "_includes/tailwind/plagiarism_info.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-tailwind-plagiarism-info-1.scss"
+    },
+    {
+      "file": "_includes/tailwind/quests/west-coast-food.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-tailwind-quests-west-coast-food-1.scss"
+    },
+    {
+      "file": "_includes/tailwind/quests/west-coast.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-tailwind-quests-west-coast-1.scss"
+    },
+    {
+      "file": "_includes/whiteboard.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/includes/_includes-whiteboard-1.scss"
+    },
+    {
+      "file": "_layouts/admin-fullscreen.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-admin-fullscreen-1.scss"
+    },
+    {
+      "file": "_layouts/analytics-dashboard.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-analytics-dashboard-1.scss"
+    },
+    {
+      "file": "_layouts/base_chatadpt.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-base-chatadpt-1.scss"
+    },
+    {
+      "file": "_layouts/base_chatog.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-base-chatog-1.scss"
+    },
+    {
+      "file": "_layouts/bathroom/scanner.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-bathroom-scanner-1.scss"
+    },
+    {
+      "file": "_layouts/bathroom/statistics.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-bathroom-statistics-1.scss"
+    },
+    {
+      "file": "_layouts/bathroom/teacher.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-bathroom-teacher-1.scss"
+    },
+    {
+      "file": "_layouts/bootstrap.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-bootstrap-1.scss"
+    },
+    {
+      "file": "_layouts/certchatbot.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-certchatbot-1.scss"
+    },
+    {
+      "file": "_layouts/chatbot.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-chatbot-1.scss"
+    },
+    {
+      "file": "_layouts/cs-bigsix-lesson.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-cs-bigsix-lesson-1.scss"
+    },
+    {
+      "file": "_layouts/cs-portfolio-admin.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-cs-portfolio-admin-1.scss"
+    },
+    {
+      "file": "_layouts/cs-portfolio-lesson.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-cs-bigsix-lesson-1.scss"
+    },
+    {
+      "file": "_layouts/finance.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-finance-1.scss"
+    },
+    {
+      "file": "_layouts/fortunefinders.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-fortunefinders-1.scss"
+    },
+    {
+      "file": "_layouts/fortunefindersBank.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-fortunefinders-1.scss"
+    },
+    {
+      "file": "_layouts/fortunefindersCasino.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-fortunefinders-1.scss"
+    },
+    {
+      "file": "_layouts/lessonbase.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-lessonbase-1.scss"
+    },
+    {
+      "file": "_layouts/lessonbasecapture.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-lessonbase-1.scss"
+    },
+    {
+      "file": "_layouts/pnec-base.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-pnec-base-1.scss"
+    },
+    {
+      "file": "_layouts/post.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-post-1.scss"
+    },
+    {
+      "file": "_layouts/student_toolkit.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-student-toolkit-1.scss"
+    },
+    {
+      "file": "_layouts/tailwind.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-tailwind-1.scss"
+    },
+    {
+      "file": "_layouts/teaching.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/layouts/_layouts-teaching-1.scss"
+    },
+    {
+      "file": "exercisegraphs.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_exercisegraphs-1.scss"
+    },
+    {
+      "file": "facialrecognitiontest.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_facialrecognitiontest-1.scss"
+    },
+    {
+      "file": "hacks/TheBig6/ai/ai_lesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-thebig6-ai-ai-lesson-1.scss"
+    },
+    {
+      "file": "hacks/TheBig6/analytics/analytics_lesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-thebig6-analytics-analytics-lesson-1.scss"
+    },
+    {
+      "file": "hacks/TheBig6/backend/backend_lesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-thebig6-backend-backend-lesson-1.scss"
+    },
+    {
+      "file": "hacks/TheBig6/data-viz/dataviz_lesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-thebig6-data-viz-dataviz-lesson-1.scss"
+    },
+    {
+      "file": "hacks/TheBig6/frontend/frontend_lesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-thebig6-frontend-frontend-lesson-1.scss"
+    },
+    {
+      "file": "hacks/TheBig6/resume/resume_lesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-thebig6-resume-resume-lesson-1.scss"
+    },
+    {
+      "file": "hacks/api-usage/gemini-playground.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-api-usage-gemini-playground-1.scss"
+    },
+    {
+      "file": "hacks/binary-math.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-binary-math-1.scss"
+    },
+    {
+      "file": "hacks/blackjack.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-blackjack-1.scss"
+    },
+    {
+      "file": "hacks/breakout/breakout.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-breakout-breakout-1.scss"
+    },
+    {
+      "file": "hacks/breakout/functionalbreakoutgame.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-breakout-functionalbreakoutgame-1.scss"
+    },
+    {
+      "file": "hacks/breakout/functionalbreakoutlesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-breakout-functionalbreakoutlesson-1.scss"
+    },
+    {
+      "file": "hacks/breakout/functionalbreakoutlesson.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-breakout-functionalbreakoutlesson-2.scss"
+    },
+    {
+      "file": "hacks/breakout/levels_points.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-breakout-levels-points-1.scss"
+    },
+    {
+      "file": "hacks/breakout/oop_lesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-breakout-oop-lesson-1.scss"
+    },
+    {
+      "file": "hacks/breakout/oop_upgrade.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-breakout-oop-upgrade-1.scss"
+    },
+    {
+      "file": "hacks/breakout/oopadv_lesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-breakout-oopadv-lesson-1.scss"
+    },
+    {
+      "file": "hacks/breakout/oopbreakoutgame.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-breakout-oopbreakoutgame-1.scss"
+    },
+    {
+      "file": "hacks/breakout/oopbreakoutlesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-breakout-functionalbreakoutlesson-1.scss"
+    },
+    {
+      "file": "hacks/breakout/oopbreakoutlesson.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-breakout-oop-lesson-1.scss"
+    },
+    {
+      "file": "hacks/connect4-game.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-connect4-game-1.scss"
+    },
+    {
+      "file": "hacks/connect4/2025-09-03-algorithms.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-connect4-2025-09-03-algorithms-1.scss"
+    },
+    {
+      "file": "hacks/connect4/2025-09-03-challenges.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-connect4-2025-09-03-challenges-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/ai/submodule_1.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-ai-submodule-1-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/ai/submodule_2.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-ai-submodule-2-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/ai/submodule_3.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-ai-submodule-3-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/analytics/submodule_1.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-analytics-submodule-1-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/analytics/submodule_2.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-analytics-submodule-2-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/analytics/submodule_3.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-analytics-submodule-3-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/backend/submodule_4.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-backend-submodule-4-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/data-viz/submodule_1.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-data-viz-submodule-1-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/data-viz/submodule_2.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-data-viz-submodule-2-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/frontend/submodule_1.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-frontend-submodule-1-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/frontend/submodule_3.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-frontend-submodule-3-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/frontend/submodule_4.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-frontend-submodule-4-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/frontend/submodule_5.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-frontend-submodule-5-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/frontend/submodule_6.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-frontend-submodule-6-1.scss"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/resume/submodule_6.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-resume-submodule-6-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/ai/questHome.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-ai-questhome-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/ai/submodule_1.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-1-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/ai/submodule_1.html",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-1-2.scss"
+    },
+    {
+      "file": "hacks/digital-famine/ai/submodule_1.html",
+      "block": 3,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-1-3.scss"
+    },
+    {
+      "file": "hacks/digital-famine/ai/submodule_2.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-2-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/ai/submodule_2.html",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-2-2.scss"
+    },
+    {
+      "file": "hacks/digital-famine/ai/submodule_3.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-3-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/ai/submodule_3.html",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-3-2.scss"
+    },
+    {
+      "file": "hacks/digital-famine/ai/submodule_3.html",
+      "block": 3,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-3-3.scss"
+    },
+    {
+      "file": "hacks/digital-famine/ai/submodule_4-vaultgame.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-4-vaultgame-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/cyber/cybersecurity-game.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-cybersecurity-game-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/cyber/missions/base-database.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-base-database-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/cyber/missions/encrypt-the-launch-codes.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-encrypt-the-launch-codes-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/cyber/missions/finalVault/real-vault.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-finalvault-real-vault-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/cyber/missions/finalVault/vault-quiz.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-finalvault-vault-quiz-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/cyber/missions/mission_1/mission-1-lesson.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-mission-1-mission-1-lesson-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/cyber/missions/mission_3/mission-3-lesson.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-mission-3-mission-3-lesson-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/cyber/missions/missions_2/mission-2-lesson.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-missions-2-mission-2-lesson-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/cyber/missions/patch-the-wormhole.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-patch-the-wormhole-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/end/submodule_1.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-1-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/end/submodule_2.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-2-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/end/submodule_2.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-2-2.scss"
+    },
+    {
+      "file": "hacks/digital-famine/end/submodule_4.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-4-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/end/submodule_5.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-5-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/end/submodule_5_old.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-5-old-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/media-lit/media/media.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-media-lit-media-media-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/media-lit/media/mediaTest.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-media-lit-media-mediatest-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/media-lit/submodule_3.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-media-lit-submodule-3-2.scss"
+    },
+    {
+      "file": "hacks/digital-famine/media-lit/submodule_4.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-media-lit-submodule-4-2.scss"
+    },
+    {
+      "file": "hacks/digital-famine/microblog/piiQuiz.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-microblog-piiquiz-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/microblog/questHome.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-microblog-questhome-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/microblog/vault.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-microblog-vault-1.scss"
+    },
+    {
+      "file": "hacks/digital-famine/questHome.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-questhome-1.scss"
+    },
+    {
+      "file": "hacks/golf.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-golf-1.scss"
+    },
+    {
+      "file": "hacks/memory.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-memory-1.scss"
+    },
+    {
+      "file": "hacks/plagiarism/C2-demo_reference-instruction.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-plagiarism-c2-demo-reference-instruction-1.scss"
+    },
+    {
+      "file": "hacks/plagiarism/C2-demo_reference-instruction.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-plagiarism-c2-demo-reference-instruction-2.scss"
+    },
+    {
+      "file": "hacks/plagiarism/C3-practice_reference_correction.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-plagiarism-c3-practice-reference-correction-1.scss"
+    },
+    {
+      "file": "hacks/plagiarism/C4-application_avoidance-workshop.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-plagiarism-c4-application-avoidance-workshop-1.scss"
+    },
+    {
+      "file": "hacks/plagiarism/C5-assessment_mastery_check.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-plagiarism-c5-assessment-mastery-check-1.scss"
+    },
+    {
+      "file": "hacks/plagiarism/C6-integration_master_certificate.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-plagiarism-c6-integration-master-certificate-1.scss"
+    },
+    {
+      "file": "hacks/pong/2025-08-19-PongLesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-pong-2025-08-19-ponglesson-1.scss"
+    },
+    {
+      "file": "hacks/pong/2025-08-2-P2lesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-pong-2025-08-2-p2lesson-1.scss"
+    },
+    {
+      "file": "hacks/pong/2025-08-20-PongGame.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-pong-2025-08-20-ponggame-1.scss"
+    },
+    {
+      "file": "hacks/pong/2025-08-28-P3Lesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-pong-2025-08-28-p3lesson-1.scss"
+    },
+    {
+      "file": "hacks/pong/2025-09-03-P0lesson.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-pong-2025-09-03-p0lesson-1.scss"
+    },
+    {
+      "file": "hacks/snake.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-snake-1.scss"
+    },
+    {
+      "file": "hacks/solitaire-old.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-solitaire-old-1.scss"
+    },
+    {
+      "file": "hacks/solitaire.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-solitaire-1.scss"
+    },
+    {
+      "file": "hacks/solitaire.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-solitaire-2.scss"
+    },
+    {
+      "file": "hacks/spaceColony.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-spacecolony-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/ai/questHome.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-ai-questhome-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/ai/submodule_1.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-1-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/ai/submodule_2.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-2-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/ai/submodule_2.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-2-2.scss"
+    },
+    {
+      "file": "hacks/west-coast/ai/submodule_2.md",
+      "block": 3,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-2-3.scss"
+    },
+    {
+      "file": "hacks/west-coast/ai/submodule_2.md",
+      "block": 4,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-2-4.scss"
+    },
+    {
+      "file": "hacks/west-coast/ai/submodule_2.md",
+      "block": 5,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-2-5.scss"
+    },
+    {
+      "file": "hacks/west-coast/ai/submodule_3.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-3-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/ai/submodule_4.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-4-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/food/submodule_1.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-food-submodule-1-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/food/submodule_2.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-food-submodule-2-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/food/submodule_3.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-food-submodule-3-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/food/submodule_4.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-food-submodule-4-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/sports/questHome.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-sports-questhome-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/sports/submodule_1.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-sports-submodule-1-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/sports/submodule_2.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-sports-submodule-2-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/sports/submodule_3.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-sports-submodule-3-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/sports/submodule_4.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-sports-submodule-4-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/los angeles/LosAngeles.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-los-angeles-losangeles-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/losangeles/GriffithObservatory.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-losangeles-griffithobservatory-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/losangeles/Hollywood Sign.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-losangeles-hollywood-sign-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/losangeles/LosAngeles.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-los-angeles-losangeles-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/losangeles/Universal Studios.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-losangeles-universal-studios-2.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/losangeles/Walk of Fame.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-losangeles-walk-of-fame-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sandiego/SanDiego.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-sandiego-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sandiego/balboapark.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-balboapark-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sandiego/balboapark.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-balboapark-2.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sandiego/lajolla.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-lajolla-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sandiego/lajolla.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-balboapark-2.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sandiego/petcopark.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-petcopark-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sandiego/zoo.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-zoo-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sanfrancisco/SanFrancisco.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-sanfrancisco-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sanfrancisco/alcatraz.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-alcatraz-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sanfrancisco/alcatraz.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-alcatraz-2.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sanfrancisco/goldengatebridge.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-goldengatebridge-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sanfrancisco/palaceoffinearts.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-palaceoffinearts-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sanfrancisco/palaceoffinearts.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-palaceoffinearts-2.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sanfrancisco/thepaintedladies.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-thepaintedladies-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/sanfrancisco/thepaintedladies.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-thepaintedladies-2.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/seattle/Seattle.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-seattle-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/seattle/lumenfield.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-lumenfield-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/seattle/lumenfield.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-lumenfield-2.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/seattle/mountrainiernationalpark.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-lumenfield-2.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/seattle/pikeplacemarket.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-pikeplacemarket-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/seattle/pikeplacemarket.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-lumenfield-2.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/seattle/spaceneedle.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-spaceneedle-1.scss"
+    },
+    {
+      "file": "hacks/west-coast/travel/seattle/spaceneedle.md",
+      "block": 2,
+      "partial": "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-lumenfield-2.scss"
+    },
+    {
+      "file": "hacks/wordgame.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-wordgame-1.scss"
+    },
+    {
+      "file": "hacks/wordquill.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-wordquill-1.scss"
+    },
+    {
+      "file": "media/media.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_hacks-digital-famine-media-lit-media-media-1.scss"
+    },
+    {
+      "file": "navigation/about.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-about-1.scss"
+    },
+    {
+      "file": "navigation/adventureGame/debug-npc-challenge.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-adventuregame-debug-npc-challenge-1.scss"
+    },
+    {
+      "file": "navigation/authentication/facial_mood.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-authentication-facial-mood-1.scss"
+    },
+    {
+      "file": "navigation/bitshift/documentation/binaryMethods.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-bitshift-documentation-binarymethods-1.scss"
+    },
+    {
+      "file": "navigation/finance.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-finance-1.scss"
+    },
+    {
+      "file": "navigation/leaderboard.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-leaderboard-1.scss"
+    },
+    {
+      "file": "navigation/mansionGame/mainworld.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-mansiongame-mainworld-1.scss"
+    },
+    {
+      "file": "navigation/mansionGame/mansionLevel5.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-mansiongame-mansionlevel5-1.scss"
+    },
+    {
+      "file": "navigation/predictors/grade-predictor.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-predictors-grade-predictor-1.scss"
+    },
+    {
+      "file": "navigation/rpg.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-rpg-1.scss"
+    },
+    {
+      "file": "navigation/sabresprings/activity.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-sabresprings-activity-1.scss"
+    },
+    {
+      "file": "navigation/sabresprings/mutual.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-sabresprings-activity-1.scss"
+    },
+    {
+      "file": "navigation/signup.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-signup-1.scss"
+    },
+    {
+      "file": "navigation/toolkit/student.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-toolkit-student-1.scss"
+    },
+    {
+      "file": "navigation/toolkit/teacher.md",
+      "block": 1,
+      "partial": "_sass/beasts/inline/navigation/_navigation-toolkit-teacher-1.scss"
+    },
+    {
+      "file": "pages/admin-blog.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-admin-blog-1.scss"
+    },
+    {
+      "file": "pages/admin-chatbot-analytics.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-admin-chatbot-analytics-1.scss"
+    },
+    {
+      "file": "pages/admin-editor.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-admin-editor-1.scss"
+    },
+    {
+      "file": "pages/admin-map-align.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-admin-map-align-1.scss"
+    },
+    {
+      "file": "pages/admin-map-hotspots.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-admin-map-hotspots-1.scss"
+    },
+    {
+      "file": "pages/admin-nav.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-admin-nav-1.scss"
+    },
+    {
+      "file": "pages/admin-security.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-admin-security-1.scss"
+    },
+    {
+      "file": "pages/admin-volunteer.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-admin-volunteer-1.scss"
+    },
+    {
+      "file": "pages/admin.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-admin-1.scss"
+    },
+    {
+      "file": "pages/blog-post.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-blog-post-1.scss",
+      "kind": "frontmatter"
+    },
+    {
+      "file": "pages/blog.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-blog-1.scss",
+      "kind": "frontmatter"
+    },
+    {
+      "file": "pages/checklist.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-checklist-1.scss"
+    },
+    {
+      "file": "pages/community-events-and-activities.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-community-events-and-activities-1.scss"
+    },
+    {
+      "file": "pages/community-events-and-activities.html",
+      "block": 7,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-live-head-6.scss"
+    },
+    {
+      "file": "pages/community-events-and-activities.html",
+      "block": 8,
+      "partial": "_sass/beasts/inline/pages/_pages-community-events-and-activities-8.scss"
+    },
+    {
+      "file": "pages/donate.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-donate-1.scss"
+    },
+    {
+      "file": "pages/events-archive.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-events-archive-1.scss"
+    },
+    {
+      "file": "pages/find-your-neighborhood.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-find-your-neighborhood-1.scss"
+    },
+    {
+      "file": "pages/find-your-neighborhood.html",
+      "block": 7,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-live-head-6.scss"
+    },
+    {
+      "file": "pages/find-your-neighborhood.html",
+      "block": 8,
+      "partial": "_sass/beasts/inline/pages/_pages-community-events-and-activities-8.scss"
+    },
+    {
+      "file": "pages/forgot-password.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-forgot-password-1.scss",
+      "kind": "frontmatter"
+    },
+    {
+      "file": "pages/onboarding.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-onboarding-1.scss"
+    },
+    {
+      "file": "pages/preparedness-resources.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-preparedness-resources-1.scss"
+    },
+    {
+      "file": "pages/preparedness-resources.html",
+      "block": 7,
+      "partial": "_sass/beasts/inline/includes/_includes-poway-live-head-6.scss"
+    },
+    {
+      "file": "pages/preparedness-resources.html",
+      "block": 8,
+      "partial": "_sass/beasts/inline/pages/_pages-community-events-and-activities-8.scss"
+    },
+    {
+      "file": "pages/profile.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-profile-1.scss"
+    },
+    {
+      "file": "pages/role-quiz.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-role-quiz-1.scss"
+    },
+    {
+      "file": "pages/security.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-security-1.scss"
+    },
+    {
+      "file": "pages/volunteer.html",
+      "block": 1,
+      "partial": "_sass/beasts/inline/pages/_pages-volunteer-1.scss"
+    }
+  ],
+  "retained": [
+    {
+      "file": "_includes/admin_foundation.html",
+      "block": 2,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "_includes/poway-live-head.html",
+      "block": 1,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "_includes/poway-live-head.html",
+      "block": 2,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "_includes/poway-live-head.html",
+      "block": 3,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "_includes/poway-live-head.html",
+      "block": 4,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "_includes/poway-live-head.html",
+      "block": 5,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-04-29-pnec-live-theme-editor-plan.md",
+      "block": 1,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-04-29-pnec-live-theme-editor-plan.md",
+      "block": 2,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-04-29-pnec-live-theme-editor-plan.md",
+      "block": 3,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "docs/superpowers/specs/2026-04-29-pnec-live-theme-editor-design.md",
+      "block": 1,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "hacks/TheBig6/frontend/frontend_lesson.md",
+      "block": 3,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "hacks/TheBig6/frontend/frontend_lesson.md",
+      "block": 4,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "hacks/TheBig6/frontend/frontend_lesson.md",
+      "block": 5,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "hacks/TheBig6/frontend/frontend_lesson.md",
+      "block": 6,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "hacks/TheBig6/frontend/frontend_lesson.md",
+      "block": 7,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "hacks/TheBig6/frontend/frontend_lesson.md",
+      "block": 8,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/frontend/submodule_3.md",
+      "block": 2,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "hacks/digital-famine/end/submodule_3.md",
+      "block": 1,
+      "reason": "template/runtime-dependent styling"
+    },
+    {
+      "file": "hacks/digital-famine/media-lit/questHome.md",
+      "block": 1,
+      "reason": "template/runtime-dependent styling"
+    },
+    {
+      "file": "hacks/digital-famine/media-lit/submodule_1.md",
+      "block": 1,
+      "reason": "template/runtime-dependent styling"
+    },
+    {
+      "file": "hacks/digital-famine/media-lit/submodule_2.md",
+      "block": 1,
+      "reason": "template/runtime-dependent styling"
+    },
+    {
+      "file": "hacks/digital-famine/media-lit/submodule_3.md",
+      "block": 1,
+      "reason": "template/runtime-dependent styling"
+    },
+    {
+      "file": "hacks/digital-famine/media-lit/submodule_4.md",
+      "block": 1,
+      "reason": "template/runtime-dependent styling"
+    },
+    {
+      "file": "hacks/digital-famine/media-lit/submodule_5.md",
+      "block": 1,
+      "reason": "template/runtime-dependent styling"
+    },
+    {
+      "file": "index3.md",
+      "block": 1,
+      "reason": "template/runtime-dependent styling"
+    },
+    {
+      "file": "navigation/bitshift/Bitshift_0101-final-commit-1.html",
+      "block": 3,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "pages/about.html",
+      "block": 3,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/about.html",
+      "block": 4,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/about.html",
+      "block": 5,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/about.html",
+      "block": 6,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/about.html",
+      "block": 7,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/admin-editor.html",
+      "block": 2,
+      "reason": "script, comment or educational code example"
+    },
+    {
+      "file": "pages/community-events-and-activities.html",
+      "block": 2,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/community-events-and-activities.html",
+      "block": 3,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/community-events-and-activities.html",
+      "block": 4,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/community-events-and-activities.html",
+      "block": 5,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/community-events-and-activities.html",
+      "block": 6,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/contact.html",
+      "block": 2,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/contact.html",
+      "block": 3,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/contact.html",
+      "block": 4,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/contact.html",
+      "block": 5,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/contact.html",
+      "block": 6,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/find-your-neighborhood.html",
+      "block": 2,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/find-your-neighborhood.html",
+      "block": 3,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/find-your-neighborhood.html",
+      "block": 4,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/find-your-neighborhood.html",
+      "block": 5,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/find-your-neighborhood.html",
+      "block": 6,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/preparedness-resources.html",
+      "block": 2,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/preparedness-resources.html",
+      "block": 3,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/preparedness-resources.html",
+      "block": 4,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/preparedness-resources.html",
+      "block": 5,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/preparedness-resources.html",
+      "block": 6,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/programs-and-services.html",
+      "block": 3,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/programs-and-services.html",
+      "block": 4,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/programs-and-services.html",
+      "block": 5,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/programs-and-services.html",
+      "block": 6,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/programs-and-services.html",
+      "block": 7,
+      "reason": "WordPress/vendor style"
+    },
+    {
+      "file": "pages/register.html",
+      "block": 1,
+      "reason": "template/runtime-dependent styling"
+    },
+    {
+      "file": "peppamazegame/peppa-maze.html",
+      "block": 1,
+      "reason": "template/runtime-dependent styling"
+    },
+    {
+      "file": "_includes/poway-live-body.html",
+      "block": 1,
+      "reason": "pre-existing malformed CSS/HTML; migration would require changing semantics: Invalid CSS after \"\": expected selector, was \"<style>\""
+    },
+    {
+      "file": "hacks/cs-portfolio-quest/frontend/submodule_2.md",
+      "block": 1,
+      "reason": "pre-existing malformed CSS/HTML; migration would require changing semantics: Invalid CSS after \"    background\": expected \";\", was \": #1e293b;\""
+    },
+    {
+      "file": "hacks/west-coast/travel/losangeles/Universal Studios.md",
+      "block": 1,
+      "reason": "pre-existing malformed CSS/HTML; migration would require changing semantics: Invalid CSS after \"\": expected selector, was \"<html lang=\"en\">\""
+    },
+    {
+      "file": "hacks/west-coast/travel/sandiego/petcopark.md",
+      "block": 2,
+      "reason": "pre-existing malformed CSS/HTML; migration would require changing semantics: Invalid CSS after \"}\": expected \"}\", was \"\""
+    },
+    {
+      "file": "hacks/west-coast/travel/sandiego/zoo.md",
+      "block": 2,
+      "reason": "pre-existing malformed CSS/HTML; migration would require changing semantics: Invalid CSS after \"}\": expected \"}\", was \"\""
+    },
+    {
+      "file": "hacks/west-coast/travel/seattle/mountrainiernationalpark.md",
+      "block": 1,
+      "reason": "pre-existing malformed CSS/HTML; migration would require changing semantics: Invalid CSS after \"  }\": expected \"}\", was \"\""
+    }
+  ],
+  "created": [
+    "_includes/scss-head.html",
+    "_sass/beasts/components/_charts.scss",
+    "_sass/beasts/components/_leaderboard.scss",
+    "_sass/beasts/components/_marketevents.scss",
+    "_sass/beasts/components/_pause-menu.scss",
+    "_sass/beasts/components/_shake.scss",
+    "_sass/beasts/components/_tabs.scss",
+    "_sass/beasts/design-system/_alert-notice-banners.scss",
+    "_sass/beasts/design-system/_buttons.scss",
+    "_sass/beasts/design-system/_cards.scss",
+    "_sass/beasts/design-system/_empty-state.scss",
+    "_sass/beasts/design-system/_form-elements.scss",
+    "_sass/beasts/design-system/_grid-utilities.scss",
+    "_sass/beasts/design-system/_loading-spinner.scss",
+    "_sass/beasts/design-system/_loading-state.scss",
+    "_sass/beasts/design-system/_modal.scss",
+    "_sass/beasts/design-system/_pulse-animation-for-high-risk-indicators.scss",
+    "_sass/beasts/design-system/_role-badges.scss",
+    "_sass/beasts/design-system/_section-headings.scss",
+    "_sass/beasts/design-system/_status-dot.scss",
+    "_sass/beasts/design-system/_tabs.scss",
+    "_sass/beasts/forms/_login.scss",
+    "_sass/beasts/foundation/_responsive.scss",
+    "_sass/beasts/foundation/_tokens.scss",
+    "_sass/beasts/global/_custom-styles.scss",
+    "_sass/beasts/inline/includes/_includes-admin-foundation-1.scss",
+    "_sass/beasts/inline/includes/_includes-aesthetihawk-header-1.scss",
+    "_sass/beasts/inline/includes/_includes-bathroom-pass-1.scss",
+    "_sass/beasts/inline/includes/_includes-blockunlock-grid-1.scss",
+    "_sass/beasts/inline/includes/_includes-carelink-infograph-1.scss",
+    "_sass/beasts/inline/includes/_includes-challenge-submit-button-1.scss",
+    "_sass/beasts/inline/includes/_includes-csp-p4-progress-widget-1.scss",
+    "_sass/beasts/inline/includes/_includes-feedback-foundation-1.scss",
+    "_sass/beasts/inline/includes/_includes-gist-export-button-1.scss",
+    "_sass/beasts/inline/includes/_includes-grading-feedback-1.scss",
+    "_sass/beasts/inline/includes/_includes-group-dashboard-1.scss",
+    "_sass/beasts/inline/includes/_includes-kora-capstone-infograph-1.scss",
+    "_sass/beasts/inline/includes/_includes-lesson-submit-button-1.scss",
+    "_sass/beasts/inline/includes/_includes-nav-csp-units-csp-unit3-p2-fundamentals-1.scss",
+    "_sass/beasts/inline/includes/_includes-nav-kasm-cloud-1.scss",
+    "_sass/beasts/inline/includes/_includes-nav-p4prompt-1.scss",
+    "_sass/beasts/inline/includes/_includes-poway-alert-banner-1.scss",
+    "_sass/beasts/inline/includes/_includes-poway-auth-header-1.scss",
+    "_sass/beasts/inline/includes/_includes-poway-header-1.scss",
+    "_sass/beasts/inline/includes/_includes-poway-live-body-2.scss",
+    "_sass/beasts/inline/includes/_includes-poway-live-body-3.scss",
+    "_sass/beasts/inline/includes/_includes-poway-live-body-4.scss",
+    "_sass/beasts/inline/includes/_includes-poway-live-head-6.scss",
+    "_sass/beasts/inline/includes/_includes-poway-live-head-7.scss",
+    "_sass/beasts/inline/includes/_includes-sentri-infographic-1.scss",
+    "_sass/beasts/inline/includes/_includes-slim-sidebar-1.scss",
+    "_sass/beasts/inline/includes/_includes-tailwind-cs-portfolio-big6-info-1.scss",
+    "_sass/beasts/inline/includes/_includes-tailwind-cs-portfolio-mini-quest-info-1.scss",
+    "_sass/beasts/inline/includes/_includes-tailwind-plagiarism-cases-1.scss",
+    "_sass/beasts/inline/includes/_includes-tailwind-plagiarism-info-1.scss",
+    "_sass/beasts/inline/includes/_includes-tailwind-quests-west-coast-1.scss",
+    "_sass/beasts/inline/includes/_includes-tailwind-quests-west-coast-food-1.scss",
+    "_sass/beasts/inline/includes/_includes-whiteboard-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-admin-fullscreen-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-analytics-dashboard-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-base-chatadpt-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-base-chatog-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-bathroom-scanner-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-bathroom-statistics-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-bathroom-teacher-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-bootstrap-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-certchatbot-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-chatbot-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-cs-bigsix-lesson-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-cs-portfolio-admin-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-finance-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-fortunefinders-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-lessonbase-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-pnec-base-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-post-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-student-toolkit-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-tailwind-1.scss",
+    "_sass/beasts/inline/layouts/_layouts-teaching-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-about-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-adventuregame-debug-npc-challenge-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-authentication-facial-mood-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-bitshift-documentation-binarymethods-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-finance-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-leaderboard-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-mansiongame-mainworld-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-mansiongame-mansionlevel5-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-predictors-grade-predictor-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-rpg-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-sabresprings-activity-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-signup-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-toolkit-student-1.scss",
+    "_sass/beasts/inline/navigation/_navigation-toolkit-teacher-1.scss",
+    "_sass/beasts/inline/pages/_exercisegraphs-1.scss",
+    "_sass/beasts/inline/pages/_facialrecognitiontest-1.scss",
+    "_sass/beasts/inline/pages/_hacks-api-usage-gemini-playground-1.scss",
+    "_sass/beasts/inline/pages/_hacks-binary-math-1.scss",
+    "_sass/beasts/inline/pages/_hacks-blackjack-1.scss",
+    "_sass/beasts/inline/pages/_hacks-breakout-breakout-1.scss",
+    "_sass/beasts/inline/pages/_hacks-breakout-functionalbreakoutgame-1.scss",
+    "_sass/beasts/inline/pages/_hacks-breakout-functionalbreakoutlesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-breakout-functionalbreakoutlesson-2.scss",
+    "_sass/beasts/inline/pages/_hacks-breakout-levels-points-1.scss",
+    "_sass/beasts/inline/pages/_hacks-breakout-oop-lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-breakout-oop-upgrade-1.scss",
+    "_sass/beasts/inline/pages/_hacks-breakout-oopadv-lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-breakout-oopbreakoutgame-1.scss",
+    "_sass/beasts/inline/pages/_hacks-connect4-2025-09-03-algorithms-1.scss",
+    "_sass/beasts/inline/pages/_hacks-connect4-2025-09-03-challenges-1.scss",
+    "_sass/beasts/inline/pages/_hacks-connect4-game-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-ai-submodule-1-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-ai-submodule-2-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-ai-submodule-3-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-analytics-submodule-1-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-analytics-submodule-2-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-analytics-submodule-3-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-backend-submodule-4-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-data-viz-submodule-1-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-data-viz-submodule-2-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-frontend-submodule-1-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-frontend-submodule-3-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-frontend-submodule-4-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-frontend-submodule-5-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-frontend-submodule-6-1.scss",
+    "_sass/beasts/inline/pages/_hacks-cs-portfolio-quest-resume-submodule-6-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-ai-questhome-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-1-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-1-2.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-1-3.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-2-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-2-2.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-3-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-3-2.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-3-3.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-ai-submodule-4-vaultgame-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-cybersecurity-game-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-base-database-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-encrypt-the-launch-codes-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-finalvault-real-vault-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-finalvault-vault-quiz-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-mission-1-mission-1-lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-mission-3-mission-3-lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-missions-2-mission-2-lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-cyber-missions-patch-the-wormhole-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-1-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-2-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-2-2.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-4-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-5-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-end-submodule-5-old-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-media-lit-media-media-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-media-lit-media-mediatest-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-media-lit-submodule-3-2.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-media-lit-submodule-4-2.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-microblog-piiquiz-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-microblog-questhome-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-microblog-vault-1.scss",
+    "_sass/beasts/inline/pages/_hacks-digital-famine-questhome-1.scss",
+    "_sass/beasts/inline/pages/_hacks-golf-1.scss",
+    "_sass/beasts/inline/pages/_hacks-memory-1.scss",
+    "_sass/beasts/inline/pages/_hacks-plagiarism-c2-demo-reference-instruction-1.scss",
+    "_sass/beasts/inline/pages/_hacks-plagiarism-c2-demo-reference-instruction-2.scss",
+    "_sass/beasts/inline/pages/_hacks-plagiarism-c3-practice-reference-correction-1.scss",
+    "_sass/beasts/inline/pages/_hacks-plagiarism-c4-application-avoidance-workshop-1.scss",
+    "_sass/beasts/inline/pages/_hacks-plagiarism-c5-assessment-mastery-check-1.scss",
+    "_sass/beasts/inline/pages/_hacks-plagiarism-c6-integration-master-certificate-1.scss",
+    "_sass/beasts/inline/pages/_hacks-pong-2025-08-19-ponglesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-pong-2025-08-2-p2lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-pong-2025-08-20-ponggame-1.scss",
+    "_sass/beasts/inline/pages/_hacks-pong-2025-08-28-p3lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-pong-2025-09-03-p0lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-snake-1.scss",
+    "_sass/beasts/inline/pages/_hacks-solitaire-1.scss",
+    "_sass/beasts/inline/pages/_hacks-solitaire-2.scss",
+    "_sass/beasts/inline/pages/_hacks-solitaire-old-1.scss",
+    "_sass/beasts/inline/pages/_hacks-spacecolony-1.scss",
+    "_sass/beasts/inline/pages/_hacks-thebig6-ai-ai-lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-thebig6-analytics-analytics-lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-thebig6-backend-backend-lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-thebig6-data-viz-dataviz-lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-thebig6-frontend-frontend-lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-thebig6-resume-resume-lesson-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-ai-questhome-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-1-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-2-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-2-2.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-2-3.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-2-4.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-2-5.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-3-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-ai-submodule-4-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-food-submodule-1-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-food-submodule-2-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-food-submodule-3-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-food-submodule-4-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-sports-questhome-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-sports-submodule-1-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-sports-submodule-2-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-sports-submodule-3-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-sports-submodule-4-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-los-angeles-losangeles-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-losangeles-griffithobservatory-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-losangeles-hollywood-sign-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-losangeles-universal-studios-2.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-losangeles-walk-of-fame-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-balboapark-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-balboapark-2.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-lajolla-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-petcopark-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-sandiego-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sandiego-zoo-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-alcatraz-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-alcatraz-2.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-goldengatebridge-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-palaceoffinearts-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-palaceoffinearts-2.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-sanfrancisco-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-thepaintedladies-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-sanfrancisco-thepaintedladies-2.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-lumenfield-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-lumenfield-2.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-pikeplacemarket-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-seattle-1.scss",
+    "_sass/beasts/inline/pages/_hacks-west-coast-travel-seattle-spaceneedle-1.scss",
+    "_sass/beasts/inline/pages/_hacks-wordgame-1.scss",
+    "_sass/beasts/inline/pages/_hacks-wordquill-1.scss",
+    "_sass/beasts/inline/pages/_pages-admin-1.scss",
+    "_sass/beasts/inline/pages/_pages-admin-blog-1.scss",
+    "_sass/beasts/inline/pages/_pages-admin-chatbot-analytics-1.scss",
+    "_sass/beasts/inline/pages/_pages-admin-editor-1.scss",
+    "_sass/beasts/inline/pages/_pages-admin-map-align-1.scss",
+    "_sass/beasts/inline/pages/_pages-admin-map-hotspots-1.scss",
+    "_sass/beasts/inline/pages/_pages-admin-nav-1.scss",
+    "_sass/beasts/inline/pages/_pages-admin-security-1.scss",
+    "_sass/beasts/inline/pages/_pages-admin-volunteer-1.scss",
+    "_sass/beasts/inline/pages/_pages-blog-1.scss",
+    "_sass/beasts/inline/pages/_pages-blog-post-1.scss",
+    "_sass/beasts/inline/pages/_pages-checklist-1.scss",
+    "_sass/beasts/inline/pages/_pages-community-events-and-activities-1.scss",
+    "_sass/beasts/inline/pages/_pages-community-events-and-activities-8.scss",
+    "_sass/beasts/inline/pages/_pages-donate-1.scss",
+    "_sass/beasts/inline/pages/_pages-events-archive-1.scss",
+    "_sass/beasts/inline/pages/_pages-find-your-neighborhood-1.scss",
+    "_sass/beasts/inline/pages/_pages-forgot-password-1.scss",
+    "_sass/beasts/inline/pages/_pages-onboarding-1.scss",
+    "_sass/beasts/inline/pages/_pages-preparedness-resources-1.scss",
+    "_sass/beasts/inline/pages/_pages-profile-1.scss",
+    "_sass/beasts/inline/pages/_pages-role-quiz-1.scss",
+    "_sass/beasts/inline/pages/_pages-security-1.scss",
+    "_sass/beasts/inline/pages/_pages-volunteer-1.scss",
+    "_sass/beasts/layout/_footer-polish.scss",
+    "_sass/beasts/legacy/bathroom/_bathroom.scss",
+    "_sass/beasts/legacy/bathroom/_profile.scss",
+    "_sass/beasts/legacy/bathroom/_queue.scss",
+    "_sass/beasts/legacy/bathroom/_report-issues.scss",
+    "_sass/beasts/legacy/screen-queue/_call.scss",
+    "_sass/beasts/legacy/screen-queue/_groups.scss",
+    "_sass/beasts/legacy/screen-queue/_init.scss",
+    "_sass/beasts/legacy/screen-queue/_navbar.scss",
+    "_sass/beasts/legacy/screen-queue/_queue.scss",
+    "_sass/beasts/pages/_certificate-overview.scss",
+    "_sass/beasts/pages/_crypto.scss",
+    "_sass/beasts/pages/_csp-home.scss",
+    "_sass/beasts/pnec/_chatbot.scss",
+    "_sass/beasts/pnec/_cms-sections.scss",
+    "_sass/beasts/pnec/_community-tools.scss",
+    "_sass/beasts/pnec/_poway-neighborhood-map.scss",
+    "_sass/beasts/pnec/_poway-unified-ui.scss",
+    "_sass/beasts/static-pages/_navigation-bitshift-bitshift-0101-final-commit-1-1.scss",
+    "_sass/beasts/static-pages/_navigation-bitshift-bitshift-0101-final-commit-1-2.scss",
+    "_sass/beasts/static-pages/_pages-about-1.scss",
+    "_sass/beasts/static-pages/_pages-about-2.scss",
+    "_sass/beasts/static-pages/_pages-about-8.scss",
+    "_sass/beasts/static-pages/_pages-about-9.scss",
+    "_sass/beasts/static-pages/_pages-contact-1.scss",
+    "_sass/beasts/static-pages/_pages-contact-7.scss",
+    "_sass/beasts/static-pages/_pages-contact-8.scss",
+    "_sass/beasts/static-pages/_pages-programs-and-services-1.scss",
+    "_sass/beasts/static-pages/_pages-programs-and-services-2.scss",
+    "_sass/beasts/static-pages/_pages-programs-and-services-8.scss",
+    "_sass/beasts/static-pages/_pages-programs-and-services-9.scss",
+    "_sass/beasts/static-pages/_test-certificate-1.scss",
+    "assets/Bathroom/bathroom.scss",
+    "assets/Bathroom/profile.scss",
+    "assets/Bathroom/queue.scss",
+    "assets/Bathroom/report-issues.scss",
+    "assets/css/aesthetihawk/charts.scss",
+    "assets/css/aesthetihawk/shake.scss",
+    "assets/css/aesthetihawk/tabs.scss",
+    "assets/css/beasts/navigation-bitshift-bitshift-0101-final-commit-1-1.scss",
+    "assets/css/beasts/navigation-bitshift-bitshift-0101-final-commit-1-2.scss",
+    "assets/css/beasts/pages-about-1.scss",
+    "assets/css/beasts/pages-about-2.scss",
+    "assets/css/beasts/pages-about-8.scss",
+    "assets/css/beasts/pages-about-9.scss",
+    "assets/css/beasts/pages-contact-1.scss",
+    "assets/css/beasts/pages-contact-7.scss",
+    "assets/css/beasts/pages-contact-8.scss",
+    "assets/css/beasts/pages-programs-and-services-1.scss",
+    "assets/css/beasts/pages-programs-and-services-2.scss",
+    "assets/css/beasts/pages-programs-and-services-8.scss",
+    "assets/css/beasts/pages-programs-and-services-9.scss",
+    "assets/css/beasts/test-certificate-1.scss",
+    "assets/css/certificate_overview.scss",
+    "assets/css/chatbot.scss",
+    "assets/css/cms-sections.scss",
+    "assets/css/community-tools.scss",
+    "assets/css/crypto.scss",
+    "assets/css/csp_home.scss",
+    "assets/css/custom-styles.scss",
+    "assets/css/footer-polish.scss",
+    "assets/css/leaderboard.scss",
+    "assets/css/marketEvents.scss",
+    "assets/css/pause-menu.scss",
+    "assets/css/poway-neighborhood-map.scss",
+    "assets/css/poway-unified-ui.scss",
+    "assets/screenQueue/style/call.scss",
+    "assets/screenQueue/style/groups.scss",
+    "assets/screenQueue/style/init.scss",
+    "assets/screenQueue/style/navbar.scss",
+    "assets/screenQueue/style/queue.scss",
+    "login.scss",
+    "scripts/SCSS_MIGRATION.md",
+    "scripts/check_scss_sources.py",
+    "scripts/scss-migration.json"
+  ],
+  "modified": [
+    "_includes/admin_foundation.html",
+    "_includes/aesthetihawk/header.html",
+    "_includes/bathroom_pass.html",
+    "_includes/blockunlock-grid.html",
+    "_includes/carelink-infograph.html",
+    "_includes/challenge-submit-button.html",
+    "_includes/csp/p4-progress-widget.html",
+    "_includes/feedback_foundation.html",
+    "_includes/gist-export-button.html",
+    "_includes/grading-feedback.html",
+    "_includes/group_dashboard.html",
+    "_includes/kora-capstone-infograph.html",
+    "_includes/lesson-submit-button.html",
+    "_includes/nav/csp_units/csp_unit3_p2_fundamentals.html",
+    "_includes/nav/kasm_cloud.html",
+    "_includes/nav/p4prompt.html",
+    "_includes/poway-alert-banner.html",
+    "_includes/poway-auth-header.html",
+    "_includes/poway-header.html",
+    "_includes/poway-live-body.html",
+    "_includes/poway-live-head.html",
+    "_includes/sentri-infographic.html",
+    "_includes/slim_sidebar.html",
+    "_includes/tailwind/cs-portfolio-big6_info.html",
+    "_includes/tailwind/cs-portfolio-mini_quest_info.html",
+    "_includes/tailwind/cs-portfolio-quest_info.html",
+    "_includes/tailwind/plagiarism_cases.html",
+    "_includes/tailwind/plagiarism_info.html",
+    "_includes/tailwind/quests/west-coast-food.html",
+    "_includes/tailwind/quests/west-coast.html",
+    "_includes/whiteboard.html",
+    "_layouts/admin-fullscreen.html",
+    "_layouts/analytics-dashboard.html",
+    "_layouts/base_chatadpt.html",
+    "_layouts/base_chatog.html",
+    "_layouts/bathroom/scanner.html",
+    "_layouts/bathroom/statistics.html",
+    "_layouts/bathroom/teacher.html",
+    "_layouts/bootstrap.html",
+    "_layouts/certchatbot.html",
+    "_layouts/chatbot.html",
+    "_layouts/cs-bigsix-lesson.html",
+    "_layouts/cs-portfolio-admin.html",
+    "_layouts/cs-portfolio-lesson.html",
+    "_layouts/finance.html",
+    "_layouts/fortunefinders.html",
+    "_layouts/fortunefindersBank.html",
+    "_layouts/fortunefindersCasino.html",
+    "_layouts/lessonbase.html",
+    "_layouts/lessonbasecapture.html",
+    "_layouts/pnec-base.html",
+    "_layouts/post.html",
+    "_layouts/poway-clone-auth.html",
+    "_layouts/student_toolkit.html",
+    "_layouts/tailwind.html",
+    "_layouts/teaching.html",
+    "_sass/_components.scss",
+    "exercisegraphs.html",
+    "facialrecognitiontest.md",
+    "hacks/TheBig6/ai/ai_lesson.md",
+    "hacks/TheBig6/analytics/analytics_lesson.md",
+    "hacks/TheBig6/backend/backend_lesson.md",
+    "hacks/TheBig6/data-viz/dataviz_lesson.md",
+    "hacks/TheBig6/frontend/frontend_lesson.md",
+    "hacks/TheBig6/resume/resume_lesson.md",
+    "hacks/api-usage/gemini-playground.md",
+    "hacks/binary-math.md",
+    "hacks/blackjack.md",
+    "hacks/breakout/breakout.md",
+    "hacks/breakout/functionalbreakoutgame.md",
+    "hacks/breakout/functionalbreakoutlesson.md",
+    "hacks/breakout/levels_points.md",
+    "hacks/breakout/oop_lesson.md",
+    "hacks/breakout/oop_upgrade.md",
+    "hacks/breakout/oopadv_lesson.md",
+    "hacks/breakout/oopbreakoutgame.md",
+    "hacks/breakout/oopbreakoutlesson.md",
+    "hacks/connect4-game.md",
+    "hacks/connect4/2025-09-03-algorithms.md",
+    "hacks/connect4/2025-09-03-challenges.md",
+    "hacks/cs-portfolio-quest/ai/submodule_1.md",
+    "hacks/cs-portfolio-quest/ai/submodule_2.md",
+    "hacks/cs-portfolio-quest/ai/submodule_3.md",
+    "hacks/cs-portfolio-quest/analytics/submodule_1.md",
+    "hacks/cs-portfolio-quest/analytics/submodule_2.md",
+    "hacks/cs-portfolio-quest/analytics/submodule_3.md",
+    "hacks/cs-portfolio-quest/backend/submodule_4.md",
+    "hacks/cs-portfolio-quest/data-viz/submodule_1.md",
+    "hacks/cs-portfolio-quest/data-viz/submodule_2.md",
+    "hacks/cs-portfolio-quest/frontend/submodule_1.md",
+    "hacks/cs-portfolio-quest/frontend/submodule_3.md",
+    "hacks/cs-portfolio-quest/frontend/submodule_4.md",
+    "hacks/cs-portfolio-quest/frontend/submodule_5.md",
+    "hacks/cs-portfolio-quest/frontend/submodule_6.md",
+    "hacks/cs-portfolio-quest/resume/submodule_6.md",
+    "hacks/digital-famine/ai/questHome.html",
+    "hacks/digital-famine/ai/submodule_1.html",
+    "hacks/digital-famine/ai/submodule_2.html",
+    "hacks/digital-famine/ai/submodule_3.html",
+    "hacks/digital-famine/ai/submodule_4-vaultgame.html",
+    "hacks/digital-famine/cyber/cybersecurity-game.html",
+    "hacks/digital-famine/cyber/missions/base-database.html",
+    "hacks/digital-famine/cyber/missions/encrypt-the-launch-codes.html",
+    "hacks/digital-famine/cyber/missions/finalVault/real-vault.md",
+    "hacks/digital-famine/cyber/missions/finalVault/vault-quiz.md",
+    "hacks/digital-famine/cyber/missions/mission_1/mission-1-lesson.html",
+    "hacks/digital-famine/cyber/missions/mission_3/mission-3-lesson.html",
+    "hacks/digital-famine/cyber/missions/missions_2/mission-2-lesson.html",
+    "hacks/digital-famine/cyber/missions/patch-the-wormhole.html",
+    "hacks/digital-famine/end/submodule_1.md",
+    "hacks/digital-famine/end/submodule_2.md",
+    "hacks/digital-famine/end/submodule_4.md",
+    "hacks/digital-famine/end/submodule_5.md",
+    "hacks/digital-famine/end/submodule_5_old.md",
+    "hacks/digital-famine/media-lit/media/media.md",
+    "hacks/digital-famine/media-lit/media/mediaTest.md",
+    "hacks/digital-famine/media-lit/submodule_3.md",
+    "hacks/digital-famine/media-lit/submodule_4.md",
+    "hacks/digital-famine/microblog/piiQuiz.md",
+    "hacks/digital-famine/microblog/questHome.md",
+    "hacks/digital-famine/microblog/vault.md",
+    "hacks/digital-famine/questHome.md",
+    "hacks/golf.md",
+    "hacks/memory.md",
+    "hacks/plagiarism/C2-demo_reference-instruction.md",
+    "hacks/plagiarism/C3-practice_reference_correction.md",
+    "hacks/plagiarism/C4-application_avoidance-workshop.md",
+    "hacks/plagiarism/C5-assessment_mastery_check.md",
+    "hacks/plagiarism/C6-integration_master_certificate.md",
+    "hacks/pong/2025-08-19-PongLesson.md",
+    "hacks/pong/2025-08-2-P2lesson.md",
+    "hacks/pong/2025-08-20-PongGame.md",
+    "hacks/pong/2025-08-28-P3Lesson.md",
+    "hacks/pong/2025-09-03-P0lesson.md",
+    "hacks/snake.md",
+    "hacks/solitaire-old.md",
+    "hacks/solitaire.md",
+    "hacks/spaceColony.md",
+    "hacks/west-coast/ai/questHome.md",
+    "hacks/west-coast/ai/submodule_1.md",
+    "hacks/west-coast/ai/submodule_2.md",
+    "hacks/west-coast/ai/submodule_3.md",
+    "hacks/west-coast/ai/submodule_4.md",
+    "hacks/west-coast/food/submodule_1.md",
+    "hacks/west-coast/food/submodule_2.md",
+    "hacks/west-coast/food/submodule_3.md",
+    "hacks/west-coast/food/submodule_4.md",
+    "hacks/west-coast/sports/questHome.md",
+    "hacks/west-coast/sports/submodule_1.md",
+    "hacks/west-coast/sports/submodule_2.md",
+    "hacks/west-coast/sports/submodule_3.md",
+    "hacks/west-coast/sports/submodule_4.md",
+    "hacks/west-coast/travel/los angeles/LosAngeles.md",
+    "hacks/west-coast/travel/losangeles/GriffithObservatory.md",
+    "hacks/west-coast/travel/losangeles/Hollywood Sign.md",
+    "hacks/west-coast/travel/losangeles/LosAngeles.md",
+    "hacks/west-coast/travel/losangeles/Universal Studios.md",
+    "hacks/west-coast/travel/losangeles/Walk of Fame.md",
+    "hacks/west-coast/travel/sandiego/SanDiego.md",
+    "hacks/west-coast/travel/sandiego/balboapark.md",
+    "hacks/west-coast/travel/sandiego/lajolla.md",
+    "hacks/west-coast/travel/sandiego/petcopark.md",
+    "hacks/west-coast/travel/sandiego/zoo.md",
+    "hacks/west-coast/travel/sanfrancisco/SanFrancisco.md",
+    "hacks/west-coast/travel/sanfrancisco/alcatraz.md",
+    "hacks/west-coast/travel/sanfrancisco/goldengatebridge.md",
+    "hacks/west-coast/travel/sanfrancisco/palaceoffinearts.md",
+    "hacks/west-coast/travel/sanfrancisco/thepaintedladies.md",
+    "hacks/west-coast/travel/seattle/Seattle.md",
+    "hacks/west-coast/travel/seattle/lumenfield.md",
+    "hacks/west-coast/travel/seattle/mountrainiernationalpark.md",
+    "hacks/west-coast/travel/seattle/pikeplacemarket.md",
+    "hacks/west-coast/travel/seattle/spaceneedle.md",
+    "hacks/wordgame.md",
+    "hacks/wordquill.md",
+    "media/media.md",
+    "navigation/about.md",
+    "navigation/adventureGame/debug-npc-challenge.md",
+    "navigation/authentication/facial_mood.md",
+    "navigation/bitshift/Bitshift_0101-final-commit-1.html",
+    "navigation/bitshift/documentation/binaryMethods.md",
+    "navigation/finance.md",
+    "navigation/leaderboard.md",
+    "navigation/mansionGame/mainworld.md",
+    "navigation/mansionGame/mansionLevel5.md",
+    "navigation/predictors/grade-predictor.html",
+    "navigation/rpg.md",
+    "navigation/sabresprings/activity.md",
+    "navigation/sabresprings/mutual.md",
+    "navigation/signup.md",
+    "navigation/toolkit/student.md",
+    "navigation/toolkit/teacher.md",
+    "pages/about.html",
+    "pages/admin-blog.html",
+    "pages/admin-chatbot-analytics.html",
+    "pages/admin-editor.html",
+    "pages/admin-map-align.html",
+    "pages/admin-map-hotspots.html",
+    "pages/admin-nav.html",
+    "pages/admin-security.html",
+    "pages/admin-volunteer.html",
+    "pages/admin.html",
+    "pages/blog-post.html",
+    "pages/blog.html",
+    "pages/checklist.html",
+    "pages/community-events-and-activities.html",
+    "pages/contact.html",
+    "pages/donate.html",
+    "pages/events-archive.html",
+    "pages/find-your-neighborhood.html",
+    "pages/forgot-password.html",
+    "pages/onboarding.html",
+    "pages/preparedness-resources.html",
+    "pages/profile.html",
+    "pages/programs-and-services.html",
+    "pages/role-quiz.html",
+    "pages/security.html",
+    "pages/volunteer.html",
+    "test_certificate.html"
+  ],
+  "removed": [
+    "assets/Bathroom/bathroom.css",
+    "assets/Bathroom/profile.css",
+    "assets/Bathroom/queue.css",
+    "assets/Bathroom/report-issues.css",
+    "assets/css/aesthetihawk/charts.css",
+    "assets/css/aesthetihawk/shake.css",
+    "assets/css/aesthetihawk/tabs.css",
+    "assets/css/certificate_overview.css",
+    "assets/css/chatbot.css",
+    "assets/css/cms-sections.css",
+    "assets/css/community-tools.css",
+    "assets/css/crypto.css",
+    "assets/css/csp_home.css",
+    "assets/css/custom-styles.css",
+    "assets/css/footer-polish.css",
+    "assets/css/leaderboard.css",
+    "assets/css/marketEvents.css",
+    "assets/css/pause-menu.css",
+    "assets/css/poway-neighborhood-map.css",
+    "assets/css/poway-unified-ui.css",
+    "assets/screenQueue/style/call.css",
+    "assets/screenQueue/style/groups.css",
+    "assets/screenQueue/style/init.css",
+    "assets/screenQueue/style/navbar.css",
+    "assets/screenQueue/style/queue.css",
+    "login.css"
+  ],
+  "static_html": [
+    {
+      "file": "navigation/bitshift/Bitshift_0101-final-commit-1.html",
+      "block": 1,
+      "entry": "assets/css/beasts/navigation-bitshift-bitshift-0101-final-commit-1-1.scss",
+      "url": "assets/css/beasts/navigation-bitshift-bitshift-0101-final-commit-1-1.css",
+      "partial": "_sass/beasts/static-pages/_navigation-bitshift-bitshift-0101-final-commit-1-1.scss"
+    },
+    {
+      "file": "navigation/bitshift/Bitshift_0101-final-commit-1.html",
+      "block": 2,
+      "entry": "assets/css/beasts/navigation-bitshift-bitshift-0101-final-commit-1-2.scss",
+      "url": "assets/css/beasts/navigation-bitshift-bitshift-0101-final-commit-1-2.css",
+      "partial": "_sass/beasts/static-pages/_navigation-bitshift-bitshift-0101-final-commit-1-2.scss"
+    },
+    {
+      "file": "pages/about.html",
+      "block": 1,
+      "entry": "assets/css/beasts/pages-about-1.scss",
+      "url": "assets/css/beasts/pages-about-1.css",
+      "partial": "_sass/beasts/static-pages/_pages-about-1.scss"
+    },
+    {
+      "file": "pages/about.html",
+      "block": 2,
+      "entry": "assets/css/beasts/pages-about-2.scss",
+      "url": "assets/css/beasts/pages-about-2.css",
+      "partial": "_sass/beasts/static-pages/_pages-about-2.scss"
+    },
+    {
+      "file": "pages/about.html",
+      "block": 8,
+      "entry": "assets/css/beasts/pages-about-8.scss",
+      "url": "assets/css/beasts/pages-about-8.css",
+      "partial": "_sass/beasts/static-pages/_pages-about-8.scss"
+    },
+    {
+      "file": "pages/about.html",
+      "block": 9,
+      "entry": "assets/css/beasts/pages-about-9.scss",
+      "url": "assets/css/beasts/pages-about-9.css",
+      "partial": "_sass/beasts/static-pages/_pages-about-9.scss"
+    },
+    {
+      "file": "pages/contact.html",
+      "block": 1,
+      "entry": "assets/css/beasts/pages-contact-1.scss",
+      "url": "assets/css/beasts/pages-contact-1.css",
+      "partial": "_sass/beasts/static-pages/_pages-contact-1.scss"
+    },
+    {
+      "file": "pages/contact.html",
+      "block": 7,
+      "entry": "assets/css/beasts/pages-contact-7.scss",
+      "url": "assets/css/beasts/pages-contact-7.css",
+      "partial": "_sass/beasts/static-pages/_pages-contact-7.scss"
+    },
+    {
+      "file": "pages/contact.html",
+      "block": 8,
+      "entry": "assets/css/beasts/pages-contact-8.scss",
+      "url": "assets/css/beasts/pages-contact-8.css",
+      "partial": "_sass/beasts/static-pages/_pages-contact-8.scss"
+    },
+    {
+      "file": "pages/programs-and-services.html",
+      "block": 1,
+      "entry": "assets/css/beasts/pages-programs-and-services-1.scss",
+      "url": "assets/css/beasts/pages-programs-and-services-1.css",
+      "partial": "_sass/beasts/static-pages/_pages-programs-and-services-1.scss"
+    },
+    {
+      "file": "pages/programs-and-services.html",
+      "block": 2,
+      "entry": "assets/css/beasts/pages-programs-and-services-2.scss",
+      "url": "assets/css/beasts/pages-programs-and-services-2.css",
+      "partial": "_sass/beasts/static-pages/_pages-programs-and-services-2.scss"
+    },
+    {
+      "file": "pages/programs-and-services.html",
+      "block": 8,
+      "entry": "assets/css/beasts/pages-programs-and-services-8.scss",
+      "url": "assets/css/beasts/pages-programs-and-services-8.css",
+      "partial": "_sass/beasts/static-pages/_pages-programs-and-services-8.scss"
+    },
+    {
+      "file": "pages/programs-and-services.html",
+      "block": 9,
+      "entry": "assets/css/beasts/pages-programs-and-services-9.scss",
+      "url": "assets/css/beasts/pages-programs-and-services-9.css",
+      "partial": "_sass/beasts/static-pages/_pages-programs-and-services-9.scss"
+    },
+    {
+      "file": "test_certificate.html",
+      "block": 1,
+      "entry": "assets/css/beasts/test-certificate-1.scss",
+      "url": "assets/css/beasts/test-certificate-1.css",
+      "partial": "_sass/beasts/static-pages/_test-certificate-1.scss"
+    }
+  ]
+}

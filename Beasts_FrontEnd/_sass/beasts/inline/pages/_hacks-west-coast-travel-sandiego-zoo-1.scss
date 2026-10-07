@@ -1,0 +1,655 @@
+// Migrated from hacks/west-coast/travel/sandiego/zoo.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+/* ===== Truck intro (3s) ===== */
+body {
+  background: #009688;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body.loading {
+  overflow: hidden;
+}
+.loop-wrapper {
+  margin: 0 auto;
+  position: relative;
+  display: block;
+  width: 600px;
+  height: 250px;
+  overflow: hidden;
+  border-bottom: 3px solid #fff;
+  color: $beasts-white;
+}
+.mountain {
+  position: absolute;
+  right: -900px;
+  bottom: -20px;
+  width: 2px;
+  height: 2px;
+  box-shadow:
+    0 0 0 50px #4DB6AC,
+    60px 50px 0 70px #4DB6AC,
+    90px 90px 0 50px #4DB6AC,
+    250px 250px 0 50px #4DB6AC,
+    290px 320px 0 50px #4DB6AC,
+    320px 400px 0 50px #4DB6AC;
+  transform: rotate(130deg);
+  animation: mtn 20s linear infinite;
+}
+.hill {
+  position: absolute;
+  right: -900px;
+  bottom: -50px;
+  width: 400px;
+  border-radius: 50%;
+  height: 20px;
+  box-shadow:
+    0 0 0 50px #4DB6AC,
+    -20px 0 0 20px #4DB6AC,
+    -90px 0 0 50px #4DB6AC,
+    250px 0 0 50px #4DB6AC,
+    290px 0 0 50px #4DB6AC,
+    620px 0 0 50px #4DB6AC;
+  animation: hill 4s 2s linear infinite;
+}
+.tree, .tree:nth-child(2), .tree:nth-child(3) {
+  position: absolute;
+  height: 100px;
+  width: 35px;
+  bottom: 0;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/130015/tree.svg) no-repeat;
+}
+.rock {
+  margin-top: -17%;
+  height: 2%;
+  width: 2%;
+  bottom: -2px;
+  border-radius: 20px;
+  position: absolute;
+  background: #ddd;
+}
+.truck, .wheels {
+  transition: all ease;
+  width: 85px;
+  margin-right: -60px;
+  bottom: 0px;
+  right: 50%;
+  position: absolute;
+  background: #eee;
+}
+.truck {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/130015/truck.svg) no-repeat;
+  background-size: contain;
+  height: 60px;
+}
+.truck:before {
+  content: " ";
+  position: absolute;
+  width: 25px;
+  box-shadow:
+    -30px 28px 0 1.5px #fff,
+    -35px 18px 0 1.5px #fff;
+}
+.wheels {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/130015/wheels.svg) no-repeat;
+  height: 15px;
+  margin-bottom: 0;
+}
+.tree { animation: tree 3s 0.000s linear infinite; }
+.tree:nth-child(2) { animation: tree2 2s 0.150s linear infinite; }
+.tree:nth-child(3) { animation: tree3 8s 0.050s linear infinite; }
+.rock { animation: rock 4s -0.530s linear infinite; }
+.truck { animation: truck 4s 0.080s ease infinite; }
+.wheels { animation: truck 4s 0.001s ease infinite; }
+.truck:before { animation: wind 1.5s 0.000s ease infinite; }
+@keyframes tree {
+  0% { transform: translate(1350px); }
+  50% { /*! Original empty rule retained. */ }
+  100% { transform: translate(-50px); }
+}
+@keyframes tree2 {
+  0% { transform: translate(650px); }
+  50% { /*! Original empty rule retained. */ }
+  100% { transform: translate(-50px); }
+}
+@keyframes tree3 {
+  0% { transform: translate(2750px); }
+  50% { /*! Original empty rule retained. */ }
+  100% { transform: translate(-50px); }
+}
+@keyframes rock {
+  0% { right: -200px; }
+  100% { right: 2000px; }
+}
+@keyframes truck {
+  0% { /*! Original empty rule retained. */ }
+  6% { transform: translateY(0px); }
+  7% { transform: translateY(-6px); }
+  9% { transform: translateY(0px); }
+  10% { transform: translateY(-1px); }
+  11% { transform: translateY(0px); }
+  100% { /*! Original empty rule retained. */ }
+}
+@keyframes wind {
+  0% { /*! Original empty rule retained. */ }
+  50% { transform: translateY(3px) }
+  100% { /*! Original empty rule retained. */ }
+}
+@keyframes mtn {
+  100% {
+    transform: translateX(-2000px) rotate(130deg);
+  }
+}
+@keyframes hill {
+  100% {
+    transform: translateX(-2000px);
+  }
+}
+.intro {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #009688;
+  z-index: 10;
+}
+.intro p {
+  color: $beasts-white;
+  font-weight: 800;
+  margin-top: 18px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
+}
+
+/* ===== Main Content ===== */
+.hidden {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #00a8cc, #005f73);
+  min-height: 100vh;
+}
+
+.animation-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.container {
+  width: min(1200px, 95vw);
+  height: min(700px, 90vh);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+
+.zoo-scene {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #87CEEB 0%, #90EE90 60%, #8FBC8F 100%);
+  position: relative;
+}
+
+.sun {
+  position: absolute;
+  top: 8%;
+  right: 12%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 35% 35%, #fff59d, #ffd54f);
+  border-radius: 50%;
+  box-shadow: 0 0 60px rgba(255,213,79,.5);
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255,255,255,.85);
+  border-radius: 100px;
+  width: 100px;
+  height: 40px;
+  top: 12%;
+  left: -150px;
+  animation: float 25s linear infinite;
+}
+
+.cloud:before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,.85);
+  border-radius: 50%;
+  top: -20px;
+  left: 20px;
+}
+
+@keyframes float {
+  to { transform: translateX(calc(100vw + 200px)); }
+}
+
+.zoo-path {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
+  background: linear-gradient(180deg, #d4a574 0%, #b8926a 100%);
+  border-top: 4px solid #9b7b5a;
+}
+
+.zoo-trees {
+  position: absolute;
+  bottom: 25%;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: linear-gradient(180deg, #4a7c4e 0%, #3a6b3f 100%);
+  clip-path: polygon(0 100%, 0 60%, 8% 45%, 15% 55%, 22% 40%, 30% 50%, 38% 35%, 46% 45%, 54% 30%, 62% 40%, 70% 35%, 78% 45%, 85% 38%, 92% 50%, 100% 40%, 100% 100%);
+}
+
+.zoo-sign {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #8b4513, #654321);
+  padding: 16px 32px;
+  border-radius: 12px;
+  border: 4px solid #5a3a1f;
+  box-shadow: 0 10px 24px rgba(0,0,0,.3);
+}
+
+.zoo-sign-text {
+  color: #ffd700;
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,.5);
+}
+
+.animal {
+  position: absolute;
+  bottom: 28%;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+}
+
+/* Panda */
+.panda {
+  left: 12%;
+  width: 60px;
+  height: 70px;
+  animation: waddle 4s ease-in-out infinite;
+  z-index: 3;
+}
+
+.panda-body {
+  width: 50px;
+  height: 50px;
+  background: $beasts-white;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+  border: 4px solid #000;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.panda-head {
+  width: 40px;
+  height: 40px;
+  background: $beasts-white;
+  border-radius: 50%;
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid #000;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.panda-ear {
+  width: 18px;
+  height: 18px;
+  background: $beasts-black;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+}
+
+.panda-ear.left { left: -2px; }
+.panda-ear.right { right: -2px; }
+
+.panda-eye {
+  width: 14px;
+  height: 18px;
+  background: $beasts-black;
+  border-radius: 50%;
+  position: absolute;
+  top: 12px;
+}
+
+.panda-eye.left { left: 6px; }
+.panda-eye.right { right: 6px; }
+
+.panda-eye:before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: $beasts-white;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+@keyframes waddle {
+  0%, 100% { transform: translateX(0) rotate(-3deg); }
+  50% { transform: translateX(20px) rotate(3deg); }
+}
+
+/* Giraffe */
+.giraffe {
+  right: 15%;
+  width: 70px;
+  height: 150px;
+  animation: nibble 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+.giraffe-body {
+  width: 50px;
+  height: 60px;
+  background: linear-gradient(135deg, #f4a460, #d2691e);
+  border-radius: 40% 40% 50% 50%;
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+  border: 3px solid #8b4513;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.giraffe-spot {
+  width: 12px;
+  height: 12px;
+  background: #8b4513;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.spot1 { top: 10px; left: 8px; }
+.spot2 { top: 20px; right: 12px; }
+.spot3 { bottom: 15px; left: 15px; }
+
+.giraffe-neck {
+  width: 24px;
+  height: 80px;
+  background: linear-gradient(90deg, #f4a460, #d2691e);
+  position: absolute;
+  bottom: 75px;
+  left: 32px;
+  border-radius: 20px 20px 0 0;
+  border: 2px solid #8b4513;
+  transform-origin: bottom;
+}
+
+.giraffe-head {
+  width: 32px;
+  height: 36px;
+  background: #f4a460;
+  border-radius: 50% 50% 40% 40%;
+  position: absolute;
+  top: -30px;
+  left: -4px;
+  border: 2px solid #8b4513;
+}
+
+.giraffe-horn {
+  width: 6px;
+  height: 12px;
+  background: #8b4513;
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  top: -8px;
+}
+
+.giraffe-horn.left { left: 6px; }
+.giraffe-horn.right { right: 6px; }
+
+.giraffe-leg {
+  width: 12px;
+  height: 30px;
+  background: #d2691e;
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 4px 4px;
+  border: 2px solid #8b4513;
+}
+
+.giraffe-leg.fl { left: 12px; }
+.giraffe-leg.fr { right: 18px; }
+
+@keyframes nibble {
+  0%, 100% { transform: none; }
+  50% { transform: translateY(-8px); }
+}
+
+/* Lion */
+.lion {
+  left: 40%;
+  width: 80px;
+  height: 70px;
+  animation: roar 5s ease-in-out infinite;
+  z-index: 4;
+}
+
+.lion-body {
+  width: 60px;
+  height: 50px;
+  background: linear-gradient(135deg, #daa520, #b8860b);
+  border-radius: 40%;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  border: 3px solid #8b6914;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.lion-head {
+  width: 45px;
+  height: 45px;
+  background: #daa520;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 3px solid #8b6914;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+.lion-mane {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: -12px;
+  left: -13px;
+  z-index: 1;
+}
+
+.mane-piece {
+  width: 18px;
+  height: 18px;
+  background: #cd853f;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.m1 { top: 0; left: 50%; transform: translateX(-50%); }
+.m2 { top: 8px; left: 8px; }
+.m3 { top: 8px; right: 8px; }
+.m4 { bottom: 8px; left: 0; }
+.m5 { bottom: 8px; right: 0; }
+.m6 { bottom: 0; left: 50%; transform: translateX(-50%); }
+
+.lion-eye {
+  width: 8px;
+  height: 8px;
+  background: $beasts-black;
+  border-radius: 50%;
+  position: absolute;
+  top: 18px;
+}
+
+.lion-eye.left { left: 12px; }
+.lion-eye.right { right: 12px; }
+
+.lion-nose {
+  width: 12px;
+  height: 8px;
+  background: #8b6914;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes roar {
+  0%, 90%, 100% { transform: scale(1); }
+  95% { transform: scale(1.1); }
+}
+
+.zoo-bird {
+  position: absolute;
+  width: 30px;
+  height: 12px;
+  top: 15%;
+  left: -50px;
+  animation: flyBird 12s linear infinite;
+}
+
+.zoo-bird:before,
+.zoo-bird:after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 8px;
+  background: transparent;
+  border-top: 3px solid #333;
+  border-radius: 50%;
+}
+
+.zoo-bird:before {
+  left: 0;
+  animation: flapLeft 0.5s ease-in-out infinite;
+}
+
+.zoo-bird:after {
+  right: 0;
+  animation: flapRight 0.5s ease-in-out infinite;
+}
+
+@keyframes flyBird {
+  to { left: 110%; }
+}
+
+@keyframes flapLeft {
+  0%, 100% { transform: rotateX(0deg); }
+  50% { transform: rotateX(30deg); }
+}
+
+@keyframes flapRight {
+  0%, 100% { transform: rotateX(0deg); }
+  50% { transform: rotateX(-30deg); }
+}
+
+/* Audio Lesson Styles */
+.audio-lesson {
+  font-family: Arial, sans-serif;
+  background: #2d5016;
+  color: $beasts-white;
+  margin: 0;
+  padding: 40px 20px;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.audio-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.audio-lesson h1,
+.audio-lesson h2,
+.audio-lesson h3 {
+  color: $beasts-white;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+}
+
+.audio-lesson p {
+  color: $beasts-white;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.audio-lesson pre {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  color: $beasts-white;
+  font-size: 14px;
+}
+
+.audio-lesson code {
+  color: $beasts-white;
+  font-size: 14px;
+}
+
+.example-section {
+  margin: 40px 0;
+  padding: 30px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.example-section h2 {
+  color: #ffd700;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.example-section p {
+  color: #e0e0e0;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+audio {
+  width: 100%;
+  margin: 20px 0;
+  border-radius: 8px;
+}
+
+.source-text {
+  font-size: 14px;
+  color: #b0b0b0;
+  margin-top: 15px;
+}

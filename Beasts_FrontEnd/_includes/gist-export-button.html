@@ -14,26 +14,7 @@
 </button>
 
 <style>
-  .export-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    margin: 30px auto;
-    display: block;
-    min-width: 220px;
-  }
-  .export-btn:hover {
-    background-color: #45a049;
-  }
-  .export-btn:disabled {
-    background-color: #aaaaaa;
-    cursor: not-allowed;
-  }
+{{ '@import "beasts/inline/includes/includes-gist-export-button-1";' | scssify }}
 </style>
 
 <script>

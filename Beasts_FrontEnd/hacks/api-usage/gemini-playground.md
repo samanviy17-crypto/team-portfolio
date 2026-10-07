@@ -12,56 +12,7 @@ breadcrumb: True
 Learn how different prompts generate different types of responses from AI. Practice prompt engineering with real examples.
 
 <style>
-.controls {
-    margin: 10px 0;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.control-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-label {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-select {
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    color: white;
-    background-color: #333;
-}
-
-textarea {
-    width: 100%;
-    min-height: 100px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: monospace;
-    resize: vertical;
-}
-
-#output {
-    padding: 15px;
-    border-left: 4px solid #007bff;
-    border-radius: 4px;
-    margin-top: 15px;
-    min-height: 100px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-.sample-prompts {
-    display: none;
-}
+{{ '@import "beasts/inline/pages/hacks-api-usage-gemini-playground-1";' | scssify }}
 </style>
 
 <details style="padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #007bff;">

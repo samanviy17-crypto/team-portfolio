@@ -1,0 +1,63 @@
+// Migrated from _includes/challenge-submit-button.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.challenge-submit-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 20px 0;
+}
+
+.challenge-submit-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.challenge-submit-btn:hover {
+  background: linear-gradient(135deg, #45a049, #3d8b40);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.challenge-submit-btn:active {
+  transform: translateY(0);
+}
+
+.challenge-submit-btn:disabled {
+  background: #888;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.challenge-submit-btn .btn-icon {
+  font-size: 16px;
+}
+
+.submit-status {
+  font-size: 13px;
+  color: #666;
+}
+
+.submit-status.success {
+  color: #4CAF50;
+}
+
+.submit-status.error {
+  color: #f44336;
+}
+
+.submit-status.loading {
+  color: #2196F3;
+}

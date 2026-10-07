@@ -55,24 +55,7 @@ lxdData:
 
 <!-- Lock/Unlock Logic -->
 <style>
-.quest-locked-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 50;
-  display: none;
-  pointer-events: all;
-}
-
-[data-module].quest-locked .quest-locked-overlay {
-  display: block !important;
-}
-
-[data-module].quest-locked {
-  pointer-events: none;
-}
+{{ '@import "beasts/inline/pages/hacks-west-coast-ai-questhome-1";' | scssify }}
 </style>
 
 <script>

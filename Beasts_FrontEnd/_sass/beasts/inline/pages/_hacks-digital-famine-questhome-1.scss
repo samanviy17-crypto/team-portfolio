@@ -1,0 +1,31 @@
+// Migrated from hacks/digital-famine/questHome.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+body {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    #gameContainer {
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 0 !important;
+    }
+    /* Ensure footer is always visible */
+    #masterFooter {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 100 !important;
+    }
+    /* Remove any default spacing from the layout */
+    .page-content, .wrapper {
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    /* Target the main content area */
+    main, article {
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+    }

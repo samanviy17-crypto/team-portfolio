@@ -1,0 +1,207 @@
+// Migrated from facialrecognitiontest.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+/* ---------------- Base ---------------- */
+
+:root {
+  --bg-dark: #121212;
+  --bg-card: #1e1e1e;
+  --text-main: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --accent: #3b82f6;
+  --danger: #ef4444;
+  --success: #10b981;
+  --border: #333;
+}
+
+body {
+  background-color: var(--bg-dark);
+}
+
+/* Force Title Centering */
+h1, .page-title, .post-title, .post-header {
+  text-align: center !important;
+  width: 100%;
+  display: block;
+  margin-top: 20px;
+}
+
+
+
+/* ---------------- Layout ---------------- */
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-height: 600px;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-main);
+
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* CSS override removed */
+
+@media (max-width: 900px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+  }
+}
+
+/* ---------------- Main Feed ---------------- */
+
+.main-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.video-wrapper {
+  background: $beasts-black;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.live-indicator {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(220, 38, 38, 0.9);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  animation: pulse 2s infinite;
+}
+
+.status-badge {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: rgba(0,0,0,0.7);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  color: $beasts-white;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* ---------------- Control Panel ---------------- */
+
+.control-panel {
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Centering Overrides Removed */
+
+/* ---------------- Inputs & Buttons ---------------- */
+
+.control-panel {
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-group {
+  width: 100%;
+  max-width: 420px;
+}
+
+input {
+  width: 100%;
+  background: #2a2a2a;
+  border: 1px solid var(--border);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--accent);
+}
+
+.action-buttons,
+.danger-zone {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---------------- Buttons ---------------- */
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: #2563eb; }
+
+.btn-secondary { background: #4b5563; color: white; }
+.btn-secondary:hover { background: #374151; }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #4b5563;
+  color: #ccc;
+}
+.btn-outline:hover { border-color: $beasts-white; color: $beasts-white; }
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+.btn-danger:hover { background: rgba(239, 68, 68, 0.2); }
+
+/* ---------------- Sidebar Removed ---------------- */

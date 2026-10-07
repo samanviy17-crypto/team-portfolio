@@ -6,18 +6,7 @@ permalink: functionalbreakoutgame
 ---
 
 <style>
-  canvas {
-    background: #eee;
-    display: block;
-    margin: 0 auto;
-    border: 1px solid #333;
-  }
-  h2 {
-    margin-top: 5px !important;
-  }
-  p {
-    margin-bottom: 5px !important;
-  }
+{{ '@import "beasts/inline/pages/hacks-breakout-functionalbreakoutgame-1";' | scssify }}
 </style>
 
 <canvas id="gameCanvas" width="600" height="400"></canvas>

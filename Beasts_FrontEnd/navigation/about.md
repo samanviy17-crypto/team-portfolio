@@ -103,18 +103,7 @@ Everything for me, as for many others, revolves around family and faith. Oh, to 
 <!-- Section 3: Image Galley is made using Style and HTML and GitHub /images -->
 
 <style>
-    .image-gallery {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 10px;
-        }
-
-    .image-gallery img {
-        max-height: 150px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
+{{ '@import "beasts/inline/navigation/navigation-about-1";' | scssify }}
 </style>
 
 <!-- This grid_container class is used by CSS styling and the id is used by JavaScript connection -->

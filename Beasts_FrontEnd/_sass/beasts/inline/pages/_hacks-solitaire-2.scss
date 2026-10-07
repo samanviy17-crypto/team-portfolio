@@ -1,0 +1,67 @@
+// Migrated from hacks/solitaire.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+/* Headings */
+.game-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin: 20px 0;
+    font-weight: bold;
+    color: #2ecc71;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+
+/* Menu + Links */
+.menu-link {
+    font-size: 1.4rem;
+    display: block;
+    margin: 12px 0;
+    color: $beasts-white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.menu-link:hover {
+    color: #2ecc71;
+    transform: translateX(6px);
+}
+
+/* Game Controls */
+.btn-control {
+    padding: 8px 18px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: $beasts-white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.25s ease;
+}
+.btn-control:hover {
+    background: linear-gradient(135deg, #27ae60, #219150);
+    transform: scale(1.05);
+}
+
+/* Animations */
+.fade-in { animation: fadeIn 0.6s ease forwards; }
+.bounce-in { animation: bounceIn 0.7s ease; }
+.slide-down { animation: slideDown 0.5s ease; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes bounceIn {
+    0% { transform: scale(0.7); opacity: 0; }
+    60% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); }
+}
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Highlight box in modal */
+.highlight-box {
+    background-color: #d4f7d4;
+    padding: 6px;
+    border-radius: 6px;
+    border-left: 4px solid #27ae60;
+}

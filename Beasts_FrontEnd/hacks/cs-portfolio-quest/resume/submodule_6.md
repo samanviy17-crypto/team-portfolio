@@ -334,33 +334,7 @@ date: 2025-10-29
 </div>
 
 <style>
-  /* ELIO visuals (light theme compatible) */
-  .video-container { position: relative; background: #000; aspect-ratio: 16/9; }
-  #videoElement, #playbackVideo { width: 100%; height: 100%; object-fit: cover; }
-  .recording-indicator { position: absolute; top: 10px; right: 10px; background: rgba(255,0,0,.9); color:#fff; padding:8px 16px; border-radius:20px; font-weight:700; display:none; align-items:center; gap:8px; animation:pulse 1.5s ease-in-out infinite; }
-  .recording-indicator.active { display:flex; }
-  .recording-dot { width:10px; height:10px; background:#fff; border-radius:50%; animation:blink 1s infinite; }
-  .timer { position:absolute; top:10px; left:10px; background:rgba(0,0,0,.7); color:#fff; padding:8px 16px; border-radius:20px; font-weight:700; display:none; }
-  .timer.active { display:block; }
-  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-
-  .elio-avatar { perspective: 1000px; width: 150px; height: 150px; }
-  .elio-bot { --ELIO-ROTATION-DURATION: 4s; transform-style: preserve-3d; animation: rotateRight var(--ELIO-ROTATION-DURATION) linear infinite alternate; }
-  .elio-head { position: relative; width: 4rem; height: 2.5rem; border-radius: 48% 53% 45% 55% / 79% 79% 20% 22%; background: linear-gradient(to right, white 45%, gray); }
-  .elio-eyeChamber { width: 3rem; height: 1.8rem; position: relative; left: 50%; top: 55%; border-radius: 45% 53% 45% 48% / 62% 59% 35% 34%; background-color: #0c203c; box-shadow: 0 0 2px 2px white, inset 0 0 0 2px black; transform: translate(-50%,-50%); animation: moveRight var(--ELIO-ROTATION-DURATION) linear infinite alternate; }
-  .elio-eye { width: .8rem; height: 1rem; position:absolute; border-radius:50%; }
-  .elio-eye:first-child { left:8px; top:50%; background: repeating-linear-gradient(65deg, #9bdaeb 0px, #9bdaeb 1px, white 2px); box-shadow: inset 0 0 5px #04b8d5, 0 0 15px 1px #0bdaeb; transform: translate(0,-50%) rotate(-65deg); }
-  .elio-eye:nth-child(2) { right:8px; top:50%; background: repeating-linear-gradient(-65deg, #9bdaeb 0px, #9bdaeb 1px, white 2px); box-shadow: inset 0 0 5px #04b8d5, 0 0 15px 1px #0bdaeb; transform: translate(0,-50%) rotate(65deg); }
-  .elio-body { width: 4rem; height: 5rem; position: relative; margin-block-start:.15rem; border-radius: 47% 53% 45% 55% / 12% 9% 90% 88%; background: linear-gradient(to right, white 35%, gray); }
-  .elio-hand { position:absolute; left:-1rem; top:.5rem; width:1.3rem; height:3.5rem; border-radius:40%; background: linear-gradient(to left, white 15%, gray); box-shadow: 5px 0 5px rgba(0,0,0,.25); transform: rotateY(55deg) rotateZ(10deg); }
-  .elio-hand:nth-child(2) { left:92%; background: linear-gradient(to right, white 15%, gray); transform: rotateY(55deg) rotateZ(-10deg); }
-  .elio-scanner { width:0; height:0; position:absolute; left:60%; top:10%; border-top:120px solid #9bdaeb; border-left:150px solid transparent; border-right:150px solid transparent; transform-origin: top left; mask: linear-gradient(to right, white, transparent 35%); display:none; }
-  .elio-scanner.active { display:block; animation: glow 2s cubic-bezier(.86,0,.07,1) infinite; }
-  .elio-scannerOrigin { position:absolute; width:6px; aspect-ratio:1; border-radius:50%; left:60%; top:10%; background:#9bdaeb; box-shadow: inset 0 0 5px rgba(0,0,0,.5); display:none; }
-  .elio-scannerOrigin.active { display:block; }
-  @keyframes rotateRight { from{transform:rotateY(0)} to{transform:rotateY(25deg)} }
-  @keyframes moveRight { from{transform:translate(-50%,-50%)} to{transform:translate(-40%,-50%)} }
+{{ '@import "beasts/inline/pages/hacks-cs-portfolio-quest-resume-submodule-6-1";' | scssify }}
 </style>
 
 <script>

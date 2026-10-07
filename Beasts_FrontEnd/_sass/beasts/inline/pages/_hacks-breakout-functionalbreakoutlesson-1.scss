@@ -1,0 +1,41 @@
+// Migrated from hacks/breakout/oopbreakoutlesson.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.hub-title {
+  display: block !important;
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  margin-top: 1px !important;
+}
+
+.back-button {
+  margin-bottom: 5px !important;
+  text-align: center;
+}
+
+.card {
+  background-color: white !important;
+}
+
+.card-header {
+  color: black !important;
+}
+
+.text-content2 {
+  color: black !important;
+}
+
+@include beasts-below(map-get($beasts-breakpoints, tablet)) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}

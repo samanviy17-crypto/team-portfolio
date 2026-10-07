@@ -1,0 +1,34 @@
+// Migrated from hacks/plagiarism/C2-demo_reference-instruction.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+/* File-specific styles only - iridescent styles moved to _sass/open-coding/elements/buttons/iridescent.scss */
+  .apa-tool-label {
+    display: block;
+    margin-top: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+  .apa-tool-input {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .apa-tool-output {
+    margin-top: 16px;
+    border-left: 4px solid #007bff;
+    padding: 15px;
+    font-family: 'Times New Roman', serif;
+    line-height: 1.6;
+    border-radius: 4px;
+  }
+  .citation-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }

@@ -127,10 +127,7 @@ Let players press Left/Right to move a “ghost” column and Enter to drop.
 </script>
 
 <style>
-/* Light styling that matches dark theme cards */
-.checklist { display: grid; gap: .4rem; padding:.5rem 0; }
-.checklist label { display:flex; align-items:center; gap:.5rem; cursor:pointer; }
-.checklist input[type="checkbox"]{ width:1rem; height:1rem; accent-color:#22c55e; }
+{{ '@import "beasts/inline/pages/hacks-connect4-2025-09-03-challenges-1";' | scssify }}
 </style>
 
 ---

@@ -1,0 +1,16 @@
+// Migrated from navigation/about.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.image-gallery {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 10px;
+        }
+
+    .image-gallery img {
+        max-height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+    }

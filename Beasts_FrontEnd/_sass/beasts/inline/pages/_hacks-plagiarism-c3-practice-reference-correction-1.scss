@@ -1,0 +1,57 @@
+// Migrated from hacks/plagiarism/C3-practice_reference_correction.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+/* File-specific styles only - iridescent styles moved to _sass/open-coding/elements/buttons/iridescent.scss */
+  .practice-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .reference-card {
+    border: 1px solid #6c757d;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .weak-reference {
+    border-left: 4px solid #6c757d;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+  }
+
+  .practice-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid #6c757d;
+    border-radius: 4px;
+    font-family: 'Times New Roman', serif;
+    line-height: 1.6;
+    resize: vertical;
+  }
+
+  .case-title {
+    color: #495057;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+
+  .status-message {
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 4px;
+    display: none;
+  }

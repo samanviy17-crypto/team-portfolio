@@ -1,0 +1,25 @@
+// Migrated from hacks/digital-famine/ai/submodule_3.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+.code-example {
+                background: #1e293b;
+                border: 1px solid #475569;
+                border-radius: 8px;
+                padding: 1rem;
+                margin: 1rem 0;
+                overflow-x: auto;
+            }
+
+            .code-example pre {
+                margin: 0;
+                color: #e2e8f0;
+                font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+                line-height: 1.5;
+            }
+
+            .code-example code {
+                font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+                font-size: 0.875rem;
+                line-height: 1.5;
+            }

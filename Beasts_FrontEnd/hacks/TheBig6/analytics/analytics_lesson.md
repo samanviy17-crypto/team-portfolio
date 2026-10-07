@@ -13,41 +13,7 @@ date: 2025-12-02
 ---
 
 <style>
-  :root {
-    --bg: #0a0e27;
-    --panel: #0f1729;
-    --border: rgba(255, 255, 255, 0.08);
-    --text: #e6eef8;
-    --muted: #9aa6bf;
-    --accent: #7c3aed;
-  }
-  * { box-sizing: border-box; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 24px 16px 40px; }
-  .header { margin-bottom: 32px; }
-  .header h1 { font-size: 28px; font-weight: 800; margin: 0 0 4px 0; }
-  .header p { color: var(--muted); font-size: 14px; margin: 0; }
-  .progress-bar { display: flex; gap: 8px; margin: 20px 0; justify-content: space-between; align-items: center; }
-  .progress-bar .step { flex: 1; height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 2px; cursor: pointer; transition: 0.2s; }
-  .progress-bar .step.active { background: var(--accent); height: 6px; }
-  .section { display: none; }
-  .section.active { display: block; }
-  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
-  .card h2 { margin-top: 0; font-size: 20px; color: #a6c9ff; }
-  .nav-buttons { display: flex; gap: 12px; margin-top: 24px; justify-content: space-between; }
-  button { appearance: none; border: 1px solid var(--border); background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; transition: 0.2s; }
-  button:hover { background: #6d28d9; transform: translateY(-1px); }
-  button.secondary { background: #334155; }
-  button.secondary:hover { background: #1e293b; }
-
-  /* Analytics Styles */
-  .analytics-container, .cert-container { color: var(--text); }
-  .page-title { color: var(--accent); }
-  .metric-card, .toolbar, .table-container, .info-box, .cert-card { background: #051226; border: 1px solid var(--border); }
-  .metric-value, .toolbar-title, th, .student-name, .detail-header, .module-box h4, .module-summary { color: var(--accent); }
-  thead { border-bottom-color: var(--accent); }
-  .download-btn { background: var(--accent); }
-  .progress-bar-fill { background: linear-gradient(90deg, var(--accent) 0%, #9f7aea 100%); }
-  .detail-row { border-top-color: var(--accent); }
+{{ '@import "beasts/inline/pages/hacks-thebig6-analytics-analytics-lesson-1";' | scssify }}
 </style>
 
 <div class="container page-content">

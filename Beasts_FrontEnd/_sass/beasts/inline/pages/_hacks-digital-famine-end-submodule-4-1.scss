@@ -1,0 +1,92 @@
+// Migrated from hacks/digital-famine/end/submodule_4.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+body {
+      min-height: 100vh;
+      overflow-y: auto;
+      color: #e2e8f0;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+      background: radial-gradient(circle at 30% 30%, #031122 0%, #010615 60%, #000 100%);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px),
+                        linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridmove 20s linear infinite;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 120%, rgba(16,185,129,0.1), transparent 70%);
+      z-index: 0;
+      animation: pulse 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes gridmove {
+      0% { background-position: 0 0, 0 0; }
+      100% { background-position: 50px 50px, 50px 50px; }
+    }
+    @keyframes pulse {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.6; }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      padding: 3rem 1rem;
+    }
+
+    .terminal-card {
+      background-color: #0f172a;
+      border: 2px solid #38bdf8;
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
+      max-width: 700px;
+      margin: 2rem auto;
+    }
+
+    .cyber-button { transition: all 0.2s ease; }
+    .cyber-button:hover { transform: translateY(-2px); opacity: 0.9; }
+
+    .cyber-option {
+      transition: all 0.25s ease;
+      border: 1px solid #38bdf8;
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      cursor: pointer;
+      color: #e2e8f0;
+    }
+
+    .cyber-option:hover {
+      background-color: rgba(0,255,229,0.1);
+      box-shadow: 0 0 12px rgba(0,255,229,0.4);
+    }
+
+    .cyber-option.selected {
+      background-color: rgba(0,255,229,0.2);
+      border-color: #00ffe5;
+      box-shadow: 0 0 15px rgba(0,255,229,0.6);
+      color: #00ffe5;
+    }
+
+    .cyber-input {
+      background-color: #0f172a;
+      border: 2px solid #38bdf8;
+      color: #10b981;
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 0.5rem;
+      box-shadow: 0 0 10px rgba(56,189,248,0.3);
+      padding: 0.5rem;
+    }

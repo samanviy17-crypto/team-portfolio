@@ -1,0 +1,29 @@
+// Migrated from hacks/breakout/functionalbreakoutlesson.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+#breakout-blocks-quizzes { --ok:#118a00; --bad:#b00020; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  #breakout-blocks-quizzes .quiz-card{
+    background:$beasts-white;border:2px solid #ddd;border-radius:14px;
+    padding:1.2rem;margin:1.2rem 0;box-shadow:0 4px 12px rgba(0,0,0,.05);
+    color:$beasts-black;
+  }
+  #breakout-blocks-quizzes .quiz-title{font-size:1.2rem;font-weight:700;margin-bottom:.25rem}
+  #breakout-blocks-quizzes .quiz-sub{margin-bottom:.9rem;color:#222}
+  #breakout-blocks-quizzes .q{border-radius:10px;padding:.9rem;margin:.7rem 0;border:1px solid #eee}
+  #breakout-blocks-quizzes .q:nth-child(odd){background:#f7f3ff;}  /* lilac */
+  #breakout-blocks-quizzes .q:nth-child(even){background:#f3fff7;} /* mint  */
+  #breakout-blocks-quizzes .prompt{font-weight:700;margin-bottom:.4rem}
+  #breakout-blocks-quizzes .option{display:flex;gap:.45rem;align-items:flex-start;margin:.3rem 0}
+  #breakout-blocks-quizzes button{
+    background:#f7f7f7;color:$beasts-black;border:2px solid #000;
+    border-radius:999px;padding:.45rem 1rem;
+    font-weight:700;cursor:pointer;margin-top:.6rem;margin-right:.4rem
+  }
+  #breakout-blocks-quizzes button:hover{background:$beasts-black;color:$beasts-white}
+  #breakout-blocks-quizzes .feedback{margin-top:.6rem;font-weight:800}
+  #breakout-blocks-quizzes .feedback.ok{color:var(--ok)}
+  #breakout-blocks-quizzes .feedback.bad{color:var(--bad)}
+  #breakout-blocks-quizzes code{
+    background:#f4f4f4;color:$beasts-black;padding:2px 5px;border-radius:4px
+  }

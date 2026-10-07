@@ -1,0 +1,15 @@
+// --- Alert / Notice banners ---------------------------------------------------
+.alert {
+  padding: $spacing-md $spacing-lg;
+  border-radius: $border-radius-md;
+  border-left: 4px solid;
+  margin-bottom: $spacing-md;
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-sm;
+}
+
+.alert-error   { background: #fef2f2; border-color: $color-red; color: #991b1b; }
+.alert-warning { background: #fffbeb; border-color: $color-amber; color: #92400e; }
+.alert-success { background: #f0fdf4; border-color: $color-green; color: #15803d; }
+.alert-info    { background: #eff6ff; border-color: #3b82f6; color: #1d4ed8; }

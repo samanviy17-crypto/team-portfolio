@@ -1,0 +1,119 @@
+// Migrated from hacks/west-coast/travel/sanfrancisco/thepaintedladies.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+:root{
+    --sky-day:#9ed0ff; --sky-dusk:#ffb5a7; --sky-night:#0b1a3a;
+    --fog:#ffffff; --lawn:#2f8f5b; --walk:#bda07a; --street:#2a2a2a;
+    --house1:#f6d5a9; --trim1:#5e4637; --roof1:#a67649;
+    --house2:#cde4ff; --trim2:#3c5a7a; --roof2:#5b7da4;
+    --house3:#ffe0e0; --trim3:#9b5c63; --roof3:#7a3e45;
+    --house4:#f3ffd1; --trim4:#6a7c3a; --roof4:#728246;
+    --house5:#e9d7ff; --trim5:#5a3a7c; --roof5:#6d4aa3;
+    --house6:#fff3c4; --trim6:#7b6132; --roof6:#9a7a43;
+    --light:#fff98a; --window:#1a1a2e;
+    --car:#ffd166;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{min-height:100%;background:#0b1a3a}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden;overflow-y:auto}
+
+  /* Scene container - centered */
+  .scene-wrapper{width:100%;display:flex;justify-content:center;align-items:center;padding:40px 0;background:#0b1a3a;}
+  .scene{position:relative;width:90vw;max-width:1400px;height:80vh;perspective:1200px;opacity:1;animation:fadeIn 1.2s ease;margin:0 auto;}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .overlay{position:absolute;inset:0;z-index:9;}
+  .hint{position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.45);color:$beasts-white;padding:8px 12px;border-radius:12px;font-size:12px;backdrop-filter:blur(4px);z-index:9}
+
+  /* Sky cycle */
+  .sky{position:absolute;inset:0;z-index:0;}
+  .sky::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(to bottom,var(--sky-day),#bfe3ff 60%, #e4f1ff 100%);
+    animation: skyCycle 60s linear infinite;will-change:background;
+  }
+  @keyframes skyCycle{
+    0%{background:linear-gradient(to bottom,var(--sky-day),#bfe3ff 60%, #e4f1ff)}
+    25%{background:linear-gradient(to bottom,var(--sky-dusk),#ffd6c9 60%, #ffe9e2)}
+    50%{background:linear-gradient(to bottom,var(--sky-night),#102a57 60%, #1a3a6b)}
+    75%{background:linear-gradient(to bottom,#1c3b6f 0%, #a6c6ff 60%, #d9ecff)}
+    100%{background:linear-gradient(to bottom,var(--sky-day),#bfe3ff 60%, #e4f1ff)}
+  }
+
+  /* Sun/Moon */
+  .orb{position:absolute;left:-10vmin;top:10vmin;width:12vmin;height:12vmin;border-radius:50%;
+       background:radial-gradient(circle at 35% 35%, #fff, #ffd27d 60%, rgba(255,210,125,0) 70%);
+       filter:blur(0.5px);mix-blend-mode:screen;animation: orbPath 60s linear infinite;z-index:1}
+  @keyframes orbPath{
+    0%{transform:translate(5vw,10vh)}
+    25%{transform:translate(35vw,-5vh)}
+    50%{transform:translate(75vw,8vh)}
+    75%{transform:translate(45vw,20vh)}
+    100%{transform:translate(5vw,10vh)}
+  }
+
+  /* Fog */
+  .fog{position:absolute;inset:0;z-index:2;pointer-events:none}
+  .fog > span{position:absolute;left:-40vw;width:140vw;height:30vh;background:radial-gradient(ellipse at 50% 50%, rgba(255,255,255,.7), rgba(255,255,255,0) 60%);filter:blur(10px);animation: fogMove 90s linear infinite;}
+  .fog .f1{top:8vh;animation-duration:95s;opacity:.25}
+  .fog .f2{top:18vh;animation-duration:85s;opacity:.18}
+  .fog .f3{top:4vh; animation-duration:75s;opacity:.15}
+  @keyframes fogMove{from{transform:translateX(0)} to{transform:translateX(60vw)}}
+
+  /* Distant skyline */
+  .skyline{position:absolute;inset:auto 0 40vh 0;height:26vh;z-index:3}
+  .skyline svg{width:100%;height:100%}
+  .twinkle circle{animation:twinkle 3s ease-in-out infinite;opacity:.6}
+  .twinkle circle:nth-child(odd){animation-duration:4.2s}
+  @keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.8}}
+
+  /* Park layers */
+  .lawn{position:absolute;inset:auto 0 16vh 0;height:28vh;background:radial-gradient(120% 60% at 50% 0%, #3fa36e, var(--lawn));z-index:4}
+  .walk{position:absolute;left:10vw;right:10vw;bottom:26vh;height:28px;background:linear-gradient(#cdb793,#a68a63);border-radius:18px;box-shadow:0 6px 10px rgba(0,0,0,.25);z-index:5}
+  .tree{position:absolute;bottom:calc(16vh + 18px);width:22px;height:22px;border-radius:50%;background:#2d6b45;box-shadow:0 0 0 10px #348354 inset,0 10px 12px rgba(0,0,0,.25);z-index:6;transform-origin:center bottom;animation:leaf 5s ease-in-out infinite}
+  .tree:after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-14px;width:6px;height:14px;background:#5b3a29;border-radius:2px}
+  .tree:nth-child(odd){animation-duration:6.5s}
+  @keyframes leaf{0%,100%{transform:rotate(0deg)}50%{transform:rotate(1.4deg)}}
+
+  /* Street */
+  .street{position:absolute;left:0;right:0;bottom:12vh;height:10vh;background:linear-gradient(#383838,#1f1f1f);z-index:8;box-shadow:0 -4px 14px rgba(0,0,0,.35) inset}
+  .lane{position:absolute;left:5vw;right:5vw;top:50%;height:4px;background:repeating-linear-gradient(90deg, #d8d8d8 0 40px, transparent 40px 70px);opacity:.5}
+
+  /* Car */
+  .cruiser{position:absolute;left:-15vw;bottom:calc(12vh + 2vh);width:64px;height:22px;background:var(--car);border-radius:4px;z-index:9;
+           box-shadow:0 2px 0 #0006 inset, 0 2px 8px rgba(0,0,0,.4);animation:cruise 22s linear infinite}
+  .cruiser:before,.cruiser:after{content:"";position:absolute;bottom:-6px;width:12px;height:12px;border-radius:50%;background:#111;box-shadow:inset 0 0 0 2px #333}
+  .cruiser:before{left:8px} .cruiser:after{right:8px}
+  .head{position:absolute;right:-6px;top:7px;width:6px;height:4px;background:rgba(255,255,200,.9);box-shadow:0 0 10px 4px rgba(255,255,200,.9);border-radius:2px}
+  @keyframes cruise{from{transform:translateX(0)} to{transform:translateX(140vw)}}
+
+  /* Painted Ladies */
+  .ladies{position:absolute;left:0;right:0;bottom:20vh;height:40vh;z-index:7;pointer-events:none}
+  .ladies svg{width:100%;height:100%}
+
+  /* Birds */
+  .birds{position:absolute;inset:8vh 0 auto 0;height:18vh;z-index:6;}
+  .gull{position:absolute;top:0;left:0;width:24px;height:12px;--t:20s;animation: fly var(--t) linear infinite;}
+  .gull svg{width:100%;height:100%}
+  @keyframes fly{0%{offset-distance:0%} 100%{offset-distance:100%}}
+  .gull{offset-path:path("M 0,50 C 20,0 40,0 60,50 S 120,100 140,50 S 200,0 240,50 S 300,100 360,60");}
+
+  @media (prefers-reduced-motion: reduce){
+    .sky::before,.orb,.fog > span,.gull,.cruiser,.twinkle circle{animation:none !important}
+  }
+
+  /* Content area */
+  .page{position:relative;background:#0b1a3a;padding:60px 20px;}
+
+  /* Lesson content styles */
+  .content-wrapper{max-width:900px;margin:0 auto;color:$beasts-white;}
+  .content-wrapper h1{font-size:2.8em;text-align:center;margin-bottom:40px;color:$beasts-white;}
+  .content-wrapper h2{font-size:2em;margin:40px 0 20px;color:$beasts-white;}
+  .content-wrapper h3{font-size:1.5em;margin:25px 0 15px;color:$beasts-white;}
+  .content-wrapper p{font-size:1.2em;line-height:1.8;margin-bottom:20px;color:$beasts-white;}
+  .content-wrapper ul{font-size:1.15em;line-height:2;list-style:none;padding-left:0;color:$beasts-white;}
+  .content-wrapper li{margin-bottom:10px;color:$beasts-white;}
+  .content-wrapper strong{color:$beasts-white;}
+
+  .hierarchy-level{padding:25px;margin:20px 0;border-left:4px solid #fff;}
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin:30px 0;}
+  .tool-item{padding:20px;}

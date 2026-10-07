@@ -1,0 +1,101 @@
+// Migrated from hacks/pong/2025-09-03-P0lesson.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: $beasts-black;
+  color: $beasts-white;
+  padding: 2rem;
+}
+
+/* 🔹 Progress Bar Styles */
+#progressContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: #222;
+  z-index: 1000;
+}
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #0f0, #00f);
+  transition: width 0.1s ease-out;
+}
+
+.lesson-container {
+  background: #111;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+}
+h1, h2, h3 {
+  color: #fffa;
+}
+.section {
+  margin-bottom: 2rem;
+}
+code {
+  background: #222;
+  color: #0f0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+}
+.commit-box {
+  background: #1a1a1a;
+  border: 2px solid #0f0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.commit-counter {
+  background: #333;
+  color: #0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+ul, ol {
+  margin-left: 1.5rem;
+}
+input[type="radio"] {
+  margin-right: 0.5rem;
+}
+.mermaid {
+  margin: 2rem 0;
+  text-align: center;
+}
+/* ✅ Commit "Done" button */
+.done-btn {
+  margin-left: 0.75rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.9rem;
+  border: 1px solid #0f0;
+  border-radius: 6px;
+  background: #111;
+  color: #0f0;
+  cursor: pointer;
+}
+.done-btn:hover { filter: brightness(1.1); }
+
+/* When a commit box is completed */
+.commit-box.done {
+  border-color: #3ee63e;
+  box-shadow: 0 0 12px rgba(62, 230, 62, 0.25);
+}
+.commit-box .done-stamp {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #9f9;
+  opacity: 0.9;
+}

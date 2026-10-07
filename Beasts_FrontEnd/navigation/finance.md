@@ -11,64 +11,8 @@ title: Investments Home
     <title>Investments Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #001f3f;
-            color: #fff;
-        }
-        .navbar .logo {
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-        .navbar .nav-buttons {
-            display: flex;
-            gap: 20px;
-        }
-        .navbar .nav-buttons a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .navbar .nav-buttons a:hover {
-            background-color: #ff8c00;
-        }
-        .dashboard {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-        .section {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .section h2 {
-            margin-top: 0;
-            text-align: center;
-        }
-        .chart-container {
-            margin-top: 20px;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+{{ '@import "beasts/inline/navigation/navigation-finance-1";' | scssify }}
+</style>
 </head>
 <body>
     <!-- Navigation Bar -->

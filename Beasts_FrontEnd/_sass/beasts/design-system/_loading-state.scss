@@ -1,0 +1,9 @@
+// --- Loading state -------------------------------------------------------------
+.loading-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl;
+  color: $color-gray-400;
+  gap: $spacing-sm;
+}

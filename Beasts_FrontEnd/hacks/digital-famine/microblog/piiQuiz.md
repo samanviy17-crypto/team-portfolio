@@ -23,53 +23,8 @@ breadcrumb: true
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multiple Choice Quiz Game</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .quiz-container {
-            background-color: #37096bff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        .options {
-            display: grid;
-            gap: 10px;
-            margin: 15px 0;
-        }
-        button {
-            padding: 10px;
-            cursor: pointer;
-            border: none;
-            border-radius: 4px;
-            background-color: #4b4b4bff;
-            color: white;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .option-button {
-            background-color: #6a2e3d;
-            color: #131313ff;
-            border: 1px solid #ddd;
-        }
-        .option-button:hover {
-            background-color: #f0f0f0;
-        }
-        .result {
-            margin-top: 20px;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        .feedback {
-            color: #ffffffff;
-            margin-top: 10px;
-        }
-    </style>
+{{ '@import "beasts/inline/pages/hacks-digital-famine-microblog-piiquiz-1";' | scssify }}
+</style>
 </head>
 <body>
     <div class="quiz-container">

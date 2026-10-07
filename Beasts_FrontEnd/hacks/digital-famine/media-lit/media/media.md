@@ -5,66 +5,7 @@ permalink: /media
 ---
 
 <style>
-body {
-    background-color: #181414;
-    color: white;
-    margin: 0;
-    font-family: system-ui, sans-serif;
-}
-.button-class {
-    background-color: rgb(71, 167, 75) !important; /* Nighthawk Green */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    display: inline-block;
-    margin-bottom: 30px;
-}
-.collapsible-btn {
-    background-color: rgb(71, 167, 75) !important; /* Nighthawk Green */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    display: inline-block;
-    margin-bottom: 30px;
-}
-.collapsible-btn:hover {
-  background-color: #0056b3;
-}
-.arrow {
-  display: inline-block;
-  margin-left: 8px;
-  transition: transform 0.3s ease;
-}
-.collapsible-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  margin-bottom: 0;
-}
-.collapsible-btn.active .arrow {
-  transform: rotate(180deg);
-}
-.collapsible-btn.active + .collapsible-content {
-  margin-bottom: 20px; /* Adds space when expanded */
-}
-.bin {
-  width: 30%;
-  padding: 10px;
-  border: 1px solid rgb(71, 167, 75);
-  min-height: 100px;
-}
+{{ '@import "beasts/inline/pages/hacks-digital-famine-media-lit-media-media-1";' | scssify }}
 </style>
 <br>
 <h1>Media Bias Game</h1><br>

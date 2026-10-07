@@ -7,57 +7,7 @@ show_reading_time: false
 ---
 
 <style>
-    .login-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding-top: 20px;
-    }
-
-    video, canvas {
-        border-radius: 10px;
-        margin-top: 10px;
-    }
-
-    .capture-button, .submit-button {
-        margin-top: 10px;
-        padding: 10px 20px;
-        font-size: 1rem;
-        cursor: pointer;
-        border-radius: 5px;
-        border: none;
-        transition: 0.3s;
-    }
-
-    .capture-button {
-        background-color: #007bff;
-        color: white;
-    }
-
-    .submit-button {
-        background-color: #28a745;
-        color: white;
-    }
-
-    .capture-button:hover {
-        background-color: #0056b3;
-    }
-
-    .submit-button:hover {
-        background-color: #1e7e34;
-    }
-
-    video {
-        transform: scaleX(-1); /* Mirror live preview */
-    }
-
-    #imagePreviewContainer img {
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        border: 2px solid #ccc;
-        border-radius: 10px;
-        margin-top: 10px;
-    }
+{{ '@import "beasts/inline/navigation/navigation-authentication-facial-mood-1";' | scssify }}
 </style>
 
 <div class="login-container">

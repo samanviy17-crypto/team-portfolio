@@ -13,46 +13,7 @@ The system is now defunct, as humans took to the stars. We'll have the reestabli
 
 <!--Vis Network Style-->
 <style type="text/css">
-    #comm_network {
-        width: 100%;
-        height: 600px;
-        border: 1px solid lightgray;
-    }
-
-    /* description card shown on node hover */
-    #comm_network .node-card {
-        position: absolute;
-        pointer-events: none;
-        display: none;
-        min-width: 220px;
-        max-width: 320px;
-        background: rgba(20,20,20,0.95);
-        color: #fff;
-        border-radius: 6px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-        padding: 10px;
-        z-index: 9999;
-        font-family: Arial, sans-serif;
-        font-size: 13px;
-    }
-    #comm_network .node-card img {
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-        margin-bottom: 8px;
-    }
-    #comm_network .node-card .tags {
-        margin-top: 8px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-    }
-    #comm_network .node-card .tag {
-        background: rgba(255,255,255,0.08);
-        padding: 4px 8px;
-        border-radius: 12px;
-        font-size: 11px;
-    }
+{{ '@import "beasts/inline/pages/hacks-digital-famine-microblog-questhome-1";' | scssify }}
 </style>
 
 <!--Vis Network Container-->

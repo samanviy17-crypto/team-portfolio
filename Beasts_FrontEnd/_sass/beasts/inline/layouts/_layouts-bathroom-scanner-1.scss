@@ -1,0 +1,167 @@
+// Migrated from _layouts/bathroom/scanner.html; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+body {
+        font-family: Arial, sans-serif;
+        transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        margin: 0;
+        padding: 0;
+    }
+    .top-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px; /* Increased padding for a taller bar */
+        font-size: 36px; /* Increased font size for larger text */
+        font-weight: bold;
+        width: 100%;
+        transition: background-color 0.5s ease-in-out;
+    }
+    .occupied {
+        background-color: #ff4d4d;
+        color: white;
+    }
+    .unoccupied {
+        background-color: #4dff4d;
+        color: white;
+    }
+    .occupied-glow {
+        background-color: #ffcccc;
+        box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.5);
+    }
+    .unoccupied-glow {
+        background-color: #ccffcc;
+        box-shadow: 0 0 20px 5px rgba(0, 255, 0, 0.5);
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 20px;
+        padding: 20px;
+    }
+    .info-box {
+        border: 2px solid #888;
+        padding: 20px;
+        width: 300px;
+        text-align: center;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        font-size: 20px; /* Increase overall text size */
+    }
+
+    .queue {
+        margin-top: 10px;
+        padding: 15px; /* Added more padding */
+        border: 1px solid #aaa;
+        background: #f9f9f9;
+        border-radius: 5px;
+        font-size: 22px; /* Make queue-specific text larger */
+        font-weight: bold; /* Make it stand out */
+    }
+
+    .queue strong {
+        font-size: 24px; /* Make section headers larger */
+    }
+
+    #queue-list li {
+        font-size: 20px; /* Increase the font size of items in the queue */
+    }
+
+    .map-container {
+        width: 400px;
+        height: 300px;
+        background-color: #eee;
+        margin-left: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .button {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease-in-out;
+    }
+    .button:hover {
+        background-color: #0056b3;
+    }
+
+    .map-container {
+        position: relative;
+        width: 800px;
+        height: 600px;
+    }
+    .map-container img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    .location {
+        position: absolute;
+        cursor: pointer;
+    }
+    .location .info {
+        display: block;
+    }
+    .info {
+        display: none;
+        position: absolute;
+        bottom: 30px;
+        left: -50px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: $beasts-white;
+        padding: 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+        z-index: 10;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Optional: Align items to center */
+        gap: 5px; /* Adjust spacing between items */
+    }
+    .qr-code-container {
+        display: flex;
+        position:absolute;
+        justify-content: center; /* Center horizontally */
+        padding-top:400px; /* Add space below the queue */
+        left:260px;
+        z-index:-99;
+    }
+
+    .qr-code-container img {
+        width: 200px; /* Adjust size as needed */
+        height: 200px;
+    }
+    .button{
+        z-index:99;
+    }
+    .top-right-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 100;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.top-right-button:hover {
+    background-color: #0056b3;
+}

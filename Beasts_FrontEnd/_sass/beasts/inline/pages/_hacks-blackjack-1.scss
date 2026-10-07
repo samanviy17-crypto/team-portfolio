@@ -1,0 +1,81 @@
+// Migrated from hacks/blackjack.md; preserve selector order and runtime tokens.
+@import "beasts/foundation/tokens";
+@import "beasts/foundation/responsive";
+
+#game-container {
+        width: 800px;
+        margin: 0 auto;
+        background-color: $beasts-white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .points-list {
+        list-style: none;
+        margin-left: 20px;
+        padding: 0;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    #message {
+        color: black !important;
+        font-weight: bold;
+    }
+    .player-area {
+        margin-bottom: 20px;
+    }
+
+    .cards-container {
+        display: flex;
+        justify-content: center;
+        min-height: 120px;
+    }
+
+    .card {
+        width: 80px;
+        height: 110px;
+        border: 1px solid #333;
+        border-radius: 5px;
+        margin: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        background-color: $beasts-white;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    #game-controls button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .hand-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .points-list {
+        margin-top: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+    }
+
+    @keyframes dealCard {
+        0% { transform: translateX(200px) rotateY(180deg) scale(0.5); opacity: 0; }
+        40% { transform: translateX(80px) rotateY(120deg) scale(0.8); opacity: 0.6; }
+        70% { transform: translateX(20px) rotateY(60deg) scale(1.05); opacity: 1; }
+        100% { transform: translateX(0) rotateY(0deg) scale(1); opacity: 1; }
+    }
+
+    .card { animation: dealCard 0.8s ease-out; transform-style: preserve-3d; }

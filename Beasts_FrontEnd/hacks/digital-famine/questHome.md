@@ -17,33 +17,7 @@ permalink: /digital-famine/
 
 <!-- Remove any padding/margin that might create black space -->
 <style>
-    body {
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    #gameContainer {
-        margin: 0 !important;
-        padding: 0 !important;
-        min-height: 0 !important;
-    }
-    /* Ensure footer is always visible */
-    #masterFooter {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        z-index: 100 !important;
-    }
-    /* Remove any default spacing from the layout */
-    .page-content, .wrapper {
-        padding-bottom: 0 !important;
-        margin-bottom: 0 !important;
-    }
-    /* Target the main content area */
-    main, article {
-        padding-bottom: 0 !important;
-        margin-bottom: 0 !important;
-    }
+{{ '@import "beasts/inline/pages/hacks-digital-famine-questhome-1";' | scssify }}
 </style>
 
 <!-- Game Script -->
