@@ -19,9 +19,9 @@ function initAccountPage() {
   initRegisterPage();
 }
 
-function initLoginPage() {
-  const existingUser = _readSessionUser();
-  if (existingUser) { window.location.href = `${SITE_BASE}/pages/profile.html`; return; }
+async function initLoginPage() {
+  const existingUser = await fetchCurrentUser();
+  if (existingUser) { window.location.href = safeAccountRedirect(); return; }
 
   const form = document.getElementById('login-form');
   if (form) form.addEventListener('submit', handleLoginSubmit);
@@ -62,16 +62,14 @@ function validateLoginInputs(email, password) {
 }
 
 function handleLoginSuccess(user) {
-  localStorage.setItem('pnec_user', JSON.stringify(user));
-  sessionStorage.removeItem('pnec_user');
-  const redirect = new URLSearchParams(window.location.search).get('next') || `${SITE_BASE}/pages/profile.html`;
+  const redirect = safeAccountRedirect();
   window.location.href = redirect;
 }
 
 function handleLoginError(error, submitBtn) {
   const message = error.type === ERROR_TYPES.AUTH_REQUIRED
     ? 'Incorrect email or password. Please try again.'
-    : getErrorMessage(error.type);
+    : (error.message || getErrorMessage(error.type));
   showLoginError(message);
   enableAuthButton(submitBtn, 'Sign In');
 }
@@ -735,7 +733,7 @@ function handleRegisterSuccess(user) {
   localStorage.setItem('pnec_user', JSON.stringify(user));
   localStorage.removeItem('pnec_new_user');
   sessionStorage.removeItem('pnec_user');
-  const redirect = new URLSearchParams(window.location.search).get('next') || `${SITE_BASE}/pages/profile.html`;
+  const redirect = safeAccountRedirect();
   window.location.href = redirect;
 }
 
@@ -746,9 +744,9 @@ function handleRegisterSuccess(user) {
  * @returns {void}
  */
 function handleRegisterError(error, submitBtn) {
-  const message = error.type === ERROR_TYPES.INVALID_DATA || error.status === 409
+  const message = error.status === 409
     ? 'An account with that email already exists.'
-    : getErrorMessage(error.type);
+    : (error.message || getErrorMessage(error.type));
   showRegisterError(message);
   enableRegisterButton(submitBtn, 'Create Account');
 }

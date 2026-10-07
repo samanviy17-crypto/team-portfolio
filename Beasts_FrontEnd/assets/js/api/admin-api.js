@@ -3,7 +3,7 @@
 // Pure fetch functions — no DOM, no side effects.
 
 function _admAuthHeaders() {
-  const token = localStorage.getItem('pnec_token');
+  const token = localStorage.getItem('pnec_token') || sessionStorage.getItem('pnec_token');
   const h = { 'Content-Type': 'application/json' };
   if (token) h['Authorization'] = 'Bearer ' + token;
   return h;

@@ -56,10 +56,12 @@ def register():
         return error_response('RATE_LIMITED', 429,
                               {'detail': 'Too many registration attempts. Try again in a minute.'})
 
-    data = request.get_json(silent=True) or {}
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict) or any(not isinstance(data.get(k, ''), str) for k in ('email', 'password', 'display_name')):
+        return error_response('VALIDATION_FAILED', 400)
 
     email        = (data.get('email') or '').strip().lower()
-    password     = (data.get('password') or '').strip()
+    password     = data.get('password') or ''
     display_name = (data.get('display_name') or '').strip()
     neighborhood_id = data.get('neighborhood_id') or None
 
@@ -79,6 +81,15 @@ def register():
         return error_response('VALIDATION_FAILED', 400,
                               {'detail': 'Display name must be 100 characters or fewer.'})
 
+    if not isinstance(password, str) or len(password) > 1024:
+        return error_response('VALIDATION_FAILED', 400)
+    if neighborhood_id is not None:
+        try:
+            neighborhood_id = int(neighborhood_id)
+        except (TypeError, ValueError):
+            return error_response('VALIDATION_FAILED', 400)
+        if not db_neighborhood_exists(neighborhood_id):
+            return error_response('VALIDATION_FAILED', 400, {'detail': 'Selected neighborhood does not exist.'})
     user, err = create_user(email, password, display_name, neighborhood_id)
     if err:
         status = 409 if err == 'DUPLICATE_EMAIL' else 400
@@ -135,13 +146,15 @@ def login():
         return error_response('RATE_LIMITED', 429,
                               {'detail': 'Too many login attempts. Wait a minute and try again.'})
 
-    data = request.get_json(silent=True) or {}
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict) or any(not isinstance(data.get(k, ''), str) for k in ('email', 'password', 'display_name')):
+        return error_response('VALIDATION_FAILED', 400)
 
     email    = (data.get('email') or '').strip().lower()
-    password = (data.get('password') or '').strip()
+    password = data.get('password') or ''
     remember = bool(data.get('remember', False))
 
-    if not email or not password:
+    if not email or not password or len(password) > 1024:
         return error_response('VALIDATION_FAILED', 400,
                                {'detail': 'email and password are required'})
 
@@ -185,8 +198,8 @@ def login():
     from flask import session as flask_session
     token = user.generate_token()
     db.session.commit()
-    flask_session.permanent = True
-    login_user(user, remember=True)
+    flask_session.permanent = remember
+    login_user(user, remember=remember)
     return jsonify({'message': 'Signed in.', 'user': user.to_dict(), 'token': token}), 200
 
 
@@ -198,6 +211,11 @@ def logout():
     1. Call logout_user()
     2. Return 200 confirmation
     """
+    from app import db
+    user = current_auth_user()
+    if user:
+        user.generate_token()
+        db.session.commit()
     logout_user()
     return jsonify({'message': 'Signed out.'}), 200
 
@@ -268,3 +286,34 @@ def mark_me_inactive():
     logout_user()
     db.session.commit()
     return jsonify({'message': 'Account marked inactive.'}), 200
+
+
+def db_neighborhood_exists(neighborhood_id):
+    from app import db
+    return db.session.get(Neighborhood, neighborhood_id) is not None
+
+
+@auth_bp.post('/forgot-password')
+def forgot_password():
+    from app.services.auth_service import request_password_reset
+    if _is_rate_limited('forgot-password', 3):
+        return error_response('RATE_LIMITED', 429)
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict) or not isinstance(data.get('email'), str) or not _EMAIL_RE.fullmatch(data['email'].strip()) or len(data['email']) > 254:
+        return error_response('VALIDATION_FAILED', 400, {'detail': 'Enter a valid email address.'})
+    request_password_reset(data['email'])
+    return jsonify({'message': 'If that email is registered, a reset link has been sent.'})
+
+
+@auth_bp.post('/reset-password')
+def reset_password():
+    from app.services.auth_service import reset_password_with_token
+    if _is_rate_limited('reset-password', 8):
+        return error_response('RATE_LIMITED', 429)
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict) or not isinstance(data.get('password'), str) or not 8 <= len(data['password']) <= 1024 or not isinstance(data.get('token'), str):
+        return error_response('VALIDATION_FAILED', 400, {'detail': 'A reset link and a password of 8–1024 characters are required.'})
+    if not reset_password_with_token(data['token'], data['password']):
+        return error_response('VALIDATION_FAILED', 400, {'detail': 'This reset link is invalid or expired. Request a new link.'})
+    logout_user()
+    return jsonify({'message': 'Password updated. Sign in with your new password.'})

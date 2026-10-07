@@ -2,7 +2,7 @@
 # Responsibility: Flask application factory — creates and wires together the app instance.
 # All extensions, blueprints, and startup tasks are registered here and nowhere else.
 
-from flask import Flask, jsonify, render_template_string
+from flask import Flask, jsonify, render_template_string, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, current_user
@@ -396,13 +396,16 @@ def create_app():
     # ── Bearer token → Flask-Login session bridge ─────────────────────────────
     @app.before_request
     def _load_user_from_bearer():
-        """If the request carries a valid Bearer token and no session, log in that user."""
+        """Use the supplied bearer identity consistently with authenticated API helpers."""
         from flask_login import login_user
-        if not current_user.is_authenticated:
+        if request.headers.get('Authorization', '').startswith('Bearer '):
             from app.utils.auth_helpers import get_token_user
+            from flask_login import logout_user
             token_user = get_token_user()
             if token_user:
                 login_user(token_user, remember=False)
+            else:
+                logout_user()
 
     # ── Register blueprints ───────────────────────────────────────────────────
     _register_blueprints(app)
@@ -616,4 +619,16 @@ def load_user(user_id):
     @returns {User|None} The User instance or None
     """
     from app.models.user import User
-    return User.query.get(int(user_id))
+    import secrets
+    try:
+        parts = user_id.split(':', 1)
+        user = db.session.get(User, int(parts[0]))
+    except (TypeError, ValueError):
+        return None
+    if not user or not user.is_active:
+        return None
+    if len(parts) == 1:
+        # Legacy users without bearer credentials can keep their old sessions.
+        return user if user.auth_token is None else None
+    stamp = user.get_id().split(':', 1)[1]
+    return user if secrets.compare_digest(parts[1], stamp) else None

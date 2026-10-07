@@ -64,7 +64,11 @@ class Config:
     # ─── Email (Flask-Mail) ────────────────────────────────────────────────────
     MAIL_SERVER = os.environ.get('MAIL_SERVER') or None
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 587)
-    MAIL_USE_TLS = True
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() == 'true'
+    MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL', 'false').lower() == 'true'
+    MAIL_DELIVERY = os.environ.get('MAIL_DELIVERY', 'auto')
+    FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://127.0.0.1:4500').rstrip('/')
+    PASSWORD_RESET_MAX_AGE = 86400
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or None
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or None
     MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER') or 'noreply@powaynec.com'

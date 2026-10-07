@@ -78,3 +78,64 @@ def update_user_role(user_id, new_role):
     user.role = new_role
     db.session.commit()
     return user, None
+
+
+def _reset_serializer():
+    from flask import current_app
+    from itsdangerous import URLSafeTimedSerializer
+    return URLSafeTimedSerializer(current_app.config['SECRET_KEY'], salt='pnec-password-reset')
+
+
+def _reset_stamp(user):
+    import hashlib
+    return hashlib.sha256((user.password_hash + (user.auth_token or '')).encode()).hexdigest()
+
+
+def request_password_reset(email):
+    from flask import current_app
+    from urllib.parse import urlencode
+    user = User.query.filter_by(email=email.lower().strip(), is_active=True).first()
+    if not user:
+        return
+    token = _reset_serializer().dumps({'id': user.id, 'stamp': _reset_stamp(user)})
+    url = current_app.config['FRONTEND_URL'] + '/pages/reset-password.html?' + urlencode({'token': token})
+    body = 'Reset your PNEC password using this link (expires in 24 hours):\n' + url + '\nIf you did not request this, ignore this email.'
+    mode = current_app.config.get('MAIL_DELIVERY', 'auto')
+    if mode == 'auto':
+        mode = 'smtp' if current_app.config.get('MAIL_SERVER') else ('console' if current_app.debug else 'disabled')
+    try:
+        from app import mail
+        from flask_mail import Message
+        message = Message('Reset your PNEC password', recipients=[user.email], body=body)
+        if current_app.testing:
+            current_app.extensions.setdefault('account_mail_outbox', []).append(message)
+        elif mode == 'console' and current_app.debug:
+            print('Development account email:\n' + body, flush=True)
+        elif mode == 'smtp' and mail is not None:
+            mail.send(message)
+        else:
+            current_app.logger.warning('Account email delivery is not configured.')
+    except Exception:
+        # Do not leak addresses, reset links, SMTP credentials or account existence.
+        current_app.logger.error('Account email delivery failed; check mail configuration.')
+
+
+def reset_password_with_token(token, password):
+    from flask import current_app
+    from itsdangerous import BadData
+    import secrets
+    try:
+        data = _reset_serializer().loads(token, max_age=current_app.config['PASSWORD_RESET_MAX_AGE'])
+        if not isinstance(data, dict) or type(data.get('id')) is not int or not isinstance(data.get('stamp'), str):
+            return False
+        user = db.session.get(User, data['id'])
+        if not user or not user.is_active or not secrets.compare_digest(data['stamp'], _reset_stamp(user)):
+            return False
+        # Conditional update also prevents simultaneous reuse of the same link.
+        changed = User.query.filter_by(id=user.id, password_hash=user.password_hash, auth_token=user.auth_token).update({
+            'password_hash': generate_password_hash(password, method='pbkdf2:sha256'),
+            'auth_token': secrets.token_hex(32)}, synchronize_session=False)
+        db.session.commit()
+        return changed == 1
+    except BadData:
+        return False

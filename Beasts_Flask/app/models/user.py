@@ -27,6 +27,12 @@ class User(UserMixin, db.Model):
     phone           = db.Column(db.String(20),  nullable=True)
     auth_token      = db.Column(db.String(64),  nullable=True, unique=True, index=True)
 
+    def get_id(self):
+        # Bind cookies to the existing account credential; logout/reset revoke replays.
+        import hashlib
+        stamp = hashlib.sha256((self.password_hash + (self.auth_token or '')).encode()).hexdigest()
+        return f'{self.id}:{stamp}'
+
     def generate_token(self):
         self.auth_token = secrets.token_hex(32)
         return self.auth_token

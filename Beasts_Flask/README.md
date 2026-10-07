@@ -134,3 +134,82 @@ That does `git pull`, `docker-compose build`, `docker-compose up -d`, and an opt
 ## License
 
 MIT. See `LICENSE`.
+
+
+## Local account login and recovery
+
+Use the existing combined account page at `http://127.0.0.1:4500/pages/register.html#login`.
+The PNEC login identifier is an email address; this model has no username field.
+Registration now uses `/api/auth/register`, including validation and rate limits.
+Passwords are stored with Werkzeug hashing; whitespace in passwords is significant.
+
+From the team-portfolio root, run:
+
+```sh
+cd Beasts_Flask
+MAIL_DELIVERY=console FLASK_ENV=development FRONTEND_URL=http://127.0.0.1:4500 .venv/bin/python main.py
+```
+
+Use the already installed environment; install `requirements.txt` if needed. Keep
+`SECRET_KEY` private and stable. Admin seeding still requires the existing
+`ADMIN_PASSWORD` (12+ characters); ordinary residents can register through the
+account page. No default test account is installed. The existing local SQLite
+file and all SCSS sources are preserved. Build the frontend with its existing
+preview workflow and open the URL above.
+
+Create an account, sign out, sign in, reload the profile, and sign out again.
+Remember-me stores the frontend token persistently; otherwise it uses session
+storage. Requests continue supporting both bearer headers and Flask cookies.
+Old numeric-ID sessions for token-enabled accounts need one fresh sign-in;
+new cookies are bound to the password hash and existing account credential, so
+logout, a new sign-in, and password resets revoke older cookies.
+Logout revokes the account's current bearer token (other token clients must
+sign in again). Staff/admin role checks are unchanged.
+
+At `/pages/forgot-password.html`, submit the account email. Console delivery is
+available only in development/debug mode; the private backend console contains
+the reset email/link. Open that link and enter a matching new password twice.
+Links expire after 24 hours, cannot be reused, and are invalidated by a password
+change or bearer-token rotation. Recovery responses never reveal whether an
+email belongs to an account. Resetting also revokes old bearer credentials and
+credential-bound session/remember cookies. Test mail is captured in an in-memory
+outbox by the auth tests; it never contacts SMTP.
+
+Mail environment variables: `MAIL_DELIVERY` (`auto`, `console`, or `smtp`),
+`MAIL_SERVER`, `MAIL_PORT` (default 587), `MAIL_USERNAME`, `MAIL_PASSWORD`,
+`MAIL_DEFAULT_SENDER`, `MAIL_USE_TLS` (default `true`), `MAIL_USE_SSL` (default
+`false`), and `FRONTEND_URL` (the trusted frontend origin, including any base path).
+For production set `FRONTEND_URL` to the public HTTPS frontend URL, configure
+SMTP and a stable strong `SECRET_KEY`, and use `FLASK_ENV=production` under the
+existing production server. For SSL SMTP use `MAIL_USE_SSL=true` and
+`MAIL_USE_TLS=false`. Auto delivery uses SMTP when configured, otherwise the
+console in development; production without SMTP logs a configuration warning
+without logging reset links. Delivery failures retain the same generic response.
+Do not publish console logs; reset links are credentials.
+
+No database columns or migrations are required. Email verification and welcome
+emails had no existing implementation and were not added. Existing login and
+forgot/reset rate limits are process-local; shared-worker limits remain a
+production limitation. Run `.venv/bin/python -m pytest -q` for regression checks.
+
+
+Repeatable browser verification (local servers already running, Playwright and
+Chromium installed): capture console-mail stdout in the ignored existing
+virtual environment when starting the backend:
+
+```sh
+cd Beasts_Flask
+MAIL_DELIVERY=console FLASK_ENV=development FRONTEND_URL=http://127.0.0.1:4500 .venv/bin/python main.py > .venv/auth-local-preview.log 2>&1
+```
+
+Then from the team-portfolio root run:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 Beasts_Flask/.venv/bin/python Beasts_FrontEnd/scripts/test-auth.py
+```
+
+The browser check reads only the local console log, creates a disposable resident,
+and deactivates that account after success. It does not print passwords/reset
+links or send SMTP mail. Keep the log ignored. Run the check only against the
+local development database; SMTP delivery itself requires separate testing with
+your configured mail provider.

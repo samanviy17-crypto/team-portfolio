@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         var apiBase = (typeof API_BASE !== 'undefined' ? API_BASE : 'http://localhost:8425');
-        var token = localStorage.getItem('pnec_token');
+        var token = localStorage.getItem('pnec_token') || sessionStorage.getItem('pnec_token');
         var headers = { 'Content-Type': 'application/json' };
         if (token) headers['Authorization'] = 'Bearer ' + token;
         fetch(apiBase + '/api/auth/profile', {
@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
         inactiveBtn.textContent = 'Marking inactive...';
 
         var apiBase = (typeof API_BASE !== 'undefined' ? API_BASE : 'http://localhost:8425');
-        var token = localStorage.getItem('pnec_token');
+        var token = localStorage.getItem('pnec_token') || sessionStorage.getItem('pnec_token');
         var headers = { 'Content-Type': 'application/json' };
         if (token) headers['Authorization'] = 'Bearer ' + token;
 

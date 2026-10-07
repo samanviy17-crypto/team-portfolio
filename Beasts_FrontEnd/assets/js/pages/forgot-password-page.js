@@ -26,22 +26,12 @@ async function handleForgotSubmit(e) {
   btn.textContent = 'Sending…';
 
   try {
-    const res = await fetch(`${API_BASE}/api/auth/forgot-password`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email })
-    });
-    const data = await res.json().catch(() => ({}));
-    if (res.ok) {
-      successBox.textContent = 'If that email is registered, a reset link has been sent. Check your inbox.';
-      successBox.style.display = 'block';
-      document.getElementById('forgot-form').style.display = 'none';
-    } else {
-      errorBox.textContent = data.message || 'Something went wrong. Please try again.';
-    }
-  } catch {
-    errorBox.textContent = 'Unable to connect. Please check your connection and try again.';
+    const data = await requestPasswordReset(email);
+    successBox.textContent = data.message;
+    successBox.style.display = 'block';
+    document.getElementById('forgot-form').style.display = 'none';
+  } catch (error) {
+    errorBox.textContent = error.message || 'Unable to connect. Please check your connection and try again.';
   } finally {
     btn.disabled = false;
     btn.textContent = 'Send Reset Link';

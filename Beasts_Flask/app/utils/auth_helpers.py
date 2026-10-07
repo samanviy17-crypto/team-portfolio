@@ -15,9 +15,8 @@ def get_token_user():
 
 def current_auth_user():
     """Return authenticated user from Bearer token or Flask session."""
-    token_user = get_token_user()
-    if token_user:
-        return token_user
+    if request.headers.get('Authorization', '').startswith('Bearer '):
+        return get_token_user()
     if current_user.is_authenticated:
         return current_user
     return None
