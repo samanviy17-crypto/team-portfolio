@@ -47,6 +47,12 @@ future: true
 #   silence_deprecations: [import]
 incremental: true
 
+# These applications have their own build roots; do not render their templates
+# or lesson posts using the portfolio's layouts and includes.
+exclude:
+  - Beasts_FrontEnd
+  - Beasts_Flask
+
 remote_theme: jekyll/minima
 plugins:
   - jekyll-remote-theme
