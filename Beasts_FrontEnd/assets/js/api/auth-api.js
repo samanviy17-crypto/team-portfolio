@@ -114,3 +114,15 @@ function safeAccountRedirect() {
   const target = new URL(next, location.origin);
   return target.origin === location.origin ? target.pathname + target.search + target.hash : fallback;
 }
+
+
+function updateProfile(payload) {
+  return fetch(`${API_BASE}/api/auth/profile`, {
+    method: 'PATCH', credentials: 'include', headers: _getAuthHeaders(),
+    body: JSON.stringify(payload),
+  }).then(validateAuthResponse).then(response => response.json()).then(data => {
+    const remember = localStorage.getItem('pnec_token') !== null;
+    _storeAuthResult(data, remember);
+    return data.user;
+  });
+}

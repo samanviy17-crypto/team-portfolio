@@ -34,7 +34,12 @@ def create_user(email, password, display_name, neighborhood_id=None):
         is_active=True,
     )
     db.session.add(user)
-    db.session.commit()
+    from sqlalchemy.exc import IntegrityError
+    try:
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
+        return None, 'DUPLICATE_EMAIL'
     return user, None
 
 
@@ -139,3 +144,71 @@ def reset_password_with_token(token, password):
         return changed == 1
     except BadData:
         return False
+
+
+def update_user_profile(user, data):
+    """Validate all changes before updating the authenticated account only."""
+    import re
+    from sqlalchemy.exc import IntegrityError
+    from app.models.neighborhood import Neighborhood
+
+    def invalid(detail, key='VALIDATION_FAILED'):
+        return None, {'key': key, 'detail': detail}
+
+    allowed = {'display_name', 'email', 'phone', 'bio', 'avatar_url', 'neighborhood_id'}
+    if not isinstance(data, dict) or not data or set(data) - allowed:
+        return invalid('Submit only editable profile fields.')
+    updates = {}
+    for field in ('display_name', 'email', 'phone', 'bio', 'avatar_url'):
+        if field not in data:
+            continue
+        value = data[field]
+        if value is None and field in ('phone', 'bio', 'avatar_url'):
+            updates[field] = None
+            continue
+        if not isinstance(value, str):
+            return invalid(f'{field} must be text.')
+        value = value.strip()
+        if field == 'display_name' and not 1 <= len(value) <= 100:
+            return invalid('Full name must contain 1–100 characters.')
+        if field == 'email':
+            value = value.lower()
+            if len(value) > 254 or not re.fullmatch(r'[^@\s]+@[^@\s]+\.[^@\s]{2,}', value):
+                return invalid('Enter a valid email address.')
+            if User.query.filter(User.email == value, User.id != user.id).first():
+                return invalid('An account with that email already exists.', 'DUPLICATE_EMAIL')
+        if field == 'phone' and value:
+            # Keep digits and an optional international prefix consistently.
+            if not re.fullmatch(r'\+?[0-9 ()\-.]+', value):
+                return invalid('Enter a phone number with 7–15 digits and an optional + prefix.')
+            digits = re.sub(r'[^0-9]', '', value)
+            if not 7 <= len(digits) <= 15:
+                return invalid('Enter a phone number with 7–15 digits and an optional + prefix.')
+            value = ('+' if value.startswith('+') else '') + digits
+        if field == 'bio' and len(value) > 500:
+            return invalid('Bio must be 500 characters or fewer.')
+        if field in ('phone', 'bio', 'avatar_url'):
+            value = value or None
+        updates[field] = value
+    if 'neighborhood_id' in data:
+        value = data['neighborhood_id']
+        if value in (None, '', 'null'):
+            updates['neighborhood_id'] = None
+        else:
+            if isinstance(value, bool) or not isinstance(value, (int, str)):
+                return invalid('Choose a valid neighborhood.')
+            try:
+                value = int(value)
+            except ValueError:
+                return invalid('Choose a valid neighborhood.')
+            if not db.session.get(Neighborhood, value):
+                return invalid('Selected neighborhood does not exist.')
+            updates['neighborhood_id'] = value
+    for field, value in updates.items():
+        setattr(user, field, value)
+    try:
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
+        return invalid('An account with that email already exists.', 'DUPLICATE_EMAIL')
+    return user, None

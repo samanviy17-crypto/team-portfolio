@@ -142,6 +142,8 @@
 
   async function hazards(parent) {
     const node = section(parent, 'Report a neighborhood hazard');
+    node.id = 'hazard-reporting';
+    if (location.hash === '#hazard-reporting') node.scrollIntoView({block: 'center'});
     el('p', 'Report non-emergency hazards for coordinator review. For immediate danger, call 911.', node);
     if (!user) return loginNote(node);
     const list = el('div', undefined, node);

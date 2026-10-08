@@ -213,3 +213,65 @@ and deactivates that account after success. It does not print passwords/reset
 links or send SMTP mail. Keep the log ignored. Run the check only against the
 local development database; SMTP delivery itself requires separate testing with
 your configured mail provider.
+
+## Resident profile editing and verification
+
+After PNEC login, `/pages/profile.html` loads the verified account from
+`GET /api/auth/me`. `PATCH /api/auth/profile` updates that authenticated account's
+full name (`display_name`), email, phone, bio, avatar and neighborhood. Account IDs
+and roles are not editable fields. Emails are normalized and remain unique;
+phone numbers accept 7–15 digits with an optional `+` prefix and are stored without
+spaces, parentheses, periods or hyphens. Empty optional phones are stored as null.
+All fields are validated before changes are committed. Cancel discards unsaved
+form/avatar changes. A changed email becomes the next login identifier; passwords
+and existing authenticated sessions remain intact. No schema migration is needed:
+the current User model and existing SQLite compatibility setup already support phone.
+
+The profile links to the existing community-events calendar, resources, checklist,
+volunteer board, neighborhood information, home Risk Watch, hazard reporting and
+home. The community-events page uses the existing events calendar renderer/API;
+the unrelated student calendar is not the PNEC calendar. Logout is also available
+on the profile. Existing frontend README route examples mentioning `/login`, JWT
+or `/events` describe an older layout; the working PNEC routes are the `/pages/`
+paths above, using Flask-Login cookies and opaque bearer tokens. Both repository
+README files mark these copies as reference forks; local edits do not deploy them.
+
+From the team-portfolio root, use two terminals:
+
+```sh
+cd Beasts_Flask
+# If .venv is missing: python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+MAIL_DELIVERY=console FLASK_ENV=development FRONTEND_URL=http://127.0.0.1:4500 .venv/bin/python main.py
+```
+
+```sh
+cd Beasts_FrontEnd
+python3 scripts/local_preview_server.py
+```
+
+The existing preview needs Ruby and compatible installed Jekyll 3 gems/plugins.
+It builds before serving and does not convert notebooks. Open
+`http://127.0.0.1:4500/`; health is `http://127.0.0.1:8425/api/health`.
+Keep existing database/environment settings and private secrets unchanged.
+Ordinary residents register at `/pages/register.html#register` and sign in at
+`/pages/register.html#login`. SMTP provider delivery still requires its own check.
+
+For automated verification from team-portfolio:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 Beasts_Flask/.venv/bin/python -m pytest -q -p no:cacheprovider Beasts_Flask/tests
+# With the built frontend preview already running:
+PYTHONDONTWRITEBYTECODE=1 Beasts_Flask/.venv/bin/python -B Beasts_FrontEnd/scripts/test-profile.py
+```
+
+The profile browser test uses a disposable file-backed SQLite database and a
+separate local Flask test server. It checks the database directly, restarts that
+server against the same file, and verifies persistence without editing the real
+resident database. It blocks external browser services. Browser API requests are
+redirected from the normal local API URL to the isolated test server.
+Bearer tokens are returned only by the existing registration/login endpoints to
+establish auth; profile responses never include password hashes or auth tokens.
+The existing bearer mechanism has no independent time-based expiry; logout,
+new login and password reset revoke it. Cookie sessions retain their configured
+lifetimes. Existing SMTP and process-local rate-limit limitations still apply.

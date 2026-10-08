@@ -7,6 +7,8 @@ permalink: /pages/community-events-and-activities.html
 	<style id="pnec-critical-css">
 {{ '@import "beasts/inline/pages/pages-community-events-and-activities-1";' | scssify }}
 </style>
+{% capture pnec_calendar_styles %}@import "variables"; #pnec-community-calendar { margin-top: 160px; scroll-margin-top: 240px; button { scroll-margin-top: 240px; } @import "pages"; }{% endcapture %}
+<style>{{ pnec_calendar_styles | scssify }}</style>
 <title>Community Events and Activities &#8211; Poway NEC &amp; FSC</title>
 <!-- PNEC SEO meta v3 -->
 <meta name="description" content="Upcoming PNEC events, drills, training sessions, and the annual Emergency & Safety Fair. RSVP and bring a neighbor — preparedness is a team sport.">
@@ -332,6 +334,13 @@ gtag("config", "GT-55XBSG8");
 		</section>
 				</header>
 		</header><main id="jupiterx-main" class="jupiterx-main">
+<section id="pnec-community-calendar" class="community-tools" aria-label="Community calendar">
+  <h2>Community Calendar</h2>
+  <button id="view-calendar-btn" class="btn btn-secondary btn-sm" aria-pressed="true">Calendar view</button>
+  <button id="view-list-btn" class="btn btn-outline btn-sm" aria-pressed="false">List view</button>
+  <div id="calendar-view"><div id="pnec-calendar"></div><div id="calendar-event-sidebar" aria-live="polite"></div></div>
+  <div id="list-view" style="display:none"><div id="events-list-container"></div></div>
+</section>
 {% include community-tools.html features="weekly" %}
 <div class="jupiterx-main-content"><div class="container"><div class="row"><div id="jupiterx-primary" class="jupiterx-primary col-lg-12"><div class="jupiterx-content" role="main" itemprop="mainEntityOfPage"><article id="1149" class="jupiterx-post post-1149 page type-page status-publish hentry" itemscope="itemscope" itemtype="http://schema.org/CreativeWork"><header class="jupiterx-post-header"></header><div class="jupiterx-post-body" itemprop="articleBody"><div class="jupiterx-post-content clearfix" itemprop="text">		<div data-elementor-type="wp-page" data-elementor-id="1149" class="elementor elementor-1149" data-elementor-post-type="page">
 						<section class="elementor-section elementor-top-section elementor-element elementor-element-4ebc3cc elementor-section-stretched elementor-section-height-min-height elementor-section-full_width elementor-section-height-default elementor-section-items-middle" data-id="4ebc3cc" data-element_type="section" data-e-type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
@@ -838,6 +847,8 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 <script src="/assets/js/ui/scroll-reveal.js"></script>
 <!-- Auth UI for user-menu role-gated nav items + CMS hydration + admin Edit-this-page button -->
 <script src="/assets/js/ui/auth-ui.js"></script>
+<script src="{{ '/assets/js/api/events-api.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/pages/events-page.js' | relative_url }}"></script>
 <script src="/assets/js/cms/cms-api.js"></script>
 <script src="/assets/js/cms/hydrate.js"></script>
 <script src="/assets/js/admin/edit-this-page.js"></script>

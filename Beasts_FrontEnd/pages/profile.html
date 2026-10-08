@@ -51,53 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
   var pendingAvatarUrl = null;
   var neighborhoodsCache = [];
 
-  // Show cached user immediately
-  var cachedUser = null;
-  try {
-    var raw = localStorage.getItem('pnec_user') || sessionStorage.getItem('pnec_user');
-    cachedUser = raw ? JSON.parse(raw) : null;
-  } catch (_) {}
-  if (cachedUser) renderProfile(cachedUser);
-
-  var sessionValid = false;
-
-  // Verify and refresh from server
-  fetchCurrentUser()
-    .then(function(user) {
-      if (user) {
-        sessionValid = true;
-        localStorage.setItem('pnec_user', JSON.stringify(user));
-        renderProfile(user);
-      } else {
-        // Server says not logged in
-        if (!cachedUser) {
-          window.location.href = siteBase + '/pages/register.html?next=' + encodeURIComponent(siteBase + '/pages/profile.html') + '#login';
-        } else {
-          // Show cached profile but disable saving — session is gone
-          showSessionBanner();
-        }
-      }
-    })
-    .catch(function() {
-      if (!cachedUser) {
-        container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><h3>Unable to load profile</h3><p>Please <a href="' + siteBase + '/pages/register.html#login">sign in</a>.</p></div>';
-      }
-      // If cached user exists, leave profile visible but show banner
-      else { showSessionBanner(); }
-    });
-
-  function showSessionBanner() {
-    var loginUrl = siteBase + '/pages/register.html?next=' + encodeURIComponent(siteBase + '/pages/profile.html') + '#login';
-    var banner = document.createElement('div');
-    banner.id = 'session-expired-banner';
-    banner.style.cssText = 'background:#fff3cd;border:1px solid #ffc107;border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:0.88rem;color:#856404;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;';
-    banner.innerHTML = '<span>⚠️ Your session expired — changes won\'t be saved until you log in again.</span><a href="' + loginUrl + '" style="background:#0a1628;color:#fff;padding:7px 14px;border-radius:8px;font-weight:700;font-size:0.82rem;text-decoration:none;white-space:nowrap;">Log in</a>';
-    var profileContent = document.getElementById('profile-content');
-    if (profileContent) profileContent.insertBefore(banner, profileContent.firstChild);
-    // Disable save button
-    var saveBtn = document.getElementById('profile-save-btn');
-    if (saveBtn) { saveBtn.disabled = true; saveBtn.style.background = '#9e9e9e'; saveBtn.title = 'Log in to save changes'; }
-  }
+  // Account details are rendered only after the backend verifies this session.
+  fetchCurrentUser().then(function(user) {
+    if (!user) {
+      window.location.href = siteBase + '/pages/register.html?next=' + encodeURIComponent(siteBase + '/pages/profile.html') + '#login';
+      return;
+    }
+    _storeAuthResult({user: user}, localStorage.getItem('pnec_token') !== null);
+    renderProfile(user);
+  });
 
   function calcCompletion(user) {
     var score = 0;
@@ -225,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '<div class="profile-meta" style="flex:1;">' +
           '<h1 class="profile-name">' + escapeHtml(user.display_name) + ' ' + roleBadge + '</h1>' +
           '<p class="profile-email">' + escapeHtml(user.email) + '</p>' +
+          '<p class="profile-phone">Phone: ' + escapeHtml(user.phone || 'Not provided') + '</p>' +
           (user.bio ? '<p class="profile-bio-display">' + escapeHtml(user.bio) + '</p>' : '') +
           '<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:6px;">' +
             (joined ? '<span style="font-size:0.8rem;color:#9e9e9e;">🗓 Member since ' + joined + (joinedDays !== null ? ' (' + joinedDays + ' days)' : '') + '</span>' : '') +
@@ -233,14 +196,32 @@ document.addEventListener('DOMContentLoaded', function() {
         '</div>' +
       '</div>' +
 
+      '<div class="profile-edit-section">' +
+        '<h3>Explore PNEC</h3><nav aria-label="PNEC profile navigation">' +
+        [['Calendar', '/pages/community-events-and-activities.html#pnec-community-calendar'],
+         ['Resources', '/pages/preparedness-resources.html'],
+         ['Preparedness Checklist', '/pages/checklist.html'],
+         ['Volunteer Opportunities', '/pages/volunteer.html'],
+         ['Neighborhood Information', '/pages/find-your-neighborhood.html'],
+         ['Risk Watch', '/#risk-widget'],
+         ['Hazard Reporting', '/pages/checklist.html#hazard-reporting'],
+         ['Home', '/']].map(function(link) {
+          return '<a class="btn btn-outline" href="' + siteBase + link[1] + '">' + link[0] + '</a>';
+        }).join(' ') + '</nav>' +
+      '</div>' +
+
       completionSection +
       badgesSection +
 
       '<div class="profile-edit-section">' +
         '<h3>Edit Profile</h3>' +
         '<div class="form-field">' +
-          '<label for="edit-display-name">Display Name</label>' +
+          '<label for="edit-display-name">Full Name</label>' +
           '<input type="text" id="edit-display-name" value="' + escapeHtml(user.display_name) + '" maxlength="100">' +
+        '</div>' +
+        '<div class="form-field">' +
+          '<label for="edit-email">Email Address</label>' +
+          '<input type="email" id="edit-email" value="' + escapeHtml(user.email) + '" maxlength="254" required>' +
         '</div>' +
         '<div class="form-field">' +
           '<label for="edit-bio">Bio</label>' +
@@ -249,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '</div>' +
         '<div class="form-field">' +
           '<label for="edit-phone">Phone <span style="font-weight:400;color:#9e9e9e">(optional)</span></label>' +
-          '<input type="tel" id="edit-phone" value="' + escapeHtml(user.phone || '') + '" placeholder="+1 (555) 000-0000" maxlength="20">' +
+          '<input type="tel" id="edit-phone" value="' + escapeHtml(user.phone || '') + '" placeholder="+1 (555) 000-0000" maxlength="30">' +
         '</div>' +
         '<div class="form-field">' +
           '<label for="edit-neighborhood">Neighborhood</label>' +
@@ -259,8 +240,9 @@ document.addEventListener('DOMContentLoaded', function() {
           '<small>Change this if you move or selected the wrong neighborhood during registration.</small>' +
         '</div>' +
         '<button class="profile-save-btn" id="profile-save-btn">Save Changes</button>' +
-        '<div class="profile-success" id="profile-success">✓ Profile updated successfully.</div>' +
-        '<div class="profile-error" id="profile-error"></div>' +
+        '<button class="btn btn-outline" id="profile-cancel-btn" type="button">Cancel</button>' +
+        '<div class="profile-success" role="status" id="profile-success">✓ Profile updated successfully.</div>' +
+        '<div class="profile-error" role="alert" id="profile-error"></div>' +
       '</div>' +
 
       '<div class="profile-status-section">' +
@@ -279,6 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '<button class="profile-signout-btn" id="profile-signout-btn" type="button">' +
           '<span aria-hidden="true">↩</span> Sign out' +
         '</button>' +
+        '<div class="profile-error" role="alert" id="profile-signout-error"></div>' +
       '</div>' +
 
       '<div style="margin-top:8px;">' +
@@ -290,75 +273,41 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function bindProfileActions(user) {
-    // Save button
     var saveBtn = document.getElementById('profile-save-btn');
     var successEl = document.getElementById('profile-success');
     var errorEl = document.getElementById('profile-error');
-    if (saveBtn) {
-      saveBtn.addEventListener('click', function() {
-        saveBtn.disabled = true;
-        saveBtn.innerHTML = '<span class="spinner-sm"></span>Saving…';
-        successEl.style.display = 'none';
-        errorEl.style.display = 'none';
-
-        var payload = {
-          display_name: document.getElementById('edit-display-name').value.trim(),
-          bio: document.getElementById('edit-bio').value.trim() || null,
-          phone: document.getElementById('edit-phone').value.trim() || null,
-          neighborhood_id: document.getElementById('edit-neighborhood').value || null,
-        };
-        if (pendingAvatarUrl !== null) {
-          payload.avatar_url = pendingAvatarUrl || null;
-        }
-
-        var apiBase = (typeof API_BASE !== 'undefined' ? API_BASE : 'http://localhost:8425');
-        var token = localStorage.getItem('pnec_token') || sessionStorage.getItem('pnec_token');
-        var headers = { 'Content-Type': 'application/json' };
-        if (token) headers['Authorization'] = 'Bearer ' + token;
-        fetch(apiBase + '/api/auth/profile', {
-          method: 'PATCH',
-          credentials: 'include',
-          headers: headers,
-          body: JSON.stringify(payload),
-        })
-          .then(function(r) {
-            if (r.status === 401) {
-              var b = document.getElementById('profile-save-btn');
-              if (b) { b.disabled = false; b.textContent = 'Save Changes'; }
-              var e = document.getElementById('profile-error');
-              if (e) {
-                e.innerHTML = 'Your session expired. <a href="' + siteBase + '/pages/register.html?next=' + encodeURIComponent(siteBase + '/pages/profile.html') + '#login" style="color:#c0392b;font-weight:700;">Log in again</a> to save.';
-                e.style.display = 'block';
-              }
-              return null;
-            }
-            return r.json();
-          })
-          .then(function(data) {
-            if (!data) return;
-            if (data.user) {
-              localStorage.setItem('pnec_user', JSON.stringify(data.user));
-              pendingAvatarUrl = null;
-              renderProfile(data.user);
-              setTimeout(function() {
-                var s = document.getElementById('profile-success');
-                if (s) { s.style.display = 'block'; setTimeout(function() { s.style.display = 'none'; }, 3000); }
-              }, 50);
-            } else {
-              var e = document.getElementById('profile-error');
-              if (e) { e.textContent = data.detail || data.message || 'Failed to save.'; e.style.display = 'block'; }
-              var b = document.getElementById('profile-save-btn');
-              if (b) { b.disabled = false; b.textContent = 'Save Changes'; }
-            }
-          })
-          .catch(function() {
-            var e = document.getElementById('profile-error');
-            if (e) { e.textContent = 'Network error — please try again.'; e.style.display = 'block'; }
-            var b = document.getElementById('profile-save-btn');
-            if (b) { b.disabled = false; b.textContent = 'Save Changes'; }
-          });
-      });
-    }
+    document.getElementById('profile-cancel-btn').addEventListener('click', function() {
+      pendingAvatarUrl = null;
+      renderProfile(user);
+    });
+    saveBtn.addEventListener('click', async function() {
+      successEl.style.display = 'none'; errorEl.style.display = 'none';
+      var payload = {
+        display_name: document.getElementById('edit-display-name').value.trim(),
+        email: document.getElementById('edit-email').value.trim().toLowerCase(),
+        bio: document.getElementById('edit-bio').value.trim() || null,
+        phone: document.getElementById('edit-phone').value.trim() || null,
+        neighborhood_id: document.getElementById('edit-neighborhood').value || null,
+      };
+      var validation = '';
+      if (!payload.display_name || payload.display_name.length > 100) validation = 'Full name must contain 1–100 characters.';
+      else if (!document.getElementById('edit-email').checkValidity() || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(payload.email)) validation = 'Enter a valid email address.';
+      else if (payload.phone && (!/^\+?[0-9 ()\-.]+$/.test(payload.phone) || !/^[0-9]{7,15}$/.test(payload.phone.replace(/[^0-9]/g, '')))) validation = 'Enter a phone number with 7–15 digits and an optional + prefix.';
+      if (validation) { errorEl.textContent = validation; errorEl.style.display = 'block'; return; }
+      if (pendingAvatarUrl !== null) payload.avatar_url = pendingAvatarUrl || null;
+      saveBtn.disabled = true; saveBtn.textContent = 'Saving…';
+      try {
+        var updated = await updateProfile(payload);
+        pendingAvatarUrl = null;
+        renderProfile(updated);
+        document.getElementById('profile-success').style.display = 'block';
+      } catch (error) {
+        errorEl.textContent = error.status === 401 ? 'Your session expired. Sign in again to save changes.' : error.message;
+        errorEl.style.display = 'block';
+      } finally {
+        saveBtn.disabled = false; saveBtn.textContent = 'Save Changes';
+      }
+    });
 
     // Avatar change button
     var avatarBtn = document.getElementById('avatar-change-btn');
@@ -394,6 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.removeItem('pnec_user');
             localStorage.removeItem('pnec_new_user');
             sessionStorage.removeItem('pnec_user');
+            sessionStorage.removeItem('pnec_token');
             window.location.href = siteBase + '/pages/register.html#login';
           })
           .catch(function() {
@@ -424,22 +374,15 @@ document.addEventListener('DOMContentLoaded', function() {
       signOutBtn.addEventListener('click', function () {
         signOutBtn.disabled = true;
         signOutBtn.textContent = 'Signing out…';
-        try {
-          // logoutUser() lives in auth-api.js — clears localStorage + posts to /api/auth/logout
-          if (typeof logoutUser === 'function') {
-            logoutUser().finally(function () {
-              window.location.href = (window.siteBase || '') + '/';
-            });
-            return;
-          }
-        } catch (_e) {}
-        // Fallback path: just clear local cache and redirect
-        try {
-          localStorage.removeItem('pnec_user');
-          localStorage.removeItem('pnec_token');
-          sessionStorage.removeItem('pnec_user');
-        } catch (_e) {}
-        window.location.href = (window.siteBase || '') + '/';
+        logoutUser().then(function() {
+          window.location.href = siteBase + '/';
+        }).catch(function() {
+          signOutBtn.disabled = false;
+          signOutBtn.textContent = 'Sign out';
+          var error = document.getElementById('profile-signout-error');
+          error.textContent = 'Unable to confirm sign out. Check your connection and try again.';
+          error.style.display = 'block';
+        });
       });
     }
   }

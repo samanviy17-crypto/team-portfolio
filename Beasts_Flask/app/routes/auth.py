@@ -232,7 +232,7 @@ def me():
 def update_profile():
     """
     Purpose: Update editable profile fields for the current user.
-    Accepted fields: display_name, bio, avatar_url, phone, neighborhood_id
+    Accepted fields: display_name, email, bio, avatar_url, phone, neighborhood_id
     Supports both session cookie and Bearer token auth.
     """
     from app import db
@@ -240,33 +240,13 @@ def update_profile():
     if not user:
         return jsonify({'error': 'UNAUTHORIZED', 'message': 'Login required.'}), 401
 
-    data = request.get_json(silent=True) or {}
+    from app.services.auth_service import update_user_profile
+    updated, err = update_user_profile(user, request.get_json(silent=True))
+    if err:
+        return error_response(err['key'], 409 if err['key'] == 'DUPLICATE_EMAIL' else 400,
+                              {'detail': err['detail']})
+    return jsonify({'message': 'Profile updated.', 'user': updated.to_dict()}), 200
 
-    if 'display_name' in data:
-        name = (data.get('display_name') or '').strip()
-        if not name:
-            return error_response('VALIDATION_FAILED', 400, {'detail': 'display_name cannot be empty'})
-        user.display_name = name[:100]
-
-    if 'neighborhood_id' in data:
-        neighborhood_id = data.get('neighborhood_id')
-        if neighborhood_id in (None, '', 'null'):
-            user.neighborhood_id = None
-        else:
-            try:
-                neighborhood_id = int(neighborhood_id)
-            except (TypeError, ValueError):
-                return error_response('VALIDATION_FAILED', 400, {'detail': 'neighborhood_id must be a number.'})
-            if not Neighborhood.query.get(neighborhood_id):
-                return error_response('VALIDATION_FAILED', 400, {'detail': 'Selected neighborhood does not exist.'})
-            user.neighborhood_id = neighborhood_id
-
-    for optional_field in ('bio', 'phone', 'avatar_url'):
-        if optional_field in data and hasattr(user, optional_field):
-            setattr(user, optional_field, data.get(optional_field))
-
-    db.session.commit()
-    return jsonify({'message': 'Profile updated.', 'user': user.to_dict()}), 200
 
 
 @auth_bp.route('/me/inactive', methods=['PATCH'])
