@@ -6,7 +6,7 @@ This GitHub Pages repository can be customized by the blogger to support compute
 
 "Open Coding Society's instructional model is grounded in **Connectivism**, recognizing that learning happens through diverse networks of people, platforms, and AI. OCS is refining `student` using **Merrill's structure**, deepening learning through **Fink**, ensuring access via **UDL**, and supporting our classroom through **Agile and Design Thinking ceremonies**, with a touch of **Gagné** to focus each classroom day. OCS wants to create projects that support learning for today's digital, open, and connected world."
 
-## Student Requirements
+## Student Requirements and PNEC 26-27 Team
 
 HS students will have the opportunity to create their personal GitHub Pages repository as they progress through their coursework.
 In general, students and instructors are expected to use GitHub Pages to build lessons, complete classroom hacks/challenges and perform exploratory work.
@@ -16,6 +16,11 @@ Exchange of information from this repository to you personal GitHub Pages can be
 2. creating a template from this repository
 3. creating a fork to be shared by you and team members
 4. etc.
+
+Our Team
+ - Samanvi Yachareni
+ - Joan Kim
+ - Ainsley Albert
 
 ---
 
