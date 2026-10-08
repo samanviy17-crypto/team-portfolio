@@ -22,6 +22,15 @@ Our Team
  - Joan Kim
  - Ainsley Albert
 
+Project Focus
+Our project focuses on improving neighborhood emergency preparedness and coordination.
+Current developement areas include:
+ - Preparedness resources
+ - Neighborhood information
+ - Volunteer coordination
+ - Hazard reporting
+ - Frontend and Flask backend integration
+
 ---
 
 ## History
