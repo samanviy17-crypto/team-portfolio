@@ -40,9 +40,29 @@ def record_for(user):
     return row
 
 
+def evaluate_preparedness(answers, questions, recommendation_limit=3):
+    """Score validated answers against question records in a single bounded pass.
+
+    Questions determine the denominator and recommendation order. Unknown answer
+    keys never increase the score; absent answers count as not ready. The API
+    still requires a complete boolean answer set before saving it.
+    AI-assisted implementation (OpenAI Codex); personal Create authorship and
+    eligibility must be established by the student, not inferred from this code.
+    """
+    ready = 0
+    recommendations = []
+    for key, _, tip in questions:
+        if answers.get(key) is True:
+            ready += 1
+        elif len(recommendations) < recommendation_limit:
+            recommendations.append(tip)
+    score = round(ready / len(questions) * 100) if questions else 0
+    return {'score': score, 'recommendations': recommendations}
+
+
 def assessment(answers):
-    return {'score': round(sum(answers.values()) / len(QUIZ) * 100),
-            'recommendations': [tip for key, _, tip in QUIZ if not answers.get(key)][:3]}
+    """Keep the existing route/household interface for the ten-question quiz."""
+    return evaluate_preparedness(answers, QUIZ)
 
 
 def household_dict(row):

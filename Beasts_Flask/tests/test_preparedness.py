@@ -56,6 +56,53 @@ def test_quiz_score_and_recommendations(app,accounts):
     assert call(app,accounts,'POST','/preparedness/quiz',data={'answers':{}}).status_code == 400
 
 
+@pytest.mark.parametrize('ready_count', [0, 5, 10])
+def test_quiz_mixed_scores_ordered_recommendations_and_reload(app, accounts, ready_count):
+    from app.services.preparedness_service import QUIZ
+    answers = {key: index < ready_count for index, (key, _, _) in enumerate(QUIZ)}
+    response = call(app, accounts, 'POST', '/preparedness/quiz', data={'answers': answers})
+    expected = {'score': ready_count * 10, 'recommendations': [q[2] for q in QUIZ[ready_count:]][:3]}
+    assert response.status_code == 200 and response.json == expected
+    reloaded = call(app, accounts, 'GET', '/preparedness').json
+    assert reloaded['quiz_answers'] == answers and reloaded['assessment'] == expected
+
+
+@pytest.mark.parametrize('bad_value', [0, 1, 'yes', 'false', None, [], {}])
+def test_quiz_rejects_nonboolean_without_overwriting_saved_answers(app, accounts, bad_value):
+    from app.services.preparedness_service import QUIZ
+    valid = {key: True for key, _, _ in QUIZ}
+    assert call(app, accounts, 'POST', '/preparedness/quiz', data={'answers': valid}).status_code == 200
+    invalid = {**valid, QUIZ[0][0]: bad_value}
+    assert call(app, accounts, 'POST', '/preparedness/quiz', data={'answers': invalid}).status_code == 400
+    assert call(app, accounts, 'GET', '/preparedness').json['quiz_answers'] == valid
+
+
+@pytest.mark.parametrize('change', ['missing', 'extra'])
+def test_quiz_requires_exact_question_keys(app, accounts, change):
+    from app.services.preparedness_service import QUIZ
+    answers = {key: True for key, _, _ in QUIZ}
+    if change == 'missing':
+        answers.pop(QUIZ[0][0])
+    else:
+        answers['unknown'] = True
+    assert call(app, accounts, 'POST', '/preparedness/quiz', data={'answers': answers}).status_code == 400
+
+
+def test_parameterized_quiz_collection_limits_and_all_answer_combinations():
+    from itertools import product
+    from app.services.preparedness_service import QUIZ, evaluate_preparedness
+    assert evaluate_preparedness({}, []) == {'score': 0, 'recommendations': []}
+    custom = [('a', 'Question A', 'Action A'), ('b', 'Question B', 'Action B')]
+    assert evaluate_preparedness({'a': True, 'unknown': True}, custom, 1) == {
+        'score': 50, 'recommendations': ['Action B']}
+    assert evaluate_preparedness({}, custom, 0) == {'score': 0, 'recommendations': []}
+    for values in product([False, True], repeat=len(QUIZ)):
+        answers = dict(zip((q[0] for q in QUIZ), values))
+        result = evaluate_preparedness(answers, QUIZ)
+        assert result['score'] == sum(values) * 10
+        assert result['recommendations'] == [q[2] for q, ready in zip(QUIZ, values) if not ready][:3]
+
+
 def task_data(accounts):
     return {'title':'Supply drive volunteers', 'description':'Meet at center',
         'starts_at':(datetime.now(timezone.utc)+timedelta(days=1)).isoformat(),
