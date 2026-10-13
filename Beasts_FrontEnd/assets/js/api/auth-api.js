@@ -1,6 +1,43 @@
 // assets/js/api/auth-api.js
 // Responsibility: Auth fetch workers — backend auth plus local user cache in page layer.
 
+// AI-assisted reliability change (OpenAI Codex), not proof of personal Create authorship.
+// Bound both fetch and body reading; never retry a write automatically because
+// a lost response does not establish whether the server committed the write.
+async function pnecJsonRequest(url, options = {}, timeoutMs = 15000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, {...options, signal: controller.signal});
+    let data;
+    try { data = response.status === 204 ? null : await response.json(); }
+    catch (error) {
+      if (controller.signal.aborted) throw error;
+      if (response.ok) throw new Error('Server returned an unreadable response. Please retry.');
+      data = {};
+    }
+    if (!response.ok) {
+      const type = classifyHttpError(response.status);
+      const detail = data && (data.message || data.detail || data.error);
+      const error = new Error(response.status === 401 ? getErrorMessage(type) :
+        (typeof detail === 'string' ? detail : getErrorMessage(type)));
+      error.status = response.status; error.type = type;
+      throw error;
+    }
+    return data;
+  } catch (error) {
+    if (controller.signal.aborted) {
+      const timeout = new Error('Request timed out. Keep your changes and retry when connected.');
+      timeout.type = 'TIMEOUT'; throw timeout;
+    }
+    if (error instanceof TypeError) {
+      const network = new Error(getErrorMessage(ERROR_TYPES.NETWORK_ERROR));
+      network.type = ERROR_TYPES.NETWORK_ERROR; throw network;
+    }
+    throw error;
+  } finally { clearTimeout(timer); }
+}
+
 function _getAuthHeaders() {
   var token = localStorage.getItem('pnec_token') || sessionStorage.getItem('pnec_token');
   var headers = { 'Content-Type': 'application/json' };
@@ -69,25 +106,20 @@ function logoutUser() {
 }
 
 function fetchCurrentUser() {
-  return fetch(`${API_BASE}/api/auth/me`, {
+  return pnecJsonRequest(`${API_BASE}/api/auth/me`, {
     method: 'GET',
     credentials: 'include',
     headers: _getAuthHeaders(),
   })
-    .then(function(response) {
-      if (response.status === 401) return null;
-      return response.json().then(function(data) { return data.user || null; });
-    })
+    .then(function(data) { return data.user || null; })
     .catch(function() { return null; });
 }
 
 function fetchNeighborhoodsForSelect() {
-  return fetch(`${API_BASE}/api/neighborhoods`, {
+  return pnecJsonRequest(`${API_BASE}/api/neighborhoods`, {
     method: 'GET',
     credentials: 'include',
   })
-    .then(validateAuthResponse)
-    .then(r => r.json())
     .then(data => data.neighborhoods || []);
 }
 
@@ -117,10 +149,10 @@ function safeAccountRedirect() {
 
 
 function updateProfile(payload) {
-  return fetch(`${API_BASE}/api/auth/profile`, {
+  return pnecJsonRequest(`${API_BASE}/api/auth/profile`, {
     method: 'PATCH', credentials: 'include', headers: _getAuthHeaders(),
     body: JSON.stringify(payload),
-  }).then(validateAuthResponse).then(response => response.json()).then(data => {
+  }).then(data => {
     const remember = localStorage.getItem('pnec_token') !== null;
     _storeAuthResult(data, remember);
     return data.user;
