@@ -1,0 +1,3 @@
+[2026-10-13 16:22:02,566] WARNING in __init__: _seed_admin_if_missing: refusing to seed admin — set ADMIN_PASSWORD env var to a strong (>=12 char) secret. No admin will exist until this is provided.
+[2026-10-13 16:22:08,699] WARNING in __init__: _seed_admin_if_missing: refusing to seed admin — set ADMIN_PASSWORD env var to a strong (>=12 char) secret. No admin will exist until this is provided.
+PASS: registration, cookie/bearer login/logout, edit/cancel/validation, direct database checks, reload/new-email login, Flask restart persistence, calendar and all eight navigation links, ownership and protected profile.

@@ -1,0 +1,1 @@
+REPRODUCED baseline HTML 502: SyntaxError instead of useful server-error feedback

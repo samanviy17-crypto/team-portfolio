@@ -1,0 +1,74 @@
+[
+  {
+    "scenario": "Quiz 0/10",
+    "expected": "0% and corresponding recommendations",
+    "actual": "Preparedness score: 0%\nReview and complete your emergency kit checklist.\nReview the water section of your kit.\nReview the food section of your kit.",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Quiz 5/10",
+    "expected": "50% and corresponding recommendations",
+    "actual": "Preparedness score: 50%\nSave a household meeting point below.\nAdd a printed contact list to your kit.\nReview the preparedness resources and local alert links.",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Quiz 10/10",
+    "expected": "100% and corresponding recommendations",
+    "actual": "Preparedness score: 100%\nReview and practice your plan regularly.",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Checklist persistence",
+    "expected": "Checked UI and database true after reload",
+    "actual": "Both verified true",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Checklist HTML 502",
+    "expected": "Safe server error with pending edits",
+    "actual": "Safe error displayed; unsaved water=false retained",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Offline reload",
+    "expected": "Pending edit retained and connection feedback",
+    "actual": "Water unchecked with unavailable API message",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Explicit retry recovery",
+    "expected": "Pending changes persisted without loss",
+    "actual": "UI saved and database water=false",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Profile failed save",
+    "expected": "Draft remains; retry enabled",
+    "actual": "Retained synthetic draft and enabled Save verified",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Profile retry and reload",
+    "expected": "Successful update persists",
+    "actual": "Synthetic retained draft loaded after reload",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Shared signup/cancellation smoke",
+    "expected": "Capacity 0 \u2192 1 \u2192 0",
+    "actual": "UI claim/cancel and counts verified; concurrency not tested",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Shared hazard display",
+    "expected": "Authorized synthetic report with metadata",
+    "actual": "Report displayed; no filters or summary claimed",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Shared check-in restriction smoke",
+    "expected": "Other resident sees none; guest API 401",
+    "actual": "Both verified; full role matrix still assigned to Ainsley",
+    "status": "PASS"
+  }
+]

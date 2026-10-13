@@ -1,0 +1,14 @@
+[2026-10-13 16:22:29,419] WARNING in __init__: _seed_admin_if_missing: refusing to seed admin — set ADMIN_PASSWORD env var to a strong (>=12 char) secret. No admin will exist until this is provided.
+PASS: Quiz 0/10
+PASS: Quiz 5/10
+PASS: Quiz 10/10
+PASS: Checklist persistence
+PASS: Checklist HTML 502
+PASS: Offline reload
+PASS: Explicit retry recovery
+PASS: Profile failed save
+PASS: Profile retry and reload
+PASS: Shared signup/cancellation smoke
+PASS: Shared hazard display
+PASS: Shared check-in restriction smoke
+12 browser scenarios passed, 0 failed; 15 authentic screenshots

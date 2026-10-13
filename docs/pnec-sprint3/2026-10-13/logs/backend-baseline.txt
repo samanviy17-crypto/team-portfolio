@@ -1,0 +1,103 @@
+........................................................................ [ 60%]
+................................................                         [100%]
+=============================== warnings summary ===============================
+tests/test_auth.py: 396 warnings
+tests/test_cms_stega.py: 49 warnings
+tests/test_cms_theme.py: 489 warnings
+tests/test_cms_v2.py: 2380 warnings
+tests/test_preparedness.py: 1445 warnings
+tests/test_profile.py: 838 warnings
+tests/test_risk_service.py: 94 warnings
+tests/test_theme_config_seed.py: 101 warnings
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/.venv/lib/python3.14/site-packages/sqlalchemy/sql/schema.py:3599: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore
+
+tests/test_auth.py: 8 warnings
+tests/test_profile.py: 19 warnings
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/.venv/lib/python3.14/site-packages/flask_login/login_manager.py:488: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    expires = datetime.utcnow() + duration
+
+tests/test_cms_stega.py: 1 warning
+tests/test_cms_theme.py: 2 warnings
+tests/test_cms_v2.py: 126 warnings
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/app/routes/cms_v2.py:730: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    row.updated_at = datetime.utcnow()
+
+tests/test_cms_theme.py::test_admin_can_patch_draft_tokens
+tests/test_cms_theme.py::test_unknown_token_keys_are_rejected
+tests/test_cms_theme.py::test_publish_copies_draft_to_published
+tests/test_cms_theme.py::test_theme_css_endpoint
+tests/test_cms_theme.py::test_theme_css_strips_injection_attempts
+tests/test_cms_theme.py::test_theme_css_drops_expression_hooks
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/app/routes/cms_theme.py:121: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    row.updated_at = datetime.utcnow()
+
+tests/test_cms_theme.py::test_publish_copies_draft_to_published
+tests/test_cms_theme.py::test_theme_css_endpoint
+tests/test_cms_theme.py::test_theme_css_strips_injection_attempts
+tests/test_cms_theme.py::test_theme_css_drops_expression_hooks
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/app/routes/cms_theme.py:134: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    now = datetime.utcnow()
+
+tests/test_cms_v2.py::test_publish_copies_draft_to_published
+tests/test_cms_v2.py::test_publish_is_idempotent
+tests/test_cms_v2.py::test_publish_is_idempotent
+tests/test_cms_v2.py::test_diff_after_publish_is_empty
+tests/test_cms_v2.py::test_diff_detects_added_removed_modified
+tests/test_cms_v2.py::test_draft_convenience_endpoint_returns_draft_not_published
+tests/test_cms_v2.py::test_diff_detects_reorder
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/app/routes/cms_v2.py:987: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    now = datetime.utcnow()
+
+tests/test_cms_v2.py::test_admin_can_issue_preview_token
+tests/test_cms_v2.py::test_preview_token_grants_draft_read
+tests/test_cms_v2.py::test_expired_preview_token_rejected
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/app/models/preview_token.py:32: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    expires_at=datetime.utcnow() + timedelta(days=ttl_days),
+
+tests/test_cms_v2.py::test_expired_preview_token_rejected
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/tests/test_cms_v2.py:342: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    tok.expires_at = datetime.utcnow() - timedelta(days=1)
+
+tests/test_cms_v2.py::test_expired_preview_token_rejected
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/app/models/preview_token.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    and self.expires_at > datetime.utcnow())
+
+tests/test_cms_v2.py::test_import_caps_at_25_sections
+tests/test_cms_v2.py::test_import_drops_unknown_section_types
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/app/routes/cms_v2.py:1185: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    row.updated_at = datetime.utcnow()
+
+tests/test_preparedness.py::test_shifts_capacity_duplicate_claim_cancel_and_close
+tests/test_preparedness.py::test_shift_neighborhood_and_date_validation
+tests/test_preparedness.py::test_shift_neighborhood_and_date_validation
+tests/test_preparedness.py::test_shift_neighborhood_and_date_validation
+tests/test_preparedness.py::test_hazard_routing_permissions_and_status
+tests/test_preparedness.py::test_hazard_routing_permissions_and_status
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/app/services/preparedness_service.py:75: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    if type(value) is not int or not Neighborhood.query.get(value):
+
+tests/test_preparedness.py::test_shifts_capacity_duplicate_claim_cancel_and_close
+tests/test_preparedness.py::test_shift_neighborhood_and_date_validation
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/app/services/preparedness_service.py:104: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    if date <= datetime.utcnow():
+
+tests/test_preparedness.py::test_shifts_capacity_duplicate_claim_cancel_and_close
+tests/test_preparedness.py::test_shifts_capacity_duplicate_claim_cancel_and_close
+tests/test_preparedness.py::test_shifts_capacity_duplicate_claim_cancel_and_close
+tests/test_preparedness.py::test_shifts_capacity_duplicate_claim_cancel_and_close
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/app/routes/preparedness.py:129: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    VolunteerTask.closed.is_(False), VolunteerTask.starts_at > datetime.utcnow(),
+
+tests/test_preparedness.py::test_checkins_neighborhood_privacy_and_removal
+tests/test_preparedness.py::test_checkins_neighborhood_privacy_and_removal
+tests/test_preparedness.py::test_checkins_neighborhood_privacy_and_removal
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/app/routes/preparedness.py:173: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    row.updated_at = datetime.utcnow()
+
+tests/test_preparedness.py::test_weekly_threat_content_events_and_offline
+  /Users/samanviyachareni/samanviy17-crypto/team-portfolio/Beasts_Flask/tests/test_preparedness.py:158: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    db.session.add(Event(title='CERT class',date=datetime.utcnow()+timedelta(days=2),location='Center')); db.session.commit()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+120 passed, 5988 warnings in 16.99s

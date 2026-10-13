@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-13",
+  "timezone": "America/Los_Angeles",
+  "branch": "team-capstone",
+  "starting_commit": "386f042d73245ec51baa1949dc078f11ba63defe",
+  "tested_code_commit": "e33fc38f6a633b24feb8991f17d8ccdd06d0c78b",
+  "note": "Initial checks ran at starting commit plus worktree edits later committed as b8bae21/e33fc38. Built request-worker source bytes match e33fc38. backend-final-committed rerun records per-test JUnit results at the code commit. Evidence capture is synthetic local data; no production services/credentials/database.",
+  "source_sha256": {
+    "Beasts_Flask/app/services/preparedness_service.py": "3da3d9bdf8754170ccd1815524951a19fe2d7c97e21580947a05dbdc4a2c47a5",
+    "Beasts_Flask/tests/test_preparedness.py": "4158fcdd7854aef75286e6be92c3150372eedd7a052be83423a2a8a930a649a1",
+    "Beasts_FrontEnd/assets/js/api/auth-api.js": "282c78f070b58819c31a84796a690b128431f85be45d54e8b218c4afdd6dfcaa",
+    "Beasts_FrontEnd/assets/js/api/preparedness-api.js": "785af02b0e203d8dde22c51ea68ba5695d9ce76710f375d88a8aef947d230f0e",
+    "Beasts_FrontEnd/scripts/test-request-worker.py": "b14526c3c266fcc26647c57a48d67354b267cf9c66643d50ef5bfcdb50c1a20d",
+    "Beasts_FrontEnd/scripts/verify-sprint3.py": "8857750f8c0ca5b0b3e1e5470ab6b9dc68a4372d6e9c7cda37c696de95a80cc0"
+  }
+}

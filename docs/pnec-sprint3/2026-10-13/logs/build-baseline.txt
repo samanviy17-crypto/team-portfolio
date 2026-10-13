@@ -1,0 +1,8 @@
+Building PNEC with locally installed Jekyll 3 gems (no bundle install)…
+Build complete. 62 existing Jekyll warnings.
+[33m       Deprecation: You appear to have pagination turned on, but you haven't included the `jekyll-paginate` gem. Ensure you have `plugins: [jekyll-paginate]` in your configuration file.[0m
+[33m     Build Warning: Layout 'base' requested in _posts/CSP/big-ideas/big-idea-3/3-08-iterations/2025-09-26-iterations_js_scratchers_hw_IPYNB_2_.md does not exist.[0m
+[33m     Build Warning: Layout 'base' requested in _posts/CSP/big-ideas/big-idea-3/3-08-iterations/2025-09-26-iterations_python_scratchers_hw_IPYNB_2_.md does not exist.[0m
+[33m     Build Warning: Layout 'base' requested in _posts/CSSE/JavaScriptLessons/Classes_and_Methods/2025-10-8-Classes-constructors-cookieclicker_IPYNB_2_.md does not exist.[0m
+[33m       Deprecation: A call to '{% post_url 2026-02-06-slack-messaging-capstone %}' did not match a post using the new matching method of checking name (path-date-slug) equality. Please make sure that you change this tag to match the post's name exactly.[0m
+(57 further legacy warnings omitted.)

@@ -1,0 +1,62 @@
+[
+  {
+    "path": "screenshots/quiz-interface.png",
+    "caption": "Ten-question quiz before answering, synthetic authenticated resident."
+  },
+  {
+    "path": "screenshots/quiz-0-of-10.png",
+    "caption": "Actual API result 0/10 = 0%, with returned recommendation text."
+  },
+  {
+    "path": "screenshots/quiz-5-of-10.png",
+    "caption": "Actual API result 5/10 = 50%, with returned recommendation text."
+  },
+  {
+    "path": "screenshots/quiz-10-of-10.png",
+    "caption": "Actual API result 10/10 = 100%, with returned recommendation text."
+  },
+  {
+    "path": "screenshots/checklist-persisted.png",
+    "caption": "Water remains checked after reload; isolated database value verified true."
+  },
+  {
+    "path": "screenshots/checklist-server-error.png",
+    "caption": "Simulated HTML 502: useful error shown and unchecked water retained locally; not a production incident."
+  },
+  {
+    "path": "screenshots/checklist-offline-pending.png",
+    "caption": "Simulated disconnected preparedness API after reload; pending water=false survives."
+  },
+  {
+    "path": "screenshots/checklist-recovered.png",
+    "caption": "Explicit Retry account save succeeds; isolated database now water=false."
+  },
+  {
+    "path": "screenshots/profile-failed-save-draft.png",
+    "caption": "Simulated profile HTML 502 preserves the current form draft and re-enables Save."
+  },
+  {
+    "path": "screenshots/volunteer-available.png",
+    "caption": "Existing shared volunteer UI: synthetic shift has 0/1 slots claimed."
+  },
+  {
+    "path": "screenshots/volunteer-signed-up.png",
+    "caption": "Existing shared signup behavior: synthetic resident claims the single slot."
+  },
+  {
+    "path": "screenshots/volunteer-cancelled.png",
+    "caption": "Existing shared cancellation behavior restores availability; no new Joan implementation."
+  },
+  {
+    "path": "screenshots/hazard-existing-metadata.png",
+    "caption": "Existing shared report display contains neighborhood/category/status/timestamp; filter controls and summary analysis are not implemented."
+  },
+  {
+    "path": "screenshots/checkin-other-resident-restricted.png",
+    "caption": "Existing authorization: another synthetic resident sees no check-ins; direct API returns an empty scoped list."
+  },
+  {
+    "path": "screenshots/checkin-login-required.png",
+    "caption": "Guest UI requires sign-in; separate direct unauthenticated API request returned 401."
+  }
+]

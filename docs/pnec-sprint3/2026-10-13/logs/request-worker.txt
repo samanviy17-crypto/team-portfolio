@@ -1,0 +1,12 @@
+PASS: JSON success and request credentials/payload
+PASS: 401 authentication
+PASS: 403 authorization
+PASS: 400 validation detail
+PASS: HTML 502 server error
+PASS: Malformed success response
+PASS: Offline/network failure
+PASS: Fetch timeout
+PASS: Body-read timeout
+PASS: 204 empty success
+PASS: Successful request clears deadline
+11 passed, 0 failed (controlled-transport Chromium cases)
