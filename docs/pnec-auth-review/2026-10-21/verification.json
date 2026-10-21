@@ -1,0 +1,69 @@
+{
+  "modified_existing_files": [
+    "Beasts_FrontEnd/_sass/beasts/inline/pages/_pages-profile-1.scss",
+    "Beasts_FrontEnd/assets/js/api/auth-api.js",
+    "Beasts_FrontEnd/assets/js/pages/navbar.js",
+    "Beasts_FrontEnd/assets/js/pages/register-page.js",
+    "Beasts_FrontEnd/assets/js/ui/auth-ui.js",
+    "Beasts_FrontEnd/pages/profile.html",
+    "Beasts_FrontEnd/pages/register.html",
+    "Beasts_FrontEnd/scripts/test-request-worker.py"
+  ],
+  "new_files": [
+    "Beasts_FrontEnd/_sass/beasts/inline/pages/_pages-register-1.scss",
+    "Beasts_FrontEnd/scripts/test-account-regression.py",
+    "docs/pnec-auth-review/2026-10-21/REPORT.md",
+    "docs/pnec-auth-review/2026-10-21/upstream-comparison.json"
+  ],
+  "unrelated_existing_files_unchanged": true,
+  "backend_source_unchanged": true,
+  "normal_build": "PASS; 62 inherited warnings",
+  "prefixed_build": "PASS",
+  "backend_tests": "145 passed; 7208 warnings",
+  "request_worker": "12 passed",
+  "profile_browser": "PASS normal and prefixed",
+  "new_account_browser": "PASS; 7 scenario groups",
+  "screenshots": "Controlled local desktop/mobile captures in temporary evidence directory",
+  "sass_followup": {
+    "converted_partials": [
+      "Beasts_FrontEnd/_sass/beasts/inline/pages/_pages-register-1.sass",
+      "Beasts_FrontEnd/_sass/beasts/inline/pages/_pages-profile-1.sass"
+    ],
+    "compiler": {
+      "jekyll": "3.9.5",
+      "ruby_sass": "3.7.4"
+    },
+    "css_equivalence": [
+      {
+        "page": "register",
+        "css_equivalent": true,
+        "syntax": "sass",
+        "normalization": "Equivalent numeric serialization and font/empty-string quote choices only"
+      },
+      {
+        "page": "profile",
+        "css_equivalent": true,
+        "syntax": "sass",
+        "normalization": "Equivalent numeric serialization and font/empty-string quote choices only"
+      }
+    ],
+    "normal_build": "PASS; 62 inherited warnings",
+    "prefixed_build": "PASS",
+    "account_browser_normal": "PASS; 7 scenario groups",
+    "account_browser_prefixed": "PASS; 7 scenario groups",
+    "profile_browser_normal": "PASS",
+    "profile_browser_prefixed": "PASS",
+    "request_worker": "12 passed",
+    "sass_scss_audit": "PASS",
+    "responsive_widths": [
+      320,
+      390,
+      768,
+      1280
+    ],
+    "mobile_desktop_captures_reviewed": true,
+    "auth_backend_and_unrelated_sources_unchanged": true,
+    "previous_path_lists_are_historical_before_conversion": true,
+    "evidence_directory": "/tmp/pnec-sass-review-2026-10-21"
+  }
+}

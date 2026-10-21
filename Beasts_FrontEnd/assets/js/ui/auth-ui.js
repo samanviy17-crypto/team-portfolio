@@ -240,8 +240,10 @@ function renderPowayAuthHeader(user) {
 
 function pnecLogout(e) {
   if (e) e.preventDefault();
-  logoutUser().finally(function() {
+  logoutUser().then(function() {
     window.location.href = (window.siteBase || '') + '/';
+  }).catch(function() {
+    window.alert('Unable to confirm sign out. Check your connection and try again.');
   });
 }
 

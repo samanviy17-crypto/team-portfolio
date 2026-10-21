@@ -18,7 +18,7 @@ async function pnecJsonRequest(url, options = {}, timeoutMs = 15000) {
     }
     if (!response.ok) {
       const type = classifyHttpError(response.status);
-      const detail = data && (data.message || data.detail || data.error);
+      const detail = data && (data.detail || data.message || data.error);
       const error = new Error(response.status === 401 ? getErrorMessage(type) :
         (typeof detail === 'string' ? detail : getErrorMessage(type)));
       error.status = response.status; error.type = type;
@@ -61,58 +61,46 @@ async function validateAuthResponse(response) {
 }
 
 function loginUser(email, password, remember) {
-  return fetch(`${API_BASE}/api/auth/login`, {
-    method: 'POST',
-    credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password, remember }),
-  })
-    .then(validateAuthResponse)
-    .then(r => r.json())
-    .then(data => { _storeAuthResult(data, remember); return data; });
+  return pnecJsonRequest(`${API_BASE}/api/auth/login`, {
+    method: 'POST', credentials: 'include',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({email, password, remember}),
+  }).then(data => { _storeAuthResult(data, remember); return data; });
 }
 
 function registerUser(userData) {
-  const payload = {
-    name: userData.display_name,
-    display_name: userData.display_name,
-    email: userData.email,
-    password: userData.password,
-    neighborhood_id: userData.neighborhood_id,
-  };
-  return fetch(`${API_BASE}/api/auth/register`, {
-    method: 'POST',
-    credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  })
-    .then(validateAuthResponse)
-    .then(r => r.json())
-    .then(data => { _storeAuthResult(data); return data; });
+  return pnecJsonRequest(`${API_BASE}/api/auth/register`, {
+    method: 'POST', credentials: 'include',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({display_name: userData.display_name, email: userData.email,
+      password: userData.password, neighborhood_id: userData.neighborhood_id}),
+  }).then(data => { _storeAuthResult(data); return data; });
 }
 
 function logoutUser() {
-  const headers = _getAuthHeaders();
-  localStorage.removeItem('pnec_token');
-  sessionStorage.removeItem('pnec_token');
-  localStorage.removeItem('pnec_user');
-  localStorage.removeItem('pnec_new_user');
-  sessionStorage.removeItem('pnec_user');
-  return fetch(`${API_BASE}/api/auth/logout`, {
-    method: 'POST',
-    credentials: 'include',
-    headers,
-  }).then(validateAuthResponse);
+  return pnecJsonRequest(`${API_BASE}/api/auth/logout`, {
+    method: 'POST', credentials: 'include', headers: _getAuthHeaders(),
+  }).then(data => {
+    // Keep credentials available for retry if the server cannot confirm logout.
+    for (const storage of [localStorage, sessionStorage]) {
+      storage.removeItem('pnec_token'); storage.removeItem('pnec_user');
+      storage.removeItem('pnec_new_user');
+    }
+    return data;
+  });
 }
 
-function fetchCurrentUser() {
+function fetchCurrentUser({strict = false} = {}) {
   return pnecJsonRequest(`${API_BASE}/api/auth/me`, {
     method: 'GET',
     credentials: 'include',
     headers: _getAuthHeaders(),
   })
     .then(function(data) { return data.user || null; })
-    .catch(function() { return null; });
+    .catch(function(error) {
+      if (strict && error.status !== 401) throw error;
+      return null;
+    });
 }
 
 function fetchNeighborhoodsForSelect() {
@@ -130,21 +118,20 @@ async function requestPasswordReset(email) {
 async function resetPassword(token, password) {
   return accountRecoveryRequest('/reset-password', {token, password});
 }
-async function accountRecoveryRequest(path, payload) {
-  const response = await fetch(`${API_BASE}/api/auth${path}`, {
+function accountRecoveryRequest(path, payload) {
+  return pnecJsonRequest(`${API_BASE}/api/auth${path}`, {
     method: 'POST', credentials: 'include', headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(payload)
+    body: JSON.stringify(payload),
   });
-  const result = await response.json();
-  if (!response.ok) throw new Error(result.detail || result.message || 'Please try again.');
-  return result;
 }
 function safeAccountRedirect() {
   const fallback = (window.siteBase || (typeof SITE_BASE === 'undefined' ? '' : SITE_BASE)) + '/pages/profile.html';
   const next = new URLSearchParams(location.search).get('next');
   if (!next) return fallback;
-  const target = new URL(next, location.origin);
-  return target.origin === location.origin ? target.pathname + target.search + target.hash : fallback;
+  try {
+    const target = new URL(next, location.origin);
+    return target.origin === location.origin ? target.pathname + target.search + target.hash : fallback;
+  } catch (_) { return fallback; }
 }
 
 

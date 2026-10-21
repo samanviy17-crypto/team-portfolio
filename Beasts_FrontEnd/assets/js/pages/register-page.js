@@ -20,11 +20,10 @@ function initAccountPage() {
 }
 
 async function initLoginPage() {
-  const existingUser = await fetchCurrentUser();
-  if (existingUser) { window.location.href = safeAccountRedirect(); return; }
-
   const form = document.getElementById('login-form');
   if (form) form.addEventListener('submit', handleLoginSubmit);
+  const existingUser = await fetchCurrentUser();
+  if (existingUser) window.location.href = safeAccountRedirect();
 }
 
 function initRegisterPage() {

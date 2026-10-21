@@ -1343,7 +1343,7 @@
     {
       "file": "pages/profile.html",
       "block": 1,
-      "partial": "_sass/beasts/inline/pages/_pages-profile-1.scss"
+      "partial": "_sass/beasts/inline/pages/_pages-profile-1.sass"
     },
     {
       "file": "pages/role-quiz.html",
@@ -1934,7 +1934,7 @@
     "_sass/beasts/inline/pages/_pages-forgot-password-1.scss",
     "_sass/beasts/inline/pages/_pages-onboarding-1.scss",
     "_sass/beasts/inline/pages/_pages-preparedness-resources-1.scss",
-    "_sass/beasts/inline/pages/_pages-profile-1.scss",
+    "_sass/beasts/inline/pages/_pages-profile-1.sass",
     "_sass/beasts/inline/pages/_pages-role-quiz-1.scss",
     "_sass/beasts/inline/pages/_pages-security-1.scss",
     "_sass/beasts/inline/pages/_pages-volunteer-1.scss",

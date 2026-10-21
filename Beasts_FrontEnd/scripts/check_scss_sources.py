@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check migrated SCSS source ownership and browser URLs after make preview-build."""
+"""Check migrated Sass/SCSS source ownership and browser URLs after make preview-build."""
 import json
 import os
 from pathlib import Path
@@ -20,7 +20,7 @@ def main():
         assert '$beasts-' not in compiled.read_text(), f"Uncompiled Sass: {compiled}"
     for row in report['inline']:
         assert (ROOT / row['partial']).is_file(), row['partial']
-        import_name = row['partial'].removeprefix('_sass/').removesuffix('.scss').replace('/_', '/')
+        import_name = row['partial'].removeprefix('_sass/').removesuffix('.scss').removesuffix('.sass').replace('/_', '/')
         assert import_name in (ROOT / row['file']).read_text(), row['file']
     for row in report['static_html']:
         assert (ROOT / row['entry']).read_text().startswith('---\n---\n'), row['entry']
@@ -28,12 +28,15 @@ def main():
         assert (ROOT / '_site' / row['url']).is_file(), row['url']
         relative_url = os.path.relpath(row['url'], Path(row['file']).parent)
         assert f'href="{relative_url}"' in (ROOT / row['file']).read_text(), row['file']
-    for path in (ROOT / '_sass' / 'beasts').rglob('*.scss'):
-        for name in re.findall(r'@import "(beasts/[^"]+)";', path.read_text()):
+    for path in (ROOT / '_sass' / 'beasts').rglob('*'):
+        if path.suffix not in ('.scss', '.sass'):
+            continue
+        for name in re.findall(r"""@import\s+["']?(beasts/[^"'\s;]+)""", path.read_text()):
             target = ROOT / '_sass' / name
-            assert target.with_name('_' + target.name).with_suffix('.scss').is_file(), name
+            assert any(target.with_name('_' + target.name).with_suffix(ext).is_file()
+                       for ext in ('.scss', '.sass')), name
     print(f"PASS: {len(report['standalone'])} compiled CSS URLs, "
-          f"{len(report['inline'])} inline SCSS imports, "
+          f"{len(report['inline'])} inline Sass imports, "
           f"{len(report['static_html'])} static-page stylesheets, no duplicate CSS sources.")
 
 

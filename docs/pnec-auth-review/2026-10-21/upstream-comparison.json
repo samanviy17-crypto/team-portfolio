@@ -1,0 +1,82 @@
+[
+  {
+    "file": "Beasts_FrontEnd/README.md",
+    "upstream_sha": "9b34469fa85964b3309052b87ae21e88e6bf0a76",
+    "head_matches_upstream": true,
+    "worktree_matches_upstream": false,
+    "upstream_lines": 204,
+    "local_lines": 221
+  },
+  {
+    "file": "Beasts_FrontEnd/pages/register.html",
+    "upstream_sha": "9b34469fa85964b3309052b87ae21e88e6bf0a76",
+    "head_matches_upstream": true,
+    "worktree_matches_upstream": false,
+    "upstream_lines": 1238,
+    "local_lines": 445
+  },
+  {
+    "file": "Beasts_FrontEnd/pages/profile.html",
+    "upstream_sha": "9b34469fa85964b3309052b87ae21e88e6bf0a76",
+    "head_matches_upstream": false,
+    "worktree_matches_upstream": false,
+    "upstream_lines": 873,
+    "local_lines": 528
+  },
+  {
+    "file": "Beasts_FrontEnd/assets/js/api/auth-api.js",
+    "upstream_sha": "9b34469fa85964b3309052b87ae21e88e6bf0a76",
+    "head_matches_upstream": false,
+    "worktree_matches_upstream": false,
+    "upstream_lines": 80,
+    "local_lines": 160
+  },
+  {
+    "file": "Beasts_FrontEnd/assets/js/pages/register-page.js",
+    "upstream_sha": "9b34469fa85964b3309052b87ae21e88e6bf0a76",
+    "head_matches_upstream": false,
+    "worktree_matches_upstream": false,
+    "upstream_lines": 823,
+    "local_lines": 821
+  },
+  {
+    "file": "Beasts_Flask/README.md",
+    "upstream_sha": "e2dd4d3a77acea66380bddbe110743f059a26a95",
+    "head_matches_upstream": false,
+    "worktree_matches_upstream": false,
+    "upstream_lines": 136,
+    "local_lines": 277
+  },
+  {
+    "file": "Beasts_Flask/app/routes/auth.py",
+    "upstream_sha": "e2dd4d3a77acea66380bddbe110743f059a26a95",
+    "head_matches_upstream": false,
+    "worktree_matches_upstream": false,
+    "upstream_lines": 270,
+    "local_lines": 299
+  },
+  {
+    "file": "Beasts_Flask/app/services/auth_service.py",
+    "upstream_sha": "e2dd4d3a77acea66380bddbe110743f059a26a95",
+    "head_matches_upstream": false,
+    "worktree_matches_upstream": false,
+    "upstream_lines": 80,
+    "local_lines": 214
+  },
+  {
+    "file": "Beasts_Flask/app/models/user.py",
+    "upstream_sha": "e2dd4d3a77acea66380bddbe110743f059a26a95",
+    "head_matches_upstream": false,
+    "worktree_matches_upstream": false,
+    "upstream_lines": 73,
+    "local_lines": 79
+  },
+  {
+    "file": "Beasts_Flask/app/__init__.py",
+    "upstream_sha": "e2dd4d3a77acea66380bddbe110743f059a26a95",
+    "head_matches_upstream": false,
+    "worktree_matches_upstream": false,
+    "upstream_lines": 617,
+    "local_lines": 635
+  }
+]

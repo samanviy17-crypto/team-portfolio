@@ -168,11 +168,9 @@ function bindLogoutButtons() {
  */
 function handleLogout(event) {
   event.preventDefault();
-  logoutUser()
-    .catch(() => {/* Ignore server errors — clear session regardless */})
-    .finally(() => {
-      localStorage.removeItem('pnec_user');
-      sessionStorage.removeItem('pnec_user');
-      window.location.href = `${window.PNEC_SITE_BASE}/`;
-    });
+  logoutUser().then(() => {
+    window.location.href = `${window.PNEC_SITE_BASE || ''}/`;
+  }).catch(() => {
+    window.alert('Unable to confirm sign out. Check your connection and try again.');
+  });
 }
